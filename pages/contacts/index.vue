@@ -1,6 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
+  <Breadcrumbs />
   <Section>
     <div class="grid grid-cols-12">
       <div class="col-span-6">

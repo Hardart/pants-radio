@@ -4,7 +4,7 @@ const { $ws } = useNuxtApp()
 const { initRadio, onRadioPlay } = useTracksStore()
 const { playingRadio, volume, isFetching } = initRadio(player)
 const { isDesktop } = useDevice()
-onMounted(onSocketConnect)
+// onMounted(onSocketConnect)
 
 const jingleData: IRadioData = {
   artistName: 'Радио Штаны',
@@ -28,7 +28,7 @@ function onSocketConnect() {
 }
 
 const onPlay = () => {
-  socket.value!.emit('radio:play')
+  socket.value?.emit('radio:play')
   onRadioPlay()
 }
 </script>
@@ -37,8 +37,8 @@ const onPlay = () => {
   <div class="flex items-center w-full gap-x-4 mx-4">
     <audio ref="player" preload="none" />
     <RadioPlayButton :is-fetching="isFetching" :playing-radio="playingRadio" :on-play="onPlay" />
-    <RadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" />
     <RadioArt :src="trackData?.covers.art60" />
+    <RadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" />
     <div v-if="isDesktop" class="flex items-center ml-auto">
       <input class="accent-primary" type="range" min="0" max="100" v-model.number="volume" />
     </div>

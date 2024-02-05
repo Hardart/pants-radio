@@ -1,11 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <Section padding="none">
-    <div class="pt-4">
-      <SocialIcons class="justify-end text-primary" hover-color="primary" />
-    </div>
-  </Section>
+  <Section padding="none"> </Section>
   <Section padding="small">
     <SectionTitle title="Новинки Радио ШТАНЫ" />
     <TrackList />

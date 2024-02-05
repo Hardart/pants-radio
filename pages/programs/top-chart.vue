@@ -1,0 +1,42 @@
+<script setup lang="ts"></script>
+
+<template>
+  <Breadcrumbs />
+  <Section padding="small">
+    <div class="flex items-center space-x-8">
+      <div class="min-w-80 rounded-lg overflow-hidden">
+        <img src="/images/plug280x280.svg" alt="" />
+      </div>
+      <div class="flex flex-col p-4 space-y-4">
+        <h1 class="text-5xl font-bold tracking-wide">TOP Chart 20</h1>
+        <div class="flex items-center space-x-4">
+          <div class="w-16 border-2 border-primary rounded-full overflow-hidden">
+            <img src="/images/hosts/larin.png" width="64" height="64" alt="" />
+          </div>
+          <div>
+            <p class="font-medium leading-6">Ведущий</p>
+            <p class="text-lg font-bold leading-6">Ларин Евгений</p>
+          </div>
+        </div>
+        <div class="flex flex-nowrap space-x-4">
+          <SheduleCard day="Воскресенье" start="18:00" end="19:00" />
+          <SheduleCard day="Среда" start="16:00" end="17:00" replay />
+        </div>
+      </div>
+    </div>
+  </Section>
+  <Section>
+    <div class="w-1/2 p-6 text-neutral-700 space-y-2 rounded-md shadow-md">
+      <p>
+        Каждое воскресенье на «Радио ШТАНЫ», подводим музыкальные итоги недели. И только от твоего голоса зависит, какая новинка станет
+        лучшей на этой неделе.
+      </p>
+
+      <p>В воскресенье с 18 до 19. Лучшие 20 песен звучат для Вас!</p>
+
+      <p>Пропустил в эфире? Слушай ПОДКАСТ!</p>
+    </div>
+  </Section>
+</template>
+
+<style></style>

@@ -11,6 +11,10 @@ interface BaseItem {
   isPublished: boolean
 }
 
+type Entries<T> = {
+  [K in keyof T]: [K, T[K]]
+}[keyof T][]
+
 declare global {
   interface ITrackData {
     id: number
@@ -42,5 +46,14 @@ declare global {
     slug: string
     icon?: string
     childrens?: IMenuItem[]
+  }
+
+  interface ObjectConstructor {
+    entries<T extends object>(o: T): Entries<T>
+  }
+
+  interface IBreadcrumbsItem {
+    label: string
+    link: string
   }
 }

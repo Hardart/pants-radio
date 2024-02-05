@@ -1,7 +1,9 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps(['title'])
+</script>
 
 <template>
-  <div class="text-sm">track/Title</div>
+  <div class="text-sm">{{ title }}</div>
 </template>
 
 <style scoped></style>

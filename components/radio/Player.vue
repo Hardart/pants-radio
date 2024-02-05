@@ -1,22 +1,47 @@
 <script lang="ts" setup>
 const player = ref()
-const options = {
-  src: 'https://drh-connect.dline-media.com/onair',
+const { $ws } = useNuxtApp()
+const { initRadio, onRadioPlay } = useTracksStore()
+const { playingRadio, volume, isFetching } = initRadio(player)
+const { isDesktop } = useDevice()
+onMounted(onSocketConnect)
+
+const jingleData: IRadioData = {
+  artistName: 'Радио Штаны',
+  trackTitle: '',
+  covers: {
+    art30: '/images/simple_logo.svg',
+    art60: '/images/simple_logo.svg',
+    art100: '/images/simple_logo.svg',
+  },
 }
-const { playing, volume } = useMediaControls(player, options)
-const volumeLevel = ref(30)
-volume.value = 0.3
-watch(volumeLevel, () => (volume.value = volumeLevel.value / 100))
+const trackData = ref<IRadioData>(jingleData)
+const socket = ref()
+function onSocketConnect() {
+  socket.value = $ws(3068, null)
+  socket.value.on('radio:track', (data: IRadioData) => {
+    trackData.value = data
+  })
+  socket.value.on('radio:jingle', (data: IRadioData) => {
+    trackData.value = data
+  })
+}
+
 const onPlay = () => {
-  playing.value = !playing.value
+  socket.value!.emit('radio:play')
+  onRadioPlay()
 }
 </script>
 
 <template>
-  <div class="flex items-center gap-x-4">
-    <audio ref="player" />
-    <button class="w-20 p-4 bg-sky-400 text-white" @click="onPlay">{{ playing ? 'Pause' : 'Play' }}</button>
-    <input class="accent-orange-400" type="range" min="0" max="100" v-model.number="volumeLevel" />
+  <div class="flex items-center w-full gap-x-4 mx-4">
+    <audio ref="player" preload="none" />
+    <RadioPlayButton :is-fetching="isFetching" :playing-radio="playingRadio" :on-play="onPlay" />
+    <RadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" />
+    <RadioArt :src="trackData?.covers.art60" />
+    <div v-if="isDesktop" class="flex items-center ml-auto">
+      <input class="accent-primary" type="range" min="0" max="100" v-model.number="volume" />
+    </div>
   </div>
 </template>
 

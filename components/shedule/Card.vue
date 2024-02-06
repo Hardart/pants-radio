@@ -1,22 +1,37 @@
 <script setup lang="ts">
 defineProps<{
-  img?: string
-  day: string
-  start: string
-  end: string
-  replay?: boolean
+  cardData: IScheduleProgram
 }>()
+const timeParser = (time: string) => time.split(':').map(value => parseInt(value))
+
+const isInRange = (time: Date, start: string, end: string) => {
+  const [hStart, mStart] = timeParser(start)
+  const [hEnd, mEnd] = timeParser(end)
+  const startTime = new Date().setHours(hStart, mStart)
+  const endTime = new Date().setHours(hEnd, mEnd)
+  return time.valueOf() >= startTime && time.valueOf() <= endTime
+}
 </script>
 
 <template>
-  <div class="flex w-72 relative rounded-md overflow-hidden">
-    <div v-if="replay" class="absolute uppercase text-xs top-1 right-1 rounded text-neutral-50 bg-stone-800 px-1.5 py-0.5">повтор</div>
-    <div class="w-1/4 aspect-square bg-stone-700">
-      <img :src="img ? img : '/images/plug280x280.svg'" alt="" />
+  <div class="flex items-center gap-x-5 relative rounded-md px-8 py-3 shadow-md bg-white">
+    <div
+      v-if="isInRange(new Date(), cardData.start, cardData.end)"
+      class="absolute -left-11 tracking-wide px-2 text-xs uppercase text-neutral-50 -rotate-90 origin-center rounded bg-primary animate-pulse"
+    >
+      onair
     </div>
-    <div class="flex flex-col justify-center flex-1 text-neutral-50 bg-primary px-5 py-2 space-y-1">
-      <p>{{ day }}</p>
-      <p class="text-lg font-bold">{{ start }} – {{ end }}</p>
+    <div class="w-32">
+      <p class="text-lg">{{ cardData.start }} – {{ cardData.end }}</p>
+    </div>
+    <div>
+      <img class="rounded-md" :src="cardData.image ? cardData.image : '/images/plug280x280.svg'" width="60" height="60" alt="" />
+    </div>
+    <div>
+      <h4 class="text-lg font-medium">{{ cardData.title }}</h4>
+    </div>
+    <div v-if="cardData.replay" class="absolute uppercase text-xs top-1 right-1 rounded text-neutral-50 bg-sky-700 px-1.5 py-0.5">
+      повтор
     </div>
   </div>
 </template>

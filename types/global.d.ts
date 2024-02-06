@@ -56,4 +56,40 @@ declare global {
     label: string
     link: string
   }
+
+  interface IScheduleItem {
+    weekdayTitle: string
+    weekdayId: number
+    programs: IScheduleProgram[]
+  }
+
+  interface IScheduleProgram {
+    start: string
+    end: string
+    title: string
+    image?: string
+    replay?: boolean
+    onair?: boolean
+  }
+
+  interface IAirtimeItem extends IScheduleProgram {
+    title?: string
+    weekday: WeekDay
+    onair?: boolean
+  }
+
+  type Host = {
+    name: string
+    surname: string
+    fullname: string
+  }
+
+  type ProgramData = {
+    title: string
+    image?: string
+    host: Host
+    airtimeData: IAirtimeItem[]
+  }
+
+  type WeekDay = 'Понедельник' | 'Вторник' | 'Среда' | 'Четверг' | 'Пятница' | 'Суббота' | 'Воскресенье'
 }

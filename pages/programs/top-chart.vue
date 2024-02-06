@@ -1,4 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const airtimeData: IAirtimeItem[] = [
+  { start: '18:00', end: '19:00', weekday: 'Воскресенье' },
+  { start: '16:00', end: '17:00', weekday: 'Среда', replay: true },
+]
+
+const host: Host = {
+  name: 'Евгений',
+  surname: 'Ларин',
+  fullname: 'Ларин Евгений',
+}
+
+const programData: ProgramData = {
+  title: 'TOP Chart 20',
+  airtimeData,
+  host,
+}
+</script>
 
 <template>
   <Breadcrumbs />
@@ -8,19 +25,18 @@
         <img src="/images/plug280x280.svg" alt="" />
       </div>
       <div class="flex flex-col p-4 space-y-4">
-        <h1 class="text-5xl font-bold tracking-wide">TOP Chart 20</h1>
+        <h1 class="text-5xl font-bold tracking-wide">{{ programData.title }}</h1>
         <div class="flex items-center space-x-4">
           <div class="w-16 border-2 border-primary rounded-full overflow-hidden">
             <img src="/images/hosts/larin.png" width="64" height="64" alt="" />
           </div>
           <div>
             <p class="font-medium leading-6">Ведущий</p>
-            <p class="text-lg font-bold leading-6">Ларин Евгений</p>
+            <p class="text-lg font-bold leading-6">{{ programData.host.fullname }}</p>
           </div>
         </div>
         <div class="flex flex-nowrap space-x-4">
-          <SheduleCard day="Воскресенье" start="18:00" end="19:00" />
-          <SheduleCard day="Среда" start="16:00" end="17:00" replay />
+          <ProgramCard v-for="card in programData.airtimeData" :card-data="card" />
         </div>
       </div>
     </div>

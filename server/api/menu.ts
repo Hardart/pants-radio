@@ -4,6 +4,7 @@ export default defineEventHandler(event => {
       slug: '',
       label: 'Радио',
       childrens: [
+        { slug: 'schedule', label: 'Сетка вещания' },
         { slug: 'hosts', label: 'Ведущие' },
         { slug: 'podcasts', label: 'Подкасты' },
         { slug: 'live', label: 'Прямой эфир' },
@@ -13,9 +14,8 @@ export default defineEventHandler(event => {
       slug: 'programs',
       label: 'Программы',
       childrens: [
-        { slug: 'schedule', label: 'Сетка вещания' },
         { slug: 'top-chart', label: 'TOP Chart 20' },
-        // { slug: '', label: 'Итоги недели' },
+        { slug: '', label: 'Итоги недели' },
         // { slug: '', label: 'Лучшие треки недели' },
       ],
     },

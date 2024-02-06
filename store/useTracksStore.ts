@@ -37,11 +37,9 @@ export const useTracksStore = defineStore('track', () => {
 
     watch(playingTrack, () => {
       audioElement.value[playingTrack.value ? 'play' : 'pause']()
-
-      if (!playingTrack.value) {
-        // audioElement.value.src = ''
-        // audioElement.value.src = radioURL
-      }
+      if (playingTrack.value) return
+      audioElement.value.src = ''
+      audioElement.value.src = radioURL_old
     })
 
     watch(trackUrl, () => {
@@ -71,8 +69,11 @@ export const useTracksStore = defineStore('track', () => {
         activeTrackId.value = -1
       } else {
         audioElement.value.pause()
-        // audioElement.value.src = ''
-        // audioElement.value.src = radioURL
+        audioElement.value.currentTime = 0
+        setTimeout(() => {
+          audioElement.value.src = ''
+          audioElement.value.src = radioURL_old
+        }, 250)
       }
     })
     watch(volume, () => {

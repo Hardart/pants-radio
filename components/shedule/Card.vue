@@ -17,6 +17,12 @@ const isInRange = (time: Date, start: string, end: string) => {
   <div class="flex items-center gap-x-5 relative rounded-md px-8 py-3 shadow-md bg-white">
     <div
       v-if="isInRange(new Date(), cardData.start, cardData.end)"
+      class="absolute -right-11 tracking-wide px-2 text-xs uppercase text-neutral-50 rotate-90 origin-center rounded bg-primary animate-pulse"
+    >
+      onair
+    </div>
+    <div
+      v-if="isInRange(new Date(), cardData.start, cardData.end)"
       class="absolute -left-11 tracking-wide px-2 text-xs uppercase text-neutral-50 -rotate-90 origin-center rounded bg-primary animate-pulse"
     >
       onair
@@ -30,10 +36,11 @@ const isInRange = (time: Date, start: string, end: string) => {
     <div>
       <h4 class="text-lg font-medium">{{ cardData.title }}</h4>
     </div>
-    <div v-if="cardData.replay" class="absolute uppercase text-xs top-1 right-1 rounded text-neutral-50 bg-sky-700 px-1.5 py-0.5">
+    <div
+      v-if="cardData.replay"
+      class="absolute uppercase text-xs origin-center rotate-90 -right-2 rounded text-neutral-50 bg-sky-700 px-1.5 py-0.5"
+    >
       повтор
     </div>
   </div>
 </template>
-
-<style></style>

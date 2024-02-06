@@ -69,13 +69,11 @@ declare global {
     title: string
     image?: string
     replay?: boolean
-    onair?: boolean
   }
 
   interface IAirtimeItem extends IScheduleProgram {
     title?: string
     weekday: WeekDay
-    onair?: boolean
   }
 
   type Host = {

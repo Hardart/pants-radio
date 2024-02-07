@@ -4,7 +4,7 @@ const { $ws } = useNuxtApp()
 const { initRadio, onRadioPlay } = useTracksStore()
 const { playingRadio, volume, isFetching } = initRadio(player)
 const { isDesktop } = useDevice()
-// onMounted(onSocketConnect)
+onMounted(onSocketConnect)
 
 const jingleData: IRadioData = {
   artistName: 'Радио Штаны',

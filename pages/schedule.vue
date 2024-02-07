@@ -4,8 +4,8 @@ const { data } = useAsyncData<IScheduleItem[]>('schedule', () => $fetch('/api/sc
 
 <template>
   <Section padding="small">
-    <Time />
     <UiPageTitle title="Сетка вещания" />
-    <SheduleList v-if="data" :schedule-data="data" />
+
+    <ScheduleList v-if="data" :schedule-data="data" />
   </Section>
 </template>

@@ -4,6 +4,7 @@ const { data } = await useFetch('/api/schedule')
 
 <template>
   <Section padding="small">
+    <Time />
     <UiPageTitle title="Сетка вещания" />
     <SheduleList :schedule-data="data!" />
   </Section>

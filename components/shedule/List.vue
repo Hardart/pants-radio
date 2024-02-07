@@ -6,7 +6,7 @@ const { scheduleData } = defineProps<{
 const accordionState = ref<{ [key: number]: boolean }>({})
 
 const weekdayNumber = new Date().getDay()
-console.log(weekdayNumber)
+
 for (let i = 0; i < scheduleData.length; i++) {
   accordionState.value[i] = weekdayNumber == scheduleData[i].weekdayId ? true : false
 }
@@ -17,7 +17,7 @@ for (let i = 0; i < scheduleData.length; i++) {
     <li class="py-4 cursor-pointer" @click="accordionState[index] = !accordionState[index]" v-for="(day, index) in scheduleData">
       <div class="flex justify-between items-center px-4">
         <p class="text-2xl font-semibold first-letter:uppercase" :class="weekdayNumber === day.weekdayId && 'text-primary'">
-          {{ day.weekdayTitle }}; weekdayID - {{ day.weekdayId }}; weekdayNumber - {{ weekdayNumber }}
+          {{ day.weekdayTitle }}
         </p>
         <Icon name="mdi:chevron-up" class="text-stone-600" :class="accordionState[index] && 'rotate-180'" size="30" />
       </div>

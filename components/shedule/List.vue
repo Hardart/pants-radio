@@ -5,7 +5,7 @@ const { scheduleData } = defineProps<{
 
 const accordionState = ref<{ [key: number]: boolean }>({})
 
-const weekdayNumber = new Date().getDay()
+const weekdayNumber = 3
 
 for (let i = 0; i < scheduleData.length; i++) {
   accordionState.value[i] = weekdayNumber == scheduleData[i].weekdayId ? true : false

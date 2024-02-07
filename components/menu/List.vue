@@ -6,7 +6,7 @@ defineEmits(['toggle'])
 </script>
 
 <template>
-  <ul class="flex justify-around w-full text-neutral-100 my-10">
+  <ul class="grid sm:grid-cols-2 max-lg:px-8 w-full text-neutral-100 my-10">
     <MenuItem v-for="item in menuItems" :menu-item="item" @toggle="$emit('toggle')" />
   </ul>
 </template>

@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center max-sm:hidden">
     <a href="https://vk.com/radio_shtani" target="_blank" class="px-3 py-1" :class="HoverColor[hoverColor ?? 'default']">
       <Icon name="akar-icons:vk-fill" size="30" />
     </a>

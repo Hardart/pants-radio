@@ -20,13 +20,13 @@ watch(
   <div
     ref="menu"
     class="fixed top-0 left-0 w-full bg-neutral-800 transition-all focus-visible:outline-none will-change-transform"
-    :class="isOpen ? 'translate-y-0 ease-out duration-500' : '-translate-y-full ease-in duration-300'"
+    :class="isOpen ? 'translate-y-0 ease-out duration-500 max-sm:bottom-0' : '-translate-y-full ease-in duration-300'"
     @keyup.esc="toggle"
     tabindex="0"
   >
     <div class="container relative mx-auto mt-5 mb-14">
       <div class="flex items-center justify-between text-neutral-100 px-3">
-        <img src="/images/logo_text.svg" class="h-14" alt="" />
+        <img src="/images/logo_text.svg" class="h-12" alt="" />
         <div class="p-2 hover:bg-neutral-700/30 cursor-pointer" @click="toggle">
           <Icon name="material-symbols:close-rounded" size="50" />
         </div>

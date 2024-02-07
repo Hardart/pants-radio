@@ -7,7 +7,9 @@ const toggleMenuState = () => (isOpen.value = !isOpen.value)
 <template>
   <div class="fixed w-full h-20 bg-secondary z-50">
     <div class="flex items-center container mx-auto h-full">
-      <Logo size="70" />
+      <div class="min-w-16 ml-4">
+        <Logo size="70" />
+      </div>
       <Menu ref="menuElem" :is-open="isOpen" :toggle="toggleMenuState" />
       <RadioPlayer />
       <!-- <Time /> -->

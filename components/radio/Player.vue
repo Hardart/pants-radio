@@ -38,7 +38,7 @@ const onPlay = () => {
     <audio ref="player" preload="none" />
     <RadioPlayButton :is-fetching="isFetching" :playing-radio="playingRadio" :on-play="onPlay" />
     <RadioArt :src="trackData?.covers.art60" />
-    <RadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" />
+    <RadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
     <div v-if="isDesktop" class="flex items-center ml-auto">
       <input class="accent-primary" type="range" min="0" max="100" v-model.number="volume" />
     </div>

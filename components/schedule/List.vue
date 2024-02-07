@@ -13,7 +13,7 @@ for (let i = 0; i < scheduleData.length; i++) {
 </script>
 
 <template>
-  <ul class="w-1/2 divide-y-4">
+  <ul class="lg:w-1/2 divide-y-4">
     <li class="py-4 cursor-pointer" @click="accordionState[index] = !accordionState[index]" v-for="(day, index) in scheduleData">
       <div class="flex justify-between items-center px-4">
         <p class="text-2xl font-semibold first-letter:uppercase" :class="weekdayNumber.getDay() === day.weekdayId && 'text-primary'">

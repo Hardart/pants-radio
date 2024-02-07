@@ -3,7 +3,7 @@ const { data } = await useFetch('/api/team')
 </script>
 
 <template>
-  <div class="grid grid-cols-5 gap-x-10 gap-y-6">
+  <div class="grid grid-cols-2 gap-x-2 lg:grid-cols-5 lg:gap-x-10 gap-y-6">
     <TeamCard v-for="person in data" :person="person" />
   </div>
 </template>

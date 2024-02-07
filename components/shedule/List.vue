@@ -16,7 +16,7 @@ for (let i = 0; i < scheduleData.length; i++) {
   <ul class="w-1/2 divide-y-4">
     <li class="py-4 cursor-pointer" @click="accordionState[index] = !accordionState[index]" v-for="(day, index) in scheduleData">
       <div class="flex justify-between items-center px-4">
-        <p class="text-2xl font-semibold first-letter:uppercase" :class="weekdayNumber == day.weekdayId && 'text-primary'">
+        <p class="text-2xl font-semibold first-letter:uppercase" :class="weekdayNumber === day.weekdayId && 'text-primary'">
           {{ day.weekdayTitle }} - {{ day.weekdayId }}
         </p>
         <Icon name="mdi:chevron-up" class="text-stone-600" :class="accordionState[index] && 'rotate-180'" size="30" />

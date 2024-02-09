@@ -1,7 +1,11 @@
 <script setup lang="ts">
-const menuElem = ref(null)
 const isOpen = ref(false)
 const toggleMenuState = () => (isOpen.value = !isOpen.value)
+useHead({
+  htmlAttrs: {
+    class: computed(() => (isOpen.value ? 'overflow-clip' : '')),
+  },
+})
 </script>
 
 <template>
@@ -10,9 +14,11 @@ const toggleMenuState = () => (isOpen.value = !isOpen.value)
       <div class="min-w-16 ml-4">
         <Logo size="70" />
       </div>
-      <Menu ref="menuElem" :is-open="isOpen" :toggle="toggleMenuState" />
+      <TransitionFade :duration="400">
+        <div v-if="isOpen" class="fixed inset-0 bg-stone-500/60 backdrop-blur-sm z-10 max-lg:hidden"></div>
+      </TransitionFade>
+      <Menu :is-open="isOpen" :toggle="toggleMenuState" />
       <RadioPlayer />
-      <!-- <Time /> -->
       <UiMenuButton @click="toggleMenuState" />
     </div>
   </div>

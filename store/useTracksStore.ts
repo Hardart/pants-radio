@@ -1,8 +1,7 @@
 export const useTracksStore = defineStore('track', () => {
   // STATE
   const radioURL_old = 'https://drh-connect.dline-media.com/onair'
-  const radioURL_test = 'http://87.251.66.75:56565/rshstrea'
-  const radioURL = 'http://87.251.66.75:56565/rshstream'
+  const radioURL = 'https://stream.lolamedia.ru/rsh_federal'
   const trackUrl = ref('')
   const activeTrackId = ref(-1)
   const playingRadio = ref(false)
@@ -11,7 +10,6 @@ export const useTracksStore = defineStore('track', () => {
   const isFetching = ref(false)
 
   // GETTERS
-  // const isRadioPlaying = computed(() => playingType.value === 'radio')
 
   // ACTIONS
   async function onPlay(track: ITrackData) {
@@ -39,7 +37,7 @@ export const useTracksStore = defineStore('track', () => {
       audioElement.value[playingTrack.value ? 'play' : 'pause']()
       if (playingTrack.value) return
       audioElement.value.src = ''
-      audioElement.value.src = radioURL_old
+      audioElement.value.src = radioURL
     })
 
     watch(trackUrl, () => {
@@ -49,7 +47,7 @@ export const useTracksStore = defineStore('track', () => {
 
   function initRadio(audioElement: Ref<HTMLAudioElement>) {
     onMounted(() => {
-      audioElement.value.src = radioURL_old
+      audioElement.value.src = radioURL
       audioElement.value.volume = volume.value / 100
     })
 
@@ -69,11 +67,9 @@ export const useTracksStore = defineStore('track', () => {
         activeTrackId.value = -1
       } else {
         audioElement.value.pause()
-        audioElement.value.currentTime = 0
-        setTimeout(() => {
-          audioElement.value.src = ''
-          audioElement.value.src = radioURL_old
-        }, 250)
+        await delay(250)
+        audioElement.value.src = ''
+        audioElement.value.src = radioURL_old
       }
     })
     watch(volume, () => {

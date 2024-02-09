@@ -20,12 +20,12 @@ const programData: ProgramData = {
 <template>
   <Breadcrumbs />
   <Section padding="small">
-    <div class="flex items-center space-x-8">
+    <div class="flex max-md:flex-col items-center md:space-x-8">
       <div class="min-w-80 rounded-lg overflow-hidden">
         <img src="/images/plug280x280.svg" alt="" />
       </div>
-      <div class="flex flex-col p-4 space-y-4">
-        <h1 class="text-5xl font-bold tracking-wide">{{ programData.title }}</h1>
+      <div class="flex max-md:items-center flex-col p-4 space-y-4">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-wide">{{ programData.title }}</h1>
         <div class="flex items-center space-x-4">
           <div class="w-16 border-2 border-primary rounded-full overflow-hidden">
             <img src="/images/hosts/larin.png" width="64" height="64" alt="" />
@@ -35,14 +35,14 @@ const programData: ProgramData = {
             <p class="text-lg font-bold leading-6">{{ programData.host.fullname }}</p>
           </div>
         </div>
-        <div class="flex flex-nowrap space-x-4">
+        <div class="flex max-lg:flex-col flex-nowrap lg:space-x-4 max-lg:space-y-2">
           <ProgramCard v-for="card in programData.airtimeData" :card-data="card" />
         </div>
       </div>
     </div>
   </Section>
   <Section>
-    <div class="w-1/2 p-6 text-neutral-700 space-y-2 rounded-md shadow-md">
+    <div class="xl:w-1/2 p-6 text-neutral-700 space-y-2 rounded-md shadow-md">
       <p>
         Каждое воскресенье на «Радио ШТАНЫ», подводим музыкальные итоги недели. И только от твоего голоса зависит, какая новинка станет
         лучшей на этой неделе.

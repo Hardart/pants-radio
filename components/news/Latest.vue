@@ -2,6 +2,7 @@
 const news: ICard[] = [
   {
     id: '',
+    category: '',
     createdAt: 'JULY 28, 2021',
     title: 'A Survey Into More Sustainable Ways to Practice Dental Hygiene',
     image: '',
@@ -11,6 +12,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'JULY 27, 2021',
     title: 'Employee Portraits – Get to Know Ella and Cedric',
     image: '',
@@ -20,6 +22,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'JULY 22, 2021',
     title: 'Tooth Enamel: What It Is and How Important It Is to Protect It',
     image: '',
@@ -29,6 +32,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'JULY 12, 2021',
     title: '“Is it okay if our intern watches?” Why we value teaching.',
     image: '',
@@ -38,6 +42,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'JULY 06, 2021',
     title: 'Have you had your checkup this year? Stay on top.',
     image: '',
@@ -47,6 +52,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'JUNE 28, 2021',
     title: 'We Are Going on Vacation – Closed Office During the First Week of July',
     image: '',
@@ -56,6 +62,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'JUNE 03, 2021',
     title: 'When You Need a Fixed Denture and not an Implant',
     image: '',
@@ -65,6 +72,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'MAY 17, 2021',
     title: 'When Children Start Losing Teeth',
     image: '',
@@ -74,6 +82,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'MAY 05, 2021',
     title: 'Dentures and Transplants – What Is Covered by the Insurance',
     image: '',
@@ -83,6 +92,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'APRIL 26, 2021',
     title: 'Corona Virus UpcreatedAt: A New Hygiene Concept in Our Clinic',
     image: '',
@@ -92,6 +102,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'APRIL 13, 2021',
     title: 'What to Do When a Dental Emergency Occurs',
     image: '',
@@ -101,6 +112,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'APRIL 09, 2021',
     title: 'Electric Toothbrushes: Guide to Find the Right One',
     image: '',
@@ -110,6 +122,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'MARCH 30, 2021',
     title: 'Taking Care of Your Teeth (for Kids)',
     image: '',
@@ -119,6 +132,7 @@ const news: ICard[] = [
   },
   {
     id: '',
+    category: '',
     createdAt: 'MARCH 22, 2021',
     title: 'Candid – Our New Teeth Whitening Technology',
     image: '',

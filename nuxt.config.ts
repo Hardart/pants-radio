@@ -5,4 +5,9 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['./store/**'],
   },
+  routeRules: {
+    '/api/**': {
+      proxy: process.env.BASE_URL,
+    },
+  },
 })

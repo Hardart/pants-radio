@@ -3,28 +3,28 @@ const isShowHomePath = true
 const route = useRoute()
 const menuList = useState<IMenuItem[]>('menu-list')
 const params = route.path.substring(1).split('/')
+
 let link = ``
-const linksFromParams = params.reduce((acc, curr) => {
+const linksFromParams = params.reduce(reduceLinks, [] as string[])
+const crumbs = linksFromParams.reduce(reduceBreadcrumbs, [] as IBreadcrumbsItem[])
+
+function reduceLinks(acc: string[], curr: string) {
   link += `/${curr}`
   acc.push(link)
   return acc
-}, [] as string[])
-
-const crumbs = linksFromParams.reduce((acc, curr) => {
-  menuList.value?.forEach(findBySlug(acc, curr))
-  return acc
-}, [] as IBreadcrumbsItem[])
-
-function findBySlug(acc: IBreadcrumbsItem[], curr: string) {
-  return function menuMap(item: IMenuItem) {
+}
+function reduceBreadcrumbs(acc: IBreadcrumbsItem[], curr: string) {
+  function menuMap(item: IMenuItem) {
     if (item.childrens) item.childrens.forEach(menuMap)
     if (item.link === curr) return acc.push({ label: item.label, link: item.link })
   }
+  menuList.value?.forEach(menuMap)
+  return acc
 }
 </script>
 
 <template>
-  <Section padding="none">
+  <Section padding="small">
     <ul class="flex items-center">
       <li v-if="isShowHomePath" class="text-primary hover:text-primary/80">
         <NuxtLink to="/"><Icon name="mdi:home" size="24" /></NuxtLink>

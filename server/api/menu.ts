@@ -8,6 +8,7 @@ export default defineEventHandler(event => {
         { slug: 'hosts', label: 'Ведущие' },
         { slug: 'podcasts', label: 'Подкасты' },
         { slug: 'live', label: 'Прямой эфир' },
+        { slug: 'news', label: 'Новости' },
       ],
     },
     {
@@ -48,9 +49,7 @@ function addLinkToMenuItem(menuItems: IMenuItem[]) {
 function mapMenuItem(parentLink: string = '') {
   return function (item: IMenuItem) {
     item.link = `${parentLink}/${item.slug}`.replace('//', '/')
-
     item.childrens = item.childrens?.map(mapMenuItem(item.link))
-
     return item
   }
 }

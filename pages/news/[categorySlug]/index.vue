@@ -1,7 +1,9 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div>Page: News</div>
+  <Section>
+    <UiPageTitle title="Категория" />
+  </Section>
 </template>
 
 <style scoped></style>

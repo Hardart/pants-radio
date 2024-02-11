@@ -1,23 +1,14 @@
-<script lang="ts" setup>
-const menuList = useState<IMenuItem[]>('menu-list')
-const menu = ref()
-defineProps(['isOpen', 'toggle'])
+<script setup lang="ts">
+const { menuList } = defineProps<{
+  menuList: IMenuItem[]
+}>()
+const { toggleMenuState } = useMenu()
 </script>
 
 <template>
-  <nav
-    ref="menu"
-    class="fixed flex flex-col h-full top-0 left-0 right-0 bottom-0 bg-neutral-800 transition-all will-change-transform overflow-hidden"
-    :class="isOpen ? 'translate-y-0 ease-out duration-500' : '-translate-y-full ease-in duration-300'"
-    tabindex="0"
-  >
-    <MenuTop @toggle="toggle" />
-    <div class="relative flex-grow">
-      <!-- <MenuAccordion :menu-list="menuList" /> -->
+  <div class="relative flex-grow block lg:hidden">
+    <div class="absolute inset-0 overflow-auto">
+      <HdrtAccordion :items="menuList" title-key="label" body-key="childrens" :handler="toggleMenuState" />
     </div>
-
-    <MenuBottom />
-  </nav>
+  </div>
 </template>
-
-<style></style>

@@ -5,8 +5,8 @@ interface BaseItem {
   slug: string
   image?: string
   text?: string
-  link: string
-  createdAt?: string
+  url: string
+  createdAt: string
   updatedAt?: string
   isPublished: boolean
 }
@@ -25,9 +25,9 @@ declare global {
   }
 
   interface IItunesData {
-    art30: string
+    art30?: string
     art60: string
-    art100: string
+    art100?: string
     art300?: string
     art600?: string
   }
@@ -38,7 +38,13 @@ declare global {
     covers: IItunesData
   }
 
-  interface ICard extends BaseItem {}
+  interface ICard extends BaseItem {
+    preview: string
+    category: {
+      slug: string
+      title: string
+    }
+  }
 
   interface IMenuItem {
     label: string

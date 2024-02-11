@@ -1,42 +1,24 @@
 <script lang="ts" setup>
-const player = ref()
-const { $ws } = useNuxtApp()
-const { initRadio, onRadioPlay } = useTracksStore()
-const { playingRadio, volume, isFetching } = initRadio(player)
-const { isDesktop } = useDevice()
-onMounted(onSocketConnect)
-
 const jingleData: IRadioData = {
   artistName: 'Радио Штаны',
-  trackTitle: '',
+  trackTitle: 'Прямой эфир',
   covers: {
-    art30: '/images/simple_logo.svg',
     art60: '/images/simple_logo.svg',
-    art100: '/images/simple_logo.svg',
+    art600: '/images/simple_logo.svg',
   },
 }
 const trackData = ref<IRadioData>(jingleData)
-const socket = ref()
-function onSocketConnect() {
-  socket.value = $ws(3068, null)
-  socket.value.on('radio:track', (data: IRadioData) => {
-    trackData.value = data
-  })
-  socket.value.on('radio:jingle', (data: IRadioData) => {
-    trackData.value = data
-  })
-}
-
-const onPlay = () => {
-  socket.value?.emit('radio:play')
-  onRadioPlay()
-}
+const { initRadio, toggleRadioPlayState } = useTracksStore()
+const { playingRadio, volume, isFetching, radioElement } = initRadio()
+const { isDesktop } = useDevice()
+const { onSocketConnect } = useSocket(trackData)
+onMounted(onSocketConnect)
 </script>
 
 <template>
-  <div class="flex items-center w-full gap-x-4 mx-4">
-    <audio ref="player" preload="none" />
-    <RadioPlayButton :is-fetching="isFetching" :playing-radio="playingRadio" :on-play="onPlay" />
+  <div class="flex items-center flex-grow gap-x-4 mx-4">
+    <audio ref="radioElement" preload="none" />
+    <RadioPlayButton :is-fetching="isFetching" :playing-radio="playingRadio" :on-play="toggleRadioPlayState" />
     <RadioArt :src="trackData?.covers.art60" />
     <RadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
     <div v-if="isDesktop" class="flex items-center ml-auto">

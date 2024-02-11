@@ -8,9 +8,10 @@ export const useTracksStore = defineStore('track', () => {
   const playingTrack = ref(false)
   const volume = ref(20)
   const isFetching = ref(false)
+  const radioElement = ref<HTMLAudioElement | null>()
 
   // GETTERS
-
+  const radioElementIsNULL = computed(() => radioElement.value === null && typeof radioElement.value === 'undefined')
   // ACTIONS
   async function onPlay(track: ITrackData) {
     playingRadio.value = false
@@ -36,8 +37,6 @@ export const useTracksStore = defineStore('track', () => {
     watch(playingTrack, () => {
       audioElement.value[playingTrack.value ? 'play' : 'pause']()
       if (playingTrack.value) return
-      audioElement.value.src = ''
-      audioElement.value.src = radioURL
     })
 
     watch(trackUrl, () => {
@@ -45,42 +44,54 @@ export const useTracksStore = defineStore('track', () => {
     })
   }
 
-  function initRadio(audioElement: Ref<HTMLAudioElement>) {
+  function initRadio() {
     onMounted(() => {
-      audioElement.value.src = radioURL
-      audioElement.value.volume = volume.value / 100
+      if (!radioElement.value) return
+      radioElement.value.src = radioURL
+      radioElement.value.volume = volume.value / 100
     })
 
-    watch(playingRadio, async () => {
-      if (playingRadio.value) {
-        try {
-          isFetching.value = true
-          await audioElement.value.play()
-          isFetching.value = false
-        } catch (error) {
-          console.log(error)
-          isFetching.value = false
-          playingRadio.value = false
-        }
-
-        playingTrack.value = false
-        activeTrackId.value = -1
-      } else {
-        audioElement.value.pause()
-        await delay(250)
-        audioElement.value.src = ''
-        audioElement.value.src = radioURL_old
-      }
-    })
+    watch(playingRadio, onPlayingRadio)
     watch(volume, () => {
-      audioElement.value.volume = volume.value / 100
+      if (!radioElement.value) return
+      radioElement.value.volume = volume.value / 100
     })
-    return { playingRadio, volume, isFetching }
+    return { playingRadio, volume, isFetching, radioElement }
   }
 
-  function onRadioPlay() {
+  function stopTrack() {
+    playingTrack.value = false
+    activeTrackId.value = -1
+  }
+
+  async function onPlayingRadio() {
+    if (!radioElement.value) return
+    if (playingRadio.value) {
+      await tryPlayRadio()
+    } else {
+      radioElement.value.pause()
+      await delay(250)
+      radioElement.value.src = ''
+      radioElement.value.src = radioURL
+    }
+  }
+
+  async function tryPlayRadio() {
+    if (!radioElement.value) return
+    try {
+      stopTrack()
+      isFetching.value = true
+      await radioElement.value.play()
+      isFetching.value = false
+    } catch (error) {
+      console.log(error)
+      isFetching.value = false
+      playingRadio.value = false
+    }
+  }
+  function toggleRadioPlayState() {
     playingRadio.value = !playingRadio.value
   }
 
-  return { initRadio, initTrack, onRadioPlay, onPlay, trackUrl, activeTrackId, volume }
+  return { initRadio, initTrack, toggleRadioPlayState, onPlay, trackUrl, activeTrackId, volume }
 })

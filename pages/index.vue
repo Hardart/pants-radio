@@ -1,4 +1,6 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const { data: people } = await useFetch('/api/team', { key: 'hosts', getCachedData: key => useNuxtApp().payload.data[key] })
+</script>
 
 <template>
   <Section padding="none"> </Section>
@@ -14,8 +16,8 @@
     <SectionTitle title="Акции и конкурсы" />
     <PromotionsList />
   </Section>
-  <Section>
+  <Section padding-bottom-remove>
     <SectionTitle title="Лица Радиостанции" />
-    <TeamList />
+    <TeamList :people="people" />
   </Section>
 </template>

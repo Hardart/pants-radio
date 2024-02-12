@@ -1,12 +1,13 @@
 <script setup lang="ts">
 defineProps<{
   cardData: IScheduleProgram
+  isToday?: boolean
 }>()
 </script>
 
 <template>
   <div class="hidden sm:flex max-sm:flex-col items-center gap-x-5 relative rounded-md px-8 py-3 shadow-md bg-white">
-    <ScheduleOnair :card-data="cardData" />
+    <ScheduleOnair :card-data="cardData" v-if="isToday" />
     <div class="w-32 text-nowrap max-sm:text-center">
       <p class="text-lg">{{ cardData.start }} – {{ cardData.end }}</p>
     </div>

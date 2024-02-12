@@ -21,6 +21,7 @@ withDefaults(
     expandRight?: boolean
     noContainer?: boolean
     paddingTopRemove?: boolean
+    paddingBottomRemove?: boolean
   }>(),
   {
     expand: false,
@@ -32,7 +33,7 @@ withDefaults(
 <template>
   <section
     class="section bg-cover bg-no-repeat relative"
-    :class="[Color[color || 'default'], PaddingY[padding || 'default'], paddingTopRemove && '!pt-0']"
+    :class="[Color[color || 'default'], PaddingY[padding || 'default'], paddingTopRemove && '!pt-0', paddingBottomRemove && '!pb-0']"
     :style="[img ? `background-image: url(/images/sections/${img})` : '']"
   >
     <slot v-if="noContainer" />

@@ -1,11 +1,14 @@
 <script lang="ts" setup>
-const { data } = useAsyncData<IScheduleItem[]>('schedule', () => $fetch('/api/schedule'))
+import type { IScheduleItem } from '~/types/schedule'
+
+const { data } = useAsyncData<IScheduleItem[]>('schedule', () => $fetch('/api/schedule', { method: 'POST' }), {
+  getCachedData: key => useNuxtApp().payload.data[key],
+})
 </script>
 
 <template>
   <Section padding="small">
     <UiPageTitle title="Сетка вещания" />
-
     <ScheduleList v-if="data" :schedule-data="data" />
   </Section>
 </template>

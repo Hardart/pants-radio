@@ -1,22 +1,46 @@
 <script setup lang="ts">
 defineProps(['size', 'isMain'])
 const { y } = useWindowScroll()
-const scroll = ref(0)
-onMounted(() => (scroll.value = y.value))
-watch(y, () => (scroll.value = y.value))
+const { isMobile } = useDevice()
+const scroll = ref(130)
+const maxValue = 130
+const minValue = 60
+const startFrom = ref(maxValue)
+const translateY = ref(35)
+const delta = 4
+const value = (val: number, min: number, max: number) => Math.min(Math.max(val, min), max)
+const { pause, resume } = useRafFn(
+  () => {
+    const initValue = y.value < minValue ? maxValue - y.value : value(y.value, maxValue, minValue)
+    scroll.value = value((startFrom.value -= delta), initValue, maxValue)
+    translateY.value = (35 * (scroll.value - minValue)) / (maxValue - minValue)
+    if (scroll.value == minValue || scroll.value == maxValue - y.value) pause()
+  },
+  { immediate: false }
+)
+onMounted(() => {
+  resume()
+})
+
+watch(y, () => {
+  scroll.value = value(130 - y.value, 60, 130)
+  translateY.value = (35 * (scroll.value - 60)) / 70
+})
 </script>
 
 <template>
   <div class="relative flex items-center">
     <NuxtLink to="/">
       <img v-if="size" src="/logo.svg" :width="size" :height="size" alt="logo" />
-      <img
+      <!-- <img
         v-if="isMain"
         src="/logo.svg"
-        class="mt-20 w-[130px] transition-all duration-500"
-        :class="scroll > 20 && 'w-[60px] -translate-y-10'"
+        class="transition-all duration-500 ml-4"
+        :class="[scroll > 20 && !isMobile && 'w-[60px] -translate-y-10', !isMobile ? 'mt-20 w-[130px]' : 'w-16']"
         alt="logo"
-      />
+      /> -->
+      <img v-else-if="isMobile" src="/logo.svg" width="60" height="60" class="ml-2" alt="" />
+      <img v-else src="/logo.svg" :width="scroll" :height="scroll" class="ml-2" :style="`transform: translateY(${translateY}px)`" alt="" />
     </NuxtLink>
   </div>
 </template>

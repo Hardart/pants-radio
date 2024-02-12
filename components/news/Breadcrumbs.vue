@@ -14,11 +14,11 @@ const crumbs: IBreadcrumbsItem[] = [
 
 <template>
   <Section padding="small">
-    <ul class="flex items-center">
+    <ul class="flex items-center w-full pr-2 overflow-hidden overflow-x-auto scrollbar-hide">
       <li v-if="isShowHomePath" class="text-primary hover:text-primary/80">
         <NuxtLink to="/"><Icon name="mdi:home" size="24" /></NuxtLink>
       </li>
-      <li v-for="(item, i) in crumbs">
+      <li v-for="(item, i) in crumbs" class="text-nowrap">
         <span class="mx-2 text-neutral-400" v-if="isShowHomePath || i">/</span>
         <NuxtLink class="font-medium hover:text-primary/80" v-if="i < crumbs.length - 1" :to="item.link">{{ item.label }}</NuxtLink>
         <span class="text-neutral-600 dark:text-neutral-500" v-else>{{ item.label }}</span>

@@ -43,7 +43,7 @@ const onPrev = (page: number) => {
 }
 </script>
 <template>
-  <div class="w-full my-5">
+  <div class="container mx-auto my-5" v-if="totalPages > 1">
     <nav class="flex justify-center space-x-3" v-if="totalPages > showPages + 2">
       <HdrtPaginationButton @click="onPrev(page)" :is-disabled="page == 1" text="prev" />
 
@@ -74,7 +74,7 @@ const onPrev = (page: number) => {
       <HdrtPaginationButton @click="onNext(page)" :is-disabled="page == totalPages" text="next" />
     </nav>
 
-    <nav class="flex justify-center items-center space-x-3" v-else-if="totalPages > 1">
+    <nav class="flex justify-center items-center space-x-3" v-else>
       <HdrtPaginationButton @click="onPrev(page)" :is-disabled="page == 1" type="prev" />
       <HdrtPaginationButton v-for="i in totalPages" @click="onClick" :is-active="page == i" :text="i" />
       <HdrtPaginationButton @click="onNext(page)" :is-disabled="page == totalPages" type="next" />

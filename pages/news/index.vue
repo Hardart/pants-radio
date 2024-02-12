@@ -2,19 +2,17 @@
 const route = useRoute()
 const pageQuery = () => Number(route.query.page) || 1
 const page = ref(pageQuery())
-const { find } = useFetchProducts()
+const { find } = useNews()
 const { data } = await find(page)
 const perPage = 4
 </script>
 
 <template>
-  <Section>
+  <Section padding-bottom-remove>
     <UiPageTitle title="Новости" />
-    <NewsAll :news="data" />
+    <NewsAll :news="data.news" />
   </Section>
-  <Section padding="none">
-    <HdrtPagination v-model:page.number="page" :per-page="perPage" :total="2" />
-  </Section>
+  <HdrtPagination v-model:page.number="page" :per-page="perPage" :total="data.total" />
 </template>
 
 <style scoped></style>

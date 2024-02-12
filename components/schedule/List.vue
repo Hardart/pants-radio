@@ -24,7 +24,7 @@ for (let i = 0; i < scheduleData.length; i++) {
       <ul class="mb-4 mt-2 space-y-3" v-if="accordionState[index]">
         <li v-for="program in day.programs">
           <ScheduleCardV :card-data="program" />
-          <ScheduleCardH :card-data="program" />
+          <ScheduleCardH :card-data="program" :is-today="weekdayNumber.getDay() === day.weekdayId" />
         </li>
       </ul>
     </li>

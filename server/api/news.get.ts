@@ -2,7 +2,6 @@ import news from '../local/articles.json'
 export default defineEventHandler(event => {
   const query = getQuery(event)
   const page = Number(query.page) || 1
-  console.log(query)
   let filteredNews = news
   if ('tag' in query) {
     filteredNews = filteredNews.filter(article => {

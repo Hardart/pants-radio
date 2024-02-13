@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const focused = useWindowFocus()
 const icon = useFavicon()
-const { data } = useAsyncData('meta', () => $fetch('/api/menu'))
-if (data) useState('menu-list', () => data)
 watch(focused, () => {
   if (focused.value) icon.value = '/favicon_out.svg'
   else icon.value = '/favicon.svg'
 })
+const { data } = useAsyncData('meta', () => $fetch('/api/menu'))
+if (data) useState('menu-list', () => data)
 </script>
 <template>
   <div>

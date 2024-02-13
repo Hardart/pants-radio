@@ -1,3 +1,5 @@
+import type { Tag } from './article'
+
 export {}
 interface BaseItem {
   title: string

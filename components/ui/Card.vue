@@ -16,7 +16,7 @@ const parseDate = (date: string) => Intl.DateTimeFormat('ru', { day: 'numeric', 
         class="bg-sky-500 w-full min-h-44 flex justify-center items-center uppercase font-bold tracking-widest text-white rounded-xl"
       >
         <div class="absolute">no image</div>
-        <!-- <ImagesShape shape-title="placeholder" shape-class="bg-slate-100" width="610" height="357" loading="lazy" /> -->
+        <img src="/images/placeholder.svg" width="610" height="357" class="aspect-video" loading="lazy" />
       </div>
       <div class="bg-stone-500/30 group-hover:bg-transparent transition-colors absolute inset-0 rounded-xl"></div>
     </div>

@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 const { data: people } = await useFetch('/api/team', { key: 'hosts', getCachedData: key => useNuxtApp().payload.data[key] })
+const { data } = await useFetch('/api/news', {
+  query: { limit: 4 },
+  key: 'latest-news',
+  getCachedData: key => useNuxtApp().payload.data[key],
+})
 </script>
 
 <template>
@@ -10,7 +15,7 @@ const { data: people } = await useFetch('/api/team', { key: 'hosts', getCachedDa
   </Section>
   <Section>
     <SectionTitle title="Новости" />
-    <NewsLatest />
+    <NewsLatest :news="data.news" />
   </Section>
   <Section>
     <SectionTitle title="Акции и конкурсы" />

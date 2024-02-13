@@ -1,43 +1,6 @@
+import metadata from '../local/menu.json'
 export default defineEventHandler(event => {
-  const menu = [
-    {
-      slug: '',
-      label: 'Радио',
-      childrens: [
-        { slug: 'schedule', label: 'Сетка вещания' },
-        { slug: 'hosts', label: 'Ведущие' },
-        { slug: 'podcasts', label: 'Подкасты' },
-        { slug: 'live', label: 'Прямой эфир' },
-        { slug: 'news', label: 'Новости' },
-      ],
-    },
-    {
-      slug: 'programs',
-      label: 'Программы',
-      childrens: [
-        { slug: 'top-chart', label: 'TOP Chart 20' },
-        { slug: '', label: 'Итоги недели' },
-        // { slug: '', label: 'Лучшие треки недели' },
-      ],
-    },
-    {
-      slug: 'promo',
-      label: 'Конкурсы',
-      childrens: [
-        { slug: 'how-get-prize', label: 'Как получить приз' },
-        { slug: 'model-regulations', label: 'Правила участия в играх' },
-      ],
-    },
-    {
-      slug: 'contacts',
-      label: 'Контакты',
-      childrens: [
-        { slug: 'about', label: 'О радиостанции' },
-        { slug: 'team', label: 'Команда' },
-      ],
-    },
-  ] as IMenuItem[]
-
+  const menu = metadata as IMenuItem[]
   const menuWithLink: IMenuItem[] = addLinkToMenuItem(menu)
   return menuWithLink
 })

@@ -10,6 +10,10 @@
       "title": "Горячие новости",
       "slug": "hot-news"
     },
+    "tags": [
+      { "id": 514254, "title": "музыка мира" },
+      { "id": 1454254, "title": "Радио Штаны" }
+    ],
     "url": "/news/hot-news/vsya-v-papu-nort-uest-zachitala-rep-v-novom-treke-kanye",
     "title": "Вся в папу! Норт Уэст зачитала рэп в новом треке Канье"
   },
@@ -21,6 +25,11 @@
     "createdAt": "2023-10-12T17:37:19.929Z",
     "updatedAt": "2023-11-13T15:41:08.359Z",
     "isPublished": true,
+    "tags": [
+      { "id": 514254, "title": "музыка мира" },
+      { "id": 197244, "title": "звёзды" },
+      { "id": 863231, "title": "мода" }
+    ],
     "category": {
       "title": "Горячие новости",
       "slug": "hot-news"
@@ -35,10 +44,48 @@
     "createdAt": "2023-10-07T17:37:19.929Z",
     "updatedAt": "2023-11-13T15:41:08.359Z",
     "isPublished": true,
+    "tags": [
+      { "id": 1454254, "title": "Радио Штаны" },
+      { "id": 863231, "title": "мода" }
+    ],
     "category": {
       "title": "Региональные новости",
       "slug": "regional-news"
     },
     "url": "/news/regional-news/tver-ekaterinburg-novosibirsk"
+  },
+  {
+    "title": "Воссоединение Росса и Рейчел! Дженнифер Энистон и Дэвид Швиммер вместе снялись в рекламе",
+    "slug": "vossoedinenie-rossa-i-rejchel-dzhennifer-eniston-i-devid-shvimmer-vmeste-snyalis-v-reklame",
+    "preview": "https://www.loveradio.ru/backend/uploads/media/content/0019/43/4fed46d7b2bcd3f8f45f3da5fdd35e2b1be1b05d.jpeg",
+    "text": "<div><p style='margin-bottom: 11px; text-align: justify;'>Дэвид и Виктория Бекхэм обещали, что Дженнифер Энистон снимется в рекламе для Супербоула, и это случилось. Но вот чего мы точно не ожидали, так это её воссоединения с Дэвидом Швиммером!</p><p style='margin-bottom: 11px; text-align: justify;'><img alt='Дэвид Швиммер, Дженнифер Энистон ' src='https://www.loveradio.ru/backend/uploads/media/content/0019/43/4fed46d7b2bcd3f8f45f3da5fdd35e2b1be1b05d.jpeg'><em>Дэвид Швиммер, Дженнифер Энистон&nbsp;</em></p><p style='margin-bottom: 11px; text-align: justify;'>Предупреждаем сразу – тем, кто ждёт романтической истории в духе Росса и Рейчел, придётся разочароваться! Все герои ролика кое-что забывают. Бекхэмы, например, не могут вспомнить название Spice Girls, исполнитель Jelly Roll удивляется, что у него есть татуировки на лице, а Джен не узнаёт Дэвида, случайно встретив его на съёмочной площадке.</p><p style='margin-bottom: 11px; text-align: justify;'>Зато все они запоминают информацию о том, что в популярном сервисе доставки можно заказать не только еду. Ведь мудрость гласит – чтобы выучить что-то новое, нужно забыть что-то старое. Вот Джен и оставила в прошлом воспоминания о том, что Дэвид вместе с ней снимался в «Друзьях». Ну а фанаты сериала шутят, что у её памяти просто был перерыв! &nbsp;&nbsp;&nbsp;&nbsp;</p><p style='margin-bottom: 11px; text-align: center;'><iframe allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen='' frameborder='0' height='332' src='https://www.youtube.com/embed/0LXSb0PQ6HQ?si=iH6s3mTpBIMDtH2I' title='YouTube video player' width='632'></iframe></p><p style='margin-bottom: 11px; text-align: justify;'>Фото и видео: YouTube</p></div>",
+    "createdAt": "2023-01-17T17:37:19.929Z",
+    "isPublished": true,
+    "tags": [
+      { "id": 1454254, "title": "Радио Штаны" },
+      { "id": 863231, "title": "мода" }
+    ],
+    "category": {
+      "title": "Региональные новости",
+      "slug": "regional-news"
+    },
+    "url": "/news/regional-news/vossoedinenie-rossa-i-rejchel-dzhennifer-eniston-i-devid-shvimmer-vmeste-snyalis-v-reklame"
+  },
+  {
+    "title": "Екатеринбург. Челябинск. Чебоксары",
+    "slug": "ekaterinburg-chelyabinsk-cheboksary",
+    "preview": "https://www.loveradio.ru/backend/uploads/media/content/0019/38/0a8c3783df3d9c5d8bf3e2299c7087346aa70c50.jpeg",
+    "text": "<div><p style='margin-bottom: 16px; text-align: justify;'><span style='font-style:normal'><span style='font-weight:400'><span style='white-space:normal'><strong>Love Radio – Чебоксары</strong> приглашает слушателей на концерт группы «Моя Мишель», который состоится 21 апреля в клубе River Room. Специальные гости мероприятия – Красавцы Love Radio. Ярослав Парамонов и Никита Мартов исполнят свой трек «Танцуем!» и поделятся своим фирменным позитивом.</span></span></span></p><p style='margin-bottom: 16px; text-align: justify;'><img alt='' src='https://www.loveradio.ru/backend/uploads/media/content/0019/38/0a8c3783df3d9c5d8bf3e2299c7087346aa70c50.jpeg'></p><p style='margin-bottom: 16px; text-align: justify;'><span style='font-style:normal'><span style='font-weight:400'><span style='white-space:normal'><strong>Love Radio в Екатеринбурге</strong> дарит билеты на фестиваль «Супердискач 90-х», в котором примут участие группы «Динамит», «Демо», «Пропаганда», «Турбомода», Юлия Беретта (ex.«Стрелки») и многие другие. Подпишись на группу Love Radio – Екатеринбург в VK, сделай репост и напиши в комментариях любимую группу 90-х. Победителей определят 13 апреля.</span></span></span></p><p style='margin-bottom: 16px; text-align: justify;'><span style='font-style:normal'><span style='font-weight:400'><span style='white-space:normal'><strong>Love Radio – Челябинск</strong> приглашает 8 апреля на вечеринку «Холостяки и Холостячки». Подпишись на группу Love Radio – Челябинск VK, а в комментариях напиши название фильма или сериала, который всегда поднимает тебе настроение. Победители получат не только билеты на мероприятие, но и сертификат на 3000 рублей в ресторан «Максимилианс».</span></span></span></p></div>",
+    "createdAt": "2023-10-18T17:37:19.929Z",
+    "isPublished": true,
+    "tags": [
+      { "id": 1454254, "title": "Радио Штаны" },
+      { "id": 86323167, "title": "регионы" }
+    ],
+    "category": {
+      "title": "Региональные новости",
+      "slug": "regional-news"
+    },
+    "url": "/news/regional-news/ekaterinburg-chelyabinsk-cheboksary"
   }
 ]

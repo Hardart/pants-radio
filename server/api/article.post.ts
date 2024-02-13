@@ -1,4 +1,4 @@
-import news from '../../radio.articles.json'
+import news from '../local/articles.json'
 export default defineEventHandler(async event => {
   const { slug } = await readBody(event)
   if (typeof slug !== 'string') return

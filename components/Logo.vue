@@ -29,18 +29,23 @@ watch(y, () => {
 </script>
 
 <template>
-  <div class="relative flex items-center">
+  <div v-if="size" class="relative flex items-center">
     <NuxtLink to="/">
-      <img v-if="size" src="/logo.svg" :width="size" :height="size" alt="logo" />
-      <!-- <img
-        v-if="isMain"
+      <img src="/logo.svg" :width="size" :height="size" alt="logo" />
+    </NuxtLink>
+  </div>
+  <div v-else class="relative flex items-center" :style="!isMobile && `width: ${scroll}px;`">
+    <NuxtLink to="/">
+      <img v-if="isMobile" src="/logo.svg" width="60" height="60" class="ml-2" alt="" />
+      <img
+        v-else
         src="/logo.svg"
-        class="transition-all duration-500 ml-4"
-        :class="[scroll > 20 && !isMobile && 'w-[60px] -translate-y-10', !isMobile ? 'mt-20 w-[130px]' : 'w-16']"
-        alt="logo"
-      /> -->
-      <img v-else-if="isMobile" src="/logo.svg" width="60" height="60" class="ml-2" alt="" />
-      <img v-else src="/logo.svg" :width="scroll" :height="scroll" class="ml-2" :style="`transform: translateY(${translateY}px)`" alt="" />
+        :width="scroll"
+        :height="scroll"
+        class="ml-2"
+        :style="`width: ${scroll}px; transform: translateY(${translateY}px);`"
+        alt=""
+      />
     </NuxtLink>
   </div>
 </template>

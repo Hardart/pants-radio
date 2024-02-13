@@ -17,11 +17,15 @@ const { data: article } = await useFetch<Article>('/api/article', {
 
 <template>
   <NewsBreadcrumbs v-if="article" :article="article" is-show-home-path />
+
   <Section padding="small" v-if="article">
     <div class="lg:w-3/4">
       <UiPageTitle class="tracking-tight" :title="article.title" />
       <div>
-        <div class="text-lg tracking-normal" v-html="article.text"></div>
+        <div class="text-lg tracking-normal leading-6 overflow-hidden" v-html="article.text"></div>
+        <div class="flex gap-x-4">
+          <TagItem v-for="tag in article?.tags" :tag="tag" />
+        </div>
       </div>
     </div>
   </Section>

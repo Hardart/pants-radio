@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const router = useRouter()
-const route = useRoute()
 const props = withDefaults(
   defineProps<{
     page: number
@@ -14,19 +12,6 @@ const props = withDefaults(
 )
 
 const totalPages = computed(() => Math.ceil(props.total / props.perPage))
-
-watch(
-  () => props.page,
-  () => {
-    if (props.page == 1) {
-      const query = { ...route.query }
-      delete query.page
-      router.push({ path: route.path, query })
-    } else {
-      router.push({ path: route.path, query: { ...route.query, page: props.page } })
-    }
-  }
-)
 
 const emit = defineEmits(['update:page'])
 

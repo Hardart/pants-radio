@@ -1,13 +1,10 @@
-import type { Article } from '@/types/article'
-type NewsData = {
-  news: ICard[]
-  total: number
-}
+import type { Article, NewsData } from '@/types/article'
+
 export const useNews = () => {
-  const nuxt = useNuxtApp()
   const newsData = useState<NewsData>('news', () => ({ news: [], total: 0 }))
 
   async function findOneBySlug(slug: string) {
+    const nuxt = useNuxtApp()
     return await useFetch<Article>('/api/article', {
       method: 'post',
       body: { slug },
@@ -16,5 +13,5 @@ export const useNews = () => {
     })
   }
 
-  return { findOneBySlug }
+  return { findOneBySlug, newsData }
 }

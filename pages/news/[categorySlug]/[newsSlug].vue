@@ -24,7 +24,7 @@ const { data: article } = await useFetch<Article>('/api/article', {
       <div>
         <div class="text-lg tracking-normal leading-6 overflow-hidden" v-html="article.text"></div>
         <div class="flex gap-x-4">
-          <TagItem v-for="tag in article?.tags" :tag="tag" />
+          <TagList :tags="article.tags" article-tags />
         </div>
       </div>
     </div>

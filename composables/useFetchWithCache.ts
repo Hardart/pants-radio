@@ -1,6 +1,7 @@
 import { StorageSerializers } from '@vueuse/core'
+import type { LocationQuery } from 'vue-router'
 
-export default async <T>(url: string, query?: object) => {
+export default async <T>(url: string, query?: LocationQuery) => {
   const serializer = StorageSerializers.object
   const cached = useSessionStorage<T>(`${url}_${JSON.stringify(query)}`, null, { serializer })
 

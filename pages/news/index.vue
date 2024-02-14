@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import type { Tag } from '~/types/article'
+import type { Tag, NewsData } from '~/types/article'
 const route = useRoute()
 const { page } = useQueryParams(route)
-
+const { newsData } = useNews()
 const { data: tags } = await useFetch<Tag[]>('/api/tags')
-const { data: newsData } = useAsyncData(
-  () => {
-    page.value = Number(route.query.page) || 1
-    return $fetch('/api/news', { query: route.query })
-  },
-  { watch: [() => route.query] }
-)
+await getNewsList()
+watch(() => route.query, getNewsList)
 const perPage = 4
+async function getNewsList() {
+  const data = await useFetchWithCache<NewsData>('/api/news', route.query)
+  newsData.value = data.value
+  page.value = Number(route.query.page) || 1
+}
 </script>
 
 <template>

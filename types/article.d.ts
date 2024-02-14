@@ -13,6 +13,11 @@ export type Article = {
   tags: Tag[]
 }
 
+export type NewsData = {
+  news: ICard[]
+  total: number
+}
+
 export type Category = {}
 
 export type Tag = {

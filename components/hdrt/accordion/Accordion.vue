@@ -25,10 +25,16 @@ const onLink = () => {
         <NuxtLink :to="item.link" class="text-neutral-50 text-2xl font-semibold first-letter:uppercase" @click.capture="onLink">{{
           item[titleKey]
         }}</NuxtLink>
-        <Icon name="mdi:chevron-up" class="text-stone-600" :class="accordionState[index] && 'rotate-180'" size="30" />
+        <Icon
+          name="mdi:chevron-up"
+          class="text-stone-600"
+          :class="accordionState[index] && 'rotate-180'"
+          size="30"
+          @click="toggleItemState(index)"
+        />
       </div>
       <TransitionExpand>
-        <ul class="mb-4 mt-2 space-y-3 text-neutral-50/40" v-if="accordionState[index] && item[bodyKey]">
+        <ul class="mb-4 mt-4 space-y-4 text-neutral-50/40" v-if="accordionState[index] && item[bodyKey]">
           <li class="px-4" v-for="child in item[bodyKey]">
             <NuxtLink :to="child.link" @click="onLink">{{ child[titleKey] }}</NuxtLink>
           </li>

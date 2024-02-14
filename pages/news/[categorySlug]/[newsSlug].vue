@@ -16,7 +16,7 @@ const { data: article } = await useFetch<Article>('/api/article', {
 </script>
 
 <template>
-  <NewsBreadcrumbs v-if="article" :article="article" is-show-home-path />
+  <NewsBreadcrumbs v-if="article" type="новость" :article="article" show-home-path />
 
   <Section padding="small" v-if="article">
     <div class="lg:w-3/4">

@@ -8,7 +8,6 @@ const { data } = await useFetch('/api/news', {
 </script>
 
 <template>
-  <Section padding="none"> </Section>
   <Section padding="small">
     <SectionTitle title="Новинки Радио ШТАНЫ" />
     <TrackList />
@@ -21,7 +20,7 @@ const { data } = await useFetch('/api/news', {
     <SectionTitle title="Акции и конкурсы" />
     <PromotionsList />
   </Section>
-  <Section padding-bottom-remove>
+  <Section padding="top">
     <SectionTitle title="Лица Радиостанции" />
     <TeamList :people="people" />
   </Section>

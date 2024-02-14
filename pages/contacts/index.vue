@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <Section padding="small" padding-bottom-remove>
+  <Section padding="topSmall">
     <div class="flex">
       <div class="xl:w-3/5">
         <SectionTitle title="Контакты" />
@@ -54,5 +54,3 @@
     </div>
   </Section>
 </template>
-
-<style scoped></style>

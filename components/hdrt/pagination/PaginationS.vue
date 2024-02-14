@@ -42,7 +42,6 @@ const totalPages = computed(() => Math.ceil(props.total / props.perPage))
       </template>
     </nav>
     <nav class="flex justify-center items-center space-x-3" v-else>
-      <!-- <HdrtPaginationLink type="prev" :is-disabled="page == 1" /> -->
       <HdrtPaginationArrow :page-number="page - 1" type="prev" :is-disable-link="page == 1" />
       <HdrtPaginationLink v-for="i in totalPages" :is-active="page == i" :page-number="i" />
       <HdrtPaginationArrow :page-number="page + 1" type="next" :is-disable-link="page == totalPages" />

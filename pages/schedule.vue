@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { IScheduleItem } from '~/types/schedule'
 
-const { data } = useAsyncData<IScheduleItem[]>('schedule', () => $fetch('/api/schedule', { method: 'POST' }), {
+const { data } = await useAsyncData<IScheduleItem[]>('schedule', () => $fetch('/api/schedule', { method: 'POST' }), {
   getCachedData: key => useNuxtApp().payload.data[key],
 })
 </script>

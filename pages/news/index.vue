@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Tag } from '~/types/article'
 const route = useRoute()
-const { page, tag, query, getNewsQuery } = useQueryParams()
+const { page } = useQueryParams(route)
 
 const { data: tags } = await useFetch<Tag[]>('/api/tags')
 const { data: newsData } = useAsyncData(
@@ -15,7 +15,7 @@ const perPage = 4
 </script>
 
 <template>
-  <Section padding-bottom-remove>
+  <Section padding="top">
     <UiPageTitle title="Новости" />
     <TagList :tags="tags" />
     <NewsAll v-if="newsData" :news="newsData.news" />

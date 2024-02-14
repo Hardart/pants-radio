@@ -10,7 +10,15 @@ const parseDate = (date: string) => Intl.DateTimeFormat('ru', { day: 'numeric', 
   <article class="relative flex flex-col w-full group bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
     <!-- CARD HEADER -->
     <div class="relative overflow-hidden rounded-lg">
-      <img v-if="item.preview" :src="item.preview" width="610" height="357" class="aspect-video object-cover" alt="" loading="lazy" />
+      <img
+        v-if="item.preview"
+        :src="item.preview"
+        width="610"
+        height="357"
+        class="aspect-video object-top object-cover"
+        alt=""
+        loading="lazy"
+      />
       <div
         v-else
         class="bg-sky-500 w-full min-h-44 flex justify-center items-center uppercase font-bold tracking-widest text-white rounded-xl"

@@ -2,15 +2,16 @@
 enum HoverColor {
   neutral = 'hover:text-neutral-200',
   primary = 'hover:text-primary/70',
-  default = 'hover:text-secondary',
+  default = 'hover:text-neutral-400',
 }
 defineProps<{
   hoverColor?: 'neutral' | 'primary'
+  hideOnSmallScreen?: boolean
 }>()
 </script>
 
 <template>
-  <div class="flex items-center max-sm:hidden">
+  <div class="flex items-center" :class="hideOnSmallScreen && 'max-sm:hidden'">
     <a href="https://vk.com/radio_shtani" target="_blank" class="px-3 py-1" :class="HoverColor[hoverColor ?? 'default']">
       <Icon name="akar-icons:vk-fill" size="30" />
     </a>

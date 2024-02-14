@@ -1,40 +1,14 @@
 <script setup lang="ts">
-import type { LocationQuery } from 'vue-router'
+const { setQuery } = useQueryParams()
 defineProps<{
   isActive?: boolean
   isDisabled?: boolean
-  pageNumber?: string | number
-  type?: 'next' | 'prev'
+  pageNumber: number
 }>()
-defineEmits(['update:page'])
-
-const removedPage = (queryFromUrl: LocationQuery) => {
-  const query = { ...queryFromUrl }
-  delete query.page
-  return query
-}
 </script>
 
 <template>
-  <NuxtLink
-    class="pagination"
-    :class="isDisabled && 'disable'"
-    v-if="type === 'next' || type === 'prev'"
-    :to="{ path: $route.fullPath, query: pageNumber === 1 ? removedPage($route.query) : { ...$route.query, page: pageNumber } }"
-  >
-    <Icon
-      v-if="type === 'prev' || type === 'next'"
-      :class="type === 'next' && 'rotate-180'"
-      name="material-symbols:arrow-left-alt-rounded"
-    />
-  </NuxtLink>
-
-  <NuxtLink
-    v-else
-    class="pagination"
-    :class="[isActive && 'active']"
-    :to="{ path: $route.fullPath, query: pageNumber === 1 ? removedPage($route.query) : { ...$route.query, page: pageNumber } }"
-  >
+  <NuxtLink class="pagination" :class="[isActive && 'active']" :to="{ path: $route.fullPath, query: setQuery($route, pageNumber) }">
     <span v-if="pageNumber">{{ pageNumber }}</span>
   </NuxtLink>
 </template>
@@ -50,5 +24,9 @@ const removedPage = (queryFromUrl: LocationQuery) => {
 
 .pagination.active {
   @apply bg-primary/75 text-white cursor-default;
+}
+
+.pagination__empty {
+  @apply flex items-end px-2 py-1 cursor-default;
 }
 </style>

@@ -9,6 +9,9 @@ const { data } = await useFetch('/api/news', {
 
 <template>
   <Section padding="small">
+    <UkSlideshow />
+  </Section>
+  <Section padding="small">
     <SectionTitle title="Новинки Радио ШТАНЫ" />
     <TrackList />
   </Section>

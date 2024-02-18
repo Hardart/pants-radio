@@ -35,8 +35,8 @@ const onLink = () => {
       </div>
       <TransitionExpand>
         <ul class="mb-4 mt-4 space-y-4 text-neutral-50/40" v-if="accordionState[index] && item[bodyKey]">
-          <li class="px-4" v-for="child in item[bodyKey]">
-            <NuxtLink :to="child.link" @click="onLink">{{ child[titleKey] }}</NuxtLink>
+          <li class="px-4 relative" v-for="child in item[bodyKey]">
+            <NuxtLink class="flex" :to="child.link" @click="onLink">{{ child[titleKey] }}</NuxtLink>
           </li>
         </ul>
       </TransitionExpand>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { IAirtimeItem } from '~/types/hosts'
+
 defineProps<{
   cardData: IAirtimeItem
 }>()

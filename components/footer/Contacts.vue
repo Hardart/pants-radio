@@ -21,8 +21,8 @@
     <div class="">
       <div class="font-medium">Адрес редакции:</div>
       <a href="https://yandex.ru/maps/-/CCUV4-V91C" class="text-neutral-400 hover:text-primary"
-        >Пензенская область, <span class="text-nowrap">Бессоновский район</span>, <span class="text-nowrap">село Чемодановка</span>,
-        <span class="text-nowrap">ул. Средняя, д. 12</span></a
+        >Пензенская область, <span class="whitespace-nowrap">Бессоновский район</span>,
+        <span class="whitespace-nowrap">село Чемодановка</span>, <span class="whitespace-nowrap">ул. Средняя, д. 12</span></a
       >
     </div>
     <div class="">

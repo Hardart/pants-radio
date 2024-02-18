@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Host, IAirtimeItem, ProgramData } from '~/types/hosts'
+
 const airtimeData: IAirtimeItem[] = [
   { start: '18:00', end: '19:00', weekday: 'Воскресенье' },
   { start: '16:00', end: '17:00', weekday: 'Среда', replay: true },
@@ -8,6 +10,7 @@ const host: Host = {
   name: 'Евгений',
   surname: 'Ларин',
   fullname: 'Ларин Евгений',
+  position: '',
 }
 
 const programData: ProgramData = {
@@ -20,12 +23,12 @@ const programData: ProgramData = {
 <template>
   <Breadcrumbs />
   <Section padding="small">
-    <div class="flex max-md:flex-col items-center md:space-x-8">
+    <div class="flex max-sm:flex-col items-center md:space-x-8">
       <div class="min-w-80 rounded-lg overflow-hidden">
         <img src="/images/plug280x280.svg" alt="" />
       </div>
-      <div class="flex max-md:items-center flex-col p-4 space-y-4">
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-wide">{{ programData.title }}</h1>
+      <div class="flex max-sm:items-center flex-col p-4 space-y-4">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide">{{ programData.title }}</h1>
         <div class="flex items-center space-x-4">
           <div class="w-16 border-2 border-primary rounded-full overflow-hidden">
             <img src="/images/hosts/larin.png" width="64" height="64" alt="" />

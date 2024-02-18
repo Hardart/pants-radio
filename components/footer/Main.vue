@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <footer class="relative top-20 text-neutral-50 bg-secondary">
+  <footer class="relative top-20 text-neutral-50 bg-secondary overflow-hidden">
     <Section padding="small">
       <FooterSocialContacts />
       <div class="flex max-sm:flex-col items-center max-sm:space-y-8">

@@ -15,15 +15,15 @@ defineProps<{
 
 <style>
 .pagination {
-  @apply flex items-center justify-center w-12 h-12 rounded border hover:bg-primary hover:text-white;
+  @apply flex items-center justify-center w-12 h-12 rounded border hover:bg-primary/75 hover:text-white active:bg-primary;
 }
 
 .pagination.disable {
-  @apply text-neutral-500 hover:bg-transparent hover:text-neutral-500 cursor-default;
+  @apply text-neutral-400  hover:bg-transparent hover:text-neutral-400 cursor-default;
 }
 
 .pagination.active {
-  @apply bg-primary/75 text-white cursor-default;
+  @apply bg-primary text-white font-medium cursor-default;
 }
 
 .pagination__empty {

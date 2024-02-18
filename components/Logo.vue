@@ -8,11 +8,11 @@ const minValue = 60
 const startFrom = ref(maxValue)
 const translateY = ref(35)
 const delta = 4
-const value = (val: number, min: number, max: number) => Math.min(Math.max(val, min), max)
+
 const { pause, resume } = useRafFn(
   () => {
-    const initValue = y.value < minValue ? maxValue - y.value : value(y.value, maxValue, minValue)
-    scroll.value = value((startFrom.value -= delta), initValue, maxValue)
+    const initValue = y.value < minValue ? maxValue - y.value : clamp(y.value, maxValue, minValue)
+    scroll.value = clamp((startFrom.value -= delta), initValue, maxValue)
     translateY.value = (35 * (scroll.value - minValue)) / (maxValue - minValue)
     if (scroll.value == minValue || scroll.value == maxValue - y.value) pause()
   },
@@ -23,7 +23,7 @@ onMounted(() => {
 })
 
 watch(y, () => {
-  scroll.value = value(130 - y.value, 60, 130)
+  scroll.value = clamp(130 - y.value, 60, 130)
   translateY.value = (35 * (scroll.value - 60)) / 70
 })
 </script>

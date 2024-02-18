@@ -18,8 +18,8 @@
           <div>
             <h4 class="flex items-center text-2xl mb-4 font-bold gap-x-4"><Icon name="ph:map-pin-light" size="30" />Адрес</h4>
             <p>
-              <span class="text-nowrap">442761, Пензенская обл.</span>, <span class="text-nowrap">Бессоновский район</span>,
-              <span class="text-nowrap">село Чемодановка</span>, <span class="text-nowrap">ул. Средняя, д. 12</span>
+              <span class="whitespace-nowrap">442761, Пензенская обл.</span>, <span class="whitespace-nowrap">Бессоновский район</span>,
+              <span class="whitespace-nowrap">село Чемодановка</span>, <span class="whitespace-nowrap">ул. Средняя, д. 12</span>
             </p>
           </div>
           <div>
@@ -36,7 +36,7 @@
           </div>
         </div>
         <h3 class="text-4xl text-neutral-400/80 font-bold mb-6 mt-8 pt-6 border-t-2">
-          Рекламная служба <span class="text-nowrap">«Радио ШТАНЫ»</span>
+          Рекламная служба <span class="whitespace-nowrap">«Радио ШТАНЫ»</span>
         </h3>
         <p class="text-sm mb-6">По всем вопросам размещения рекламы на «Радио ШТАНЫ» в регионах сейлз-хаус медиахолдинга «LOLAMEDIA»:</p>
         <div class="grid grid-cols-2 gap-y-10">

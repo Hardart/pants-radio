@@ -1,17 +1,18 @@
 <script lang="ts" setup>
 import type { Tag, NewsData } from '~/types/article'
 const route = useRoute()
-const { page } = useQueryParams(route)
+const { page, tag } = useQueryParams(route)
 const { newsData } = useNews()
 const { data: tags } = await useFetch<Tag[]>('/api/tags')
+const perPage = 4
 await getNewsList()
 watch(() => route.query, getNewsList)
-const perPage = 4
 async function getNewsList() {
   const data = await useFetchWithCache<NewsData>('/api/news', route.query)
   newsData.value = data.value
   page.value = Number(route.query.page) || 1
 }
+tag.value = route.query.tag || ''
 </script>
 
 <template>

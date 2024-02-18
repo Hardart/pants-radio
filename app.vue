@@ -10,11 +10,12 @@ if (data) useState('menu-list', () => data)
 </script>
 <template>
   <div>
-    <Header />
+    <NuxtLoadingIndicator />
+    <HeaderMain />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <Footer />
+    <FooterMain />
   </div>
 </template>
 

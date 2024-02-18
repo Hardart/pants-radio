@@ -9,8 +9,9 @@ export const useQueryParams = (route?: RouteLocationNormalizedLoaded) => {
     delete query.page
     return query
   }
+
   const setQuery = (route: RouteLocationNormalizedLoaded, page: number) => {
-    return page === 1 ? removedPage(route.query) : { ...route.query, page: page }
+    return page === 1 ? removedPage(route.query) : { ...route.query, page }
   }
 
   return { page, tag, changeTag, isExactTag, setQuery }

@@ -5,6 +5,7 @@ const day = useDateFormat(date, 'DD')
 const month = useDateFormat(date, 'MM')
 const year = useDateFormat(date, 'YY')
 const changeState = () => (isOpen.value = !isOpen.value)
+watch(date, () => (date.value = date.value ? date.value : new Date()))
 </script>
 
 <template>
@@ -22,13 +23,17 @@ const changeState = () => (isOpen.value = !isOpen.value)
     </SectionTitle>
   </Section>
   <Section padding="none">
-    <div class="flex">
+    <div class="flex items-center gap-x-4">
       <div class="grid place-items-center w-10 h-10 text-neutral-50 bg-primary rounded-lg z-20 cursor-pointer" @click="changeState">
         <Icon name="material-symbols:calendar-today-outline-rounded" size="25" class="mb-0.5" />
       </div>
-      <div class="grid place-items-center w-10 h-10 rounded-lg border-2">{{ day }}</div>
-      <div class="grid place-items-center w-10 h-10 rounded-lg border-2">{{ month }}</div>
-      <div class="grid place-items-center w-10 h-10 rounded-lg border-2">{{ year }}</div>
+      <div class="flex items-center gap-x-1">
+        <div class="grid place-items-center w-10 h-10 rounded-lg border-2 border-secondary/50">{{ day }}</div>
+        <span class="text-secondary/80">–</span>
+        <div class="grid place-items-center w-10 h-10 rounded-lg border-2 border-secondary/50">{{ month }}</div>
+        <span class="text-secondary/80">–</span>
+        <div class="grid place-items-center w-10 h-10 rounded-lg border-2 border-secondary/50">{{ year }}</div>
+      </div>
     </div>
     <div class="relative z-10">
       <TransitionFade>

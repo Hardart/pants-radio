@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const date = ref(new Date())
 const isOpen = ref(false)
-const formatted = useDateFormat(date, 'DD-MM-YY')
+const day = useDateFormat(date, 'DD')
+const month = useDateFormat(date, 'MM')
+const year = useDateFormat(date, 'YY')
 const changeState = () => (isOpen.value = !isOpen.value)
-const openState = computed(() => isOpen.value)
 </script>
 
 <template>
@@ -21,8 +22,13 @@ const openState = computed(() => isOpen.value)
     </SectionTitle>
   </Section>
   <Section padding="none">
-    <div class="text-neutral-50 bg-primary w-14 h-14 grid place-items-center rounded-lg z-20 cursor-pointer" @click="changeState">
-      <Icon name="material-symbols:calendar-today-outline-rounded" size="30" />
+    <div class="flex">
+      <div class="grid place-items-center w-10 h-10 text-neutral-50 bg-primary rounded-lg z-20 cursor-pointer" @click="changeState">
+        <Icon name="material-symbols:calendar-today-outline-rounded" size="25" class="mb-0.5" />
+      </div>
+      <div class="grid place-items-center w-10 h-10 rounded-lg border-2">{{ day }}</div>
+      <div class="grid place-items-center w-10 h-10 rounded-lg border-2">{{ month }}</div>
+      <div class="grid place-items-center w-10 h-10 rounded-lg border-2">{{ year }}</div>
     </div>
     <div class="relative z-10">
       <TransitionFade>

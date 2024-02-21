@@ -24,6 +24,11 @@ export default {
           simple: '#fafbfc',
         },
       },
+      aspectRatio: {
+        auto: 'auto',
+        square: '1 / 1',
+        video: '16 / 9',
+      },
     },
   },
   future: {

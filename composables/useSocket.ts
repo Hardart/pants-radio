@@ -1,3 +1,5 @@
+import type { IRadioData } from '~/types/track'
+
 export const useSocket = (trackData: Ref<IRadioData>) => {
   const { $ws } = useNuxtApp()
   const socket = ref()

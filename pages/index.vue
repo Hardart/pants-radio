@@ -1,20 +1,20 @@
 <script lang="ts" setup>
+import TrackList from './sections/TrackList.vue'
+import Slideshow from './sections/Slideshow.vue'
 const { data: people } = await useFetch('/api/team', { key: 'hosts', getCachedData: key => useNuxtApp().payload.data[key] })
 const { data } = await useFetch('/api/news', {
   query: { limit: 4 },
   key: 'latest-news',
   getCachedData: key => useNuxtApp().payload.data[key],
 })
+// useHead({
+//   script: [{ src: '/js/slideshow.min.js', tagPosition: 'bodyClose', defer: true, processTemplateParams: process.client }],
+// })
 </script>
 
 <template>
-  <Section padding="small">
-    <UkSlideshow />
-  </Section>
-  <Section padding="small">
-    <SectionTitle title="Новинки Радио ШТАНЫ" />
-    <TrackList />
-  </Section>
+  <Slideshow />
+  <TrackList />
   <Section>
     <SectionTitle title="Новости" />
     <NewsLatest :news="data.news" />

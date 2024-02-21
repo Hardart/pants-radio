@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TrackList from '@/pages/sections/TrackList.vue'
 const date = ref(new Date())
 const isOpen = ref(false)
 const day = useDateFormat(date, 'DD')
@@ -43,6 +44,7 @@ watch(date, () => (date.value = date.value ? date.value : new Date()))
       </TransitionFade>
     </div>
   </Section>
+  <TrackList />
 </template>
 
 <style></style>

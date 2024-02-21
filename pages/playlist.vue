@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TrackList from '@/pages/sections/TrackList.vue'
+import TrackList from '@/pages/sections/LatestTrack.vue'
 const date = ref(new Date())
 const isOpen = ref(false)
 const day = useDateFormat(date, 'DD')

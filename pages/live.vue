@@ -1,16 +1,8 @@
-<script lang="ts" setup>
-const { data } = useAsyncData(() => $fetch('/api/track'))
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <Section>
     <UiPageTitle title="Live" />
-    <ul>
-      <li v-for="track in data">
-        <div>{{ track.artistName }} - {{ track.trackTitle }}</div>
-        <div>{{ new Date(track.updatedAt!).toLocaleTimeString() }}</div>
-      </li>
-    </ul>
   </Section>
 </template>
 

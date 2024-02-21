@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import TrackList from './sections/TrackList.vue'
+import TrackList from './sections/LatestTrack.vue'
 import Slideshow from './sections/Slideshow.vue'
 const { data: people } = await useFetch('/api/team', { key: 'hosts', getCachedData: key => useNuxtApp().payload.data[key] })
 const { data } = await useFetch('/api/news', {
@@ -14,7 +14,7 @@ const { data } = await useFetch('/api/news', {
 
 <template>
   <Slideshow />
-  <TrackList />
+  <TrackList :limit="10" title="Новинки Радио ШТАНЫ" />
   <Section>
     <SectionTitle title="Новости" />
     <NewsLatest :news="data.news" />

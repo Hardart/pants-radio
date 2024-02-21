@@ -3,7 +3,7 @@
 <template>
   <Section>
     <SectionTitle title="Page: Podcasts" />
-    <NuxtLink to="/podcasts?tag=fill">ote</NuxtLink>
+    <HdrtCalendar />
   </Section>
 </template>
 

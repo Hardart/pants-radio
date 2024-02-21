@@ -17,5 +17,8 @@ export interface IItunesData {
 export interface IRadioData {
   artistName: string
   trackTitle: string
-  covers: IItunesData
+  cover: string
+  preview: string
+  createdAt?: string
+  updatedAt?: string
 }

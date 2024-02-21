@@ -4,35 +4,31 @@ import type { IRadioData } from '~/types/track'
 const jingleData: IRadioData = {
   artistName: 'Радио Штаны',
   trackTitle: 'Прямой эфир',
-  covers: {
-    art60: '/images/simple_logo.svg',
-    art600: '/images/simple_logo.svg',
-  },
+  cover: '/images/simple_logo.svg',
+  preview: '',
 }
 const trackData = ref<IRadioData>(jingleData)
-const { initRadio, toggleRadioPlayState } = useTracksStore()
-const { playingRadio, volume, isFetching, radioElement } = initRadio()
-const { isDesktop } = useDevice()
+const radioURL = 'https://stream.lolamedia.ru/rsh_federal'
+const radioElement = ref()
+const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs } = useMediaStore()
+const { fetching, volume } = storeRefs()
+// const { initRadio, toggleRadioPlayState } = useTracksStore()
+// const { playingRadio, isFetching, radioElement } = initRadio()
+
 const { onSocketConnect } = useSocket(trackData)
-onMounted(onSocketConnect)
+onMounted(() => {
+  onSocketConnect()
+  initMediaElement(radioElement)
+})
 </script>
 
 <template>
   <div class="flex items-center flex-grow gap-x-4 mx-4">
-    <audio ref="radioElement" preload="none" />
-    <RadioPlayButton :is-fetching="isFetching" :playing-radio="playingRadio" :on-play="toggleRadioPlayState" />
-    <RadioArt :src="trackData?.covers.art60" />
+    <audio class="sr-only" ref="radioElement" preload="none" />
+    <RadioPlayButton :is-fetching="fetching" :playing-radio="isTrackPlaying(radioURL)" @click="onPlayPreview(radioURL, 'radio')" />
+    <RadioArt :src="trackData?.cover" />
     <RadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
-    <div v-if="isDesktop" class="flex items-center flex-shrink ml-auto min-w-32">
-      <!-- <input class="accent-primary" type="range" min="0" max="100" v-model.number="volume" /> -->
-      <URange
-        :min="0"
-        :max="100"
-        v-model.number="volume"
-        size="sm"
-        :ui="{ thumb: { background: '[&::-webkit-slider-thumb]:bg-neutral-800' } }"
-      />
-    </div>
+    <HeaderPlayerVolume v-model:volume.number="volume" />
   </div>
 </template>
 

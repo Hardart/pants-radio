@@ -29,7 +29,7 @@ const attrs = {
 
 <template>
   <!-- <VCalendarDatePicker v-if="date && typeof date === 'object'" v-model.range="date" :columns="2" v-bind="{ ...attrs, ...$attrs }" /> -->
-  <VCalendarDatePicker v-model="date" v-bind="{ ...attrs }" :max-date="new Date()" :min-date="new Date(2023, 10, 10)" />
+  <VCalendarDatePicker v-model="date" v-bind="{ ...attrs }" :max-date="new Date()" :min-date="new Date(2024, 0, 1)" />
 </template>
 
 <style>

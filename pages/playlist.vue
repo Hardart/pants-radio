@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import TrackList from '@/pages/sections/LatestTrack.vue'
-const date = ref(new Date())
-const isOpen = ref(false)
-const day = useDateFormat(date, 'DD')
-const month = useDateFormat(date, 'MM')
-const year = useDateFormat(date, 'YY')
-const changeState = () => (isOpen.value = !isOpen.value)
-watch(date, () => (date.value = date.value ? date.value : new Date()))
+import TrackDatePicker from '@/pages/sections/playlist/TrackDatePicker.vue'
 </script>
 
 <template>
@@ -23,27 +17,7 @@ watch(date, () => (date.value = date.value ? date.value : new Date()))
       </template>
     </SectionTitle>
   </Section>
-  <Section padding="none">
-    <div class="flex items-center gap-x-4">
-      <div class="grid place-items-center w-10 h-10 text-neutral-50 bg-primary rounded-lg z-20 cursor-pointer" @click="changeState">
-        <Icon name="material-symbols:calendar-today-outline-rounded" size="25" class="mb-0.5" />
-      </div>
-      <div class="flex items-center gap-x-1">
-        <div class="grid place-items-center w-10 h-10 rounded-lg border-2 border-secondary/50">{{ day }}</div>
-        <span class="text-secondary/80">–</span>
-        <div class="grid place-items-center w-10 h-10 rounded-lg border-2 border-secondary/50">{{ month }}</div>
-        <span class="text-secondary/80">–</span>
-        <div class="grid place-items-center w-10 h-10 rounded-lg border-2 border-secondary/50">{{ year }}</div>
-      </div>
-    </div>
-    <div class="relative z-10">
-      <TransitionFade>
-        <div class="absolute bg-white" v-if="isOpen">
-          <UiDatePicker v-model="date" @close="changeState" />
-        </div>
-      </TransitionFade>
-    </div>
-  </Section>
+  <TrackDatePicker />
   <TrackList />
 </template>
 

@@ -8,30 +8,23 @@
   font-style: normal;
   src: url('~/assets/fonts/CeraRoundPro-Regular.woff2') format('woff2');
 }
-
 @font-face {
   font-family: CeraPro;
   font-weight: 500;
   font-style: normal;
-  src:
-    url('~/assets/fonts/CeraRoundPro-Medium.woff') format('woff'),
-    url('~/assets/fonts/CeraRoundPro-Medium.woff2') format('woff2');
+  src: url('~/assets/fonts/CeraRoundPro-Medium.woff') format('woff'), url('~/assets/fonts/CeraRoundPro-Medium.woff2') format('woff2');
 }
 @font-face {
   font-family: CeraPro;
   font-weight: 700;
   font-style: normal;
-  src:
-    url('~/assets/fonts/CeraRoundPro-Bold.woff') format('woff'),
-    url('~/assets/fonts/CeraRoundPro-Bold.woff2') format('woff2');
+  src: url('~/assets/fonts/CeraRoundPro-Bold.woff') format('woff'), url('~/assets/fonts/CeraRoundPro-Bold.woff2') format('woff2');
 }
 @font-face {
   font-family: CeraPro;
   font-weight: 900;
   font-style: normal;
-  src:
-    url('~/assets/fonts/CeraRoundPro-Black.woff') format('woff'),
-    url('~/assets/fonts/CeraRoundPro-Black.woff2') format('woff2');
+  src: url('~/assets/fonts/CeraRoundPro-Black.woff') format('woff'), url('~/assets/fonts/CeraRoundPro-Black.woff2') format('woff2');
 }
 
 @layer base {
@@ -48,4 +41,7 @@
 }
 
 @layer components {
+  .btn-primary {
+    @apply text-neutral-50 bg-primary hover:bg-primary/75 active:bg-primary/90 cursor-pointer;
+  }
 }

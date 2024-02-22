@@ -16,8 +16,15 @@ const onItem = (item: string) => {
       <Icon name="material-symbols:nest-clock-farsight-analog-outline-rounded" size="27" />
     </div>
     <TransitionFade>
-      <ul class="py-2 max-h-48 overflow-hidden overflow-y-auto absolute z-10 bg-neutral-50 space-y-2" v-if="isOpen">
-        <li class="px-3 hover:bg-neutral-300 cursor-pointer" @click="onItem(item)" v-for="item in items">{{ item }}</li>
+      <ul class="p-2 max-h-48 overflow-y-auto absolute mt-1 z-10 bg-white space-y-2 border-2 rounded-md" v-if="isOpen">
+        <li
+          class="px-5 hover:bg-neutral-300 cursor-pointer rounded-md"
+          :class="time === item.slice(0, 2) && 'bg-primary text-neutral-50 hover:bg-primary'"
+          @click="onItem(item)"
+          v-for="item in items"
+        >
+          {{ item }}
+        </li>
       </ul>
     </TransitionFade>
   </div>

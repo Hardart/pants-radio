@@ -21,7 +21,7 @@ const changeState = () => (isOpen.value = !isOpen.value)
     </div>
     <div>
       <TransitionFade>
-        <div class="absolute left-0 top-full mt-2 bg-white" v-if="isOpen">
+        <div class="absolute left-0 top-full mt-1 bg-white border-2 rounded-lg" v-if="isOpen">
           <UiDatePicker v-model="date" @close="changeState" />
         </div>
       </TransitionFade>

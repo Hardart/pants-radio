@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TrackList from '@/pages/_sections/LatestTrack.vue'
+import TrackList from '@/pages/_sections/playlist/TrackList.vue'
 import TrackDatePicker from '@/pages/_sections/playlist/TrackDatePicker.vue'
 </script>
 
@@ -20,5 +20,3 @@ import TrackDatePicker from '@/pages/_sections/playlist/TrackDatePicker.vue'
   <TrackDatePicker />
   <TrackList />
 </template>
-
-<style></style>

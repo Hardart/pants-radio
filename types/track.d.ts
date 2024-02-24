@@ -22,3 +22,8 @@ export interface IRadioData {
   createdAt?: string
   updatedAt?: string
 }
+
+type TrackHistory = {
+  date: string
+  track: IRadioData
+}

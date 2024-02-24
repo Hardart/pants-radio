@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import TrackList from './sections/LatestTrack.vue'
-import Slideshow from './sections/Slideshow.vue'
+import TrackList from './_sections/LatestTrack.vue'
+import Slideshow from './_sections/Slideshow.vue'
 const { data: people } = await useFetch('/api/team', { key: 'hosts', getCachedData: key => useNuxtApp().payload.data[key] })
 const { data } = await useFetch('/api/news', {
   query: { limit: 4 },

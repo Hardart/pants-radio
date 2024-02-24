@@ -3,6 +3,7 @@ import type { IRadioData } from '~/types/track'
 
 defineProps<{
   trackData: IRadioData
+  trackDate?: string
   isPlaying?: boolean
 }>()
 const emit = defineEmits(['on-toggle'])
@@ -13,6 +14,7 @@ const emit = defineEmits(['on-toggle'])
     <UiPlayButton :is-playng="isPlaying" @click="$emit('on-toggle', trackData)" />
     <RadioArt :src="trackData.cover" class="ml-5" />
     <TrackInfo :artist="trackData.artistName" :title="trackData.trackTitle" />
+    <TrackDate v-if="trackDate" :date="trackDate" />
     <!-- <TrackTime v-if="isPlaying" :duration="duration" :current-time="currentTime" /> -->
   </div>
 </template>

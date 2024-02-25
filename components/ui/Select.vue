@@ -2,8 +2,7 @@
 import { hoursForSelect } from '@/utils/setHour'
 const time = defineModel('time', { type: String, required: true })
 const target = ref()
-const isOpen = ref(false)
-const toggle = useToggle(isOpen)
+const [isOpen, toggle] = useToggle()
 onClickOutside(target, () => (isOpen.value = false))
 const onItem = (item: string) => {
   time.value = item

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 const date = defineModel('date', { default: new Date() })
 const target = ref()
-const isOpen = ref(false)
-const toggle = useToggle(isOpen)
+const [isOpen, toggle] = useToggle()
 onClickOutside(target, () => (isOpen.value = false))
 </script>
 

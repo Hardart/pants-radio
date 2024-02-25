@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const { history, tracks } = storeToRefs(useArchiveStore())
 defineProps<{ title?: string }>()
+const { tracks } = storeToRefs(useArchiveStore())
 </script>
 
 <template>

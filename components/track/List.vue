@@ -17,7 +17,7 @@ const { isTrackPlaying, onPlayPreview } = useMediaStore()
       v-if="history"
       v-for="item in history"
       :track-data="item.track"
-      :track-date="item.date"
+      :track-date="item.createdAt"
       @on-toggle="onPlayPreview(item.track.preview, 'track')"
       :is-playing="isTrackPlaying(item.track.preview)"
     />

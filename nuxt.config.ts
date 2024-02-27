@@ -22,19 +22,9 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['./store/**'],
   },
+  routeRules: {
+    '/api/**': {
+      proxy: process.env.BASE_URL,
+    },
+  },
 })
-
-// routeRules: {
-//   '/api/**': {
-//     proxy: process.env.BASE_URL,
-//   },
-// },
-
-// delayHydration: {
-//   // enables nuxt-delay-hydration in dev mode for testing
-//   // NOTE: you should disable this once you've finished testing, it will break HMR
-//   debug: process.env.NODE_ENV === 'development',
-//   // debug: false,
-//   mode: 'init',
-//   idleCallbackTimeout: 10000,
-// },

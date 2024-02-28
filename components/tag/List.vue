@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { Tag } from '~/types/article'
-defineProps<{ tags: Tag[] | null; articleTags?: boolean }>()
+defineProps<{ tags: string[] | null; articleTags?: boolean }>()
 </script>
 
 <template>

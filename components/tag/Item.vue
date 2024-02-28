@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import type { Tag } from '~/types/article'
-defineProps<{ tag: Tag }>()
+defineProps<{ tag: string }>()
 const { isExactTag, changeTag } = useQueryParams()
 </script>
 
 <template>
   <NuxtLink
-    @click="changeTag(tag.title)"
-    :to="isExactTag(tag.title) ? `/news` : `/news?tag=${tag.title}`"
+    @click="changeTag(tag)"
+    :to="isExactTag(tag) ? `/news` : `/news?tag=${tag}`"
     class="flex items-center pl-2.5 pr-3 py-2 border border-primary rounded-lg hover:bg-primary hover:text-neutral-50 active:bg-primary/75"
-    :class="isExactTag(tag.title) && 'bg-primary text-neutral-50'"
+    :class="isExactTag(tag) && 'bg-primary text-neutral-50'"
   >
     <Icon name="material-symbols:tag" size="15" />
-    <span>{{ tag.title }}</span>
+    <span>{{ tag }}</span>
   </NuxtLink>
 </template>
 

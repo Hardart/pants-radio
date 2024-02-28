@@ -12,8 +12,6 @@ const radioURL = 'https://stream.lolamedia.ru/rsh_federal'
 const radioElement = ref()
 const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs } = useMediaStore()
 const { fetching, volume } = storeRefs()
-// const { initRadio, toggleRadioPlayState } = useTracksStore()
-// const { playingRadio, isFetching, radioElement } = initRadio()
 
 const { onSocketConnect } = useSocket(trackData)
 onMounted(() => {

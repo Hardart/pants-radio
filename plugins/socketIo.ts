@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 export default defineNuxtPlugin(() => {
   if (!process.client) return
 
-  const url = `http://37.220.86.111:3068`
+  const url = `http://localhost:3068`
 
   if (!url || typeof url !== 'string') return
 

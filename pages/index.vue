@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import TrackList from './_sections/LatestTrack.vue'
 import Slideshow from './_sections/Slideshow.vue'
-const { data: people } = await useFetch('/api/team', { key: 'hosts', getCachedData: key => useNuxtApp().payload.data[key] })
-const { data } = await useFetch('/api/news', {
+
+const { data } = await useFetch('/api/main', {
   query: { limit: 4 },
-  key: 'latest-news',
+  key: 'main-page',
   getCachedData: key => useNuxtApp().payload.data[key],
 })
+
 // useHead({
 //   script: [{ src: '/js/slideshow.min.js', tagPosition: 'bodyClose', defer: true, processTemplateParams: process.client }],
 // })
@@ -17,7 +18,7 @@ const { data } = await useFetch('/api/news', {
   <TrackList :limit="10" title="Новинки Радио ШТАНЫ" />
   <Section>
     <SectionTitle title="Новости" />
-    <NewsLatest :news="data.news" />
+    <NewsLatest v-if="data.news" :news="data.news" />
   </Section>
   <Section>
     <SectionTitle title="Акции и конкурсы" />
@@ -25,6 +26,6 @@ const { data } = await useFetch('/api/news', {
   </Section>
   <Section padding="top">
     <SectionTitle title="Лица Радиостанции" />
-    <TeamList :people="people" />
+    <TeamList :people="data.hosts" />
   </Section>
 </template>

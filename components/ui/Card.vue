@@ -36,7 +36,8 @@ const parseDate = (date: string) => Intl.DateTimeFormat('ru', { day: 'numeric', 
     </div>
     <!-- CARD FOOTER -->
     <div class="absolute inset-0">
-      <NuxtLink class="absolute inset-0" :to="item.url" />
+      <NuxtLink v-if="itemType === 'news'" class="absolute inset-0" :to="`/news` + item.url" />
+      <NuxtLink v-else class="absolute inset-0" :to="item.url" />
     </div>
   </article>
 </template>

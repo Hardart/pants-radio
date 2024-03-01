@@ -1,29 +1,39 @@
+import type { LocationQuery } from 'vue-router'
+type NewsPageData = {
+  news: ICard[]
+  tags: string[]
+}
 export const useNewsStore = defineStore('news', () => {
-  const route = useRoute()
+  const total = useState('x-total', () => 9)
   const perPage = 4
-  const total = useState('x-total', () => 0)
-  const { page, tag } = useQueryParams(route)
   const news = ref<ICard[]>()
+  const tags = ref<string[]>()
   const latestNews = ref<ICard[]>()
 
-  watch(() => route.query, fetchNews)
+  const queryFilter = (query: LocationQuery) => ({ ...query, limit: perPage })
 
-  async function fetchNews() {
-    const { data } = await useAsyncData<ICard[]>('/api/news', () =>
-      $fetch('/api/news', {
-        query: { ...route.query, limit: perPage },
-        onResponse({ response }) {
-          total.value = Number(response.headers.get('x-total'))
-        },
-      })
-    )
-    page.value = Number(route.query.page) || 1
-    news.value = data.value || []
+  async function fetchPageData(query: LocationQuery, page: Ref<number>) {
+    const { data } = await useFetch<NewsPageData>('/api/newss', { query: queryFilter(query), onResponse })
+    page.value = Number(query.page) || 1
+    news.value = data.value?.news || []
+    tags.value = data.value?.tags || []
+  }
+  async function fetchNews(query: LocationQuery, page: Ref<number>) {
+    const response = await $fetch<ICard[]>('/api/news', {
+      query: queryFilter(query),
+      onResponse,
+    })
+    page.value = Number(query.page) || 1
+    news.value = response || []
   }
 
   function storeRefs() {
-    return { perPage, total, news, page }
+    return { perPage, total, news, tags }
   }
 
-  return { fetchNews, storeRefs }
+  function onResponse({ response }: any) {
+    total.value = Number(response.headers.get('x-total'))
+  }
+
+  return { fetchNews, fetchPageData, storeRefs }
 })

@@ -27,10 +27,12 @@ export const useMediaStore = defineStore('media', () => {
     mediaElement.value!.src = ''
     mediaSource.value = ''
   }
+
   const setMediaSource = (source: string) => {
     mediaSource.value = source
     mediaElement.value!.src = source
   }
+
   const onPlayPreview = async (source: string, type: MediaType) => {
     if (fetching.value) return
     mediaType.value = type

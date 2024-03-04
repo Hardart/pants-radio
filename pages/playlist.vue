@@ -18,5 +18,6 @@ import TrackDatePicker from '@/pages/_sections/playlist/TrackDatePicker.vue'
     </SectionTitle>
   </Section>
   <TrackDatePicker />
+
   <TrackList />
 </template>

@@ -4,16 +4,19 @@ import SelectTime from '@/pages/_sections/playlist/Time.vue'
 import { setHour } from '@/utils/setHour'
 const { fetchTracks } = useArchiveStore()
 const date = ref(new Date())
-const time = ref(setHour())
-const setDate = () => (date.value = date.value ? new Date(date.value.setHours(+time.value, 0, 0)) : new Date())
+const hour = ref(setHour())
+watch(date, (curr, prev) => {
+  if (!curr) date.value = prev
+})
+fetchTracks(date.value, hour.value)
 </script>
 
 <template>
   <Section padding="none">
     <div class="flex items-center gap-x-4">
-      <SelectDay v-model:date="date" />
-      <SelectTime v-model:time="time" />
-      <UButton label="Поиск" size="lg" @click="fetchTracks(setDate())" />
+      <SelectDay v-model="date" />
+      <SelectTime v-model="hour" :date="date" />
+      <UButton label="Поиск" size="lg" @click="fetchTracks(date, hour)" />
     </div>
   </Section>
 </template>

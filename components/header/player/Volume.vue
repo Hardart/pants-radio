@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const volume = defineModel('volume')
+const volume = defineModel('volume', { type: Number })
 const { isDesktop } = useDevice()
 </script>
 

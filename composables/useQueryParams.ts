@@ -1,18 +1,19 @@
-import type { RouteLocationNormalizedLoaded, LocationQuery } from 'vue-router'
-export const useQueryParams = (route?: RouteLocationNormalizedLoaded) => {
-  const page = useState('news-page', () => Number(route?.query.page) || 1)
-  const tag = useState('news-tag', () => route?.query.tags || '')
-  const changeTag = (tagTitle: string) => (tag.value = tag.value === tagTitle ? '' : tagTitle)
-  const isExactTag = (someTag: string) => tag.value === someTag
-  const removedPage = (queryFromUrl: LocationQuery) => {
-    const query = { ...queryFromUrl }
+export const useQueryParams = () => {
+  const route = useRoute()
+  const page = computed(() => Number(route.query.page || 1))
+  const tags = computed(() => route.query.tags || '')
+
+  const isExactTag = (tag: string) => tags.value === tag
+
+  const queryWithoutPage = () => {
+    const query = { ...route.query }
     delete query.page
     return query
   }
 
-  const setQuery = (route: RouteLocationNormalizedLoaded, page: number) => {
-    return page === 1 ? removedPage(route.query) : { ...route.query, page }
+  const setQuery = (page: number) => {
+    return page === 1 ? queryWithoutPage() : { ...route.query, page }
   }
 
-  return { page, tag, changeTag, isExactTag, setQuery }
+  return { page, tags, isExactTag, setQuery, route }
 }

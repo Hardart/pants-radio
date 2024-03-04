@@ -18,7 +18,7 @@ useHead({
       <TransitionFade :duration="400">
         <div v-if="isOpen" class="fixed inset-0 bg-stone-500/60 backdrop-blur-sm z-10 max-lg:hidden"></div>
       </TransitionFade>
-      <Menu />
+      <HeaderMenu />
     </div>
   </header>
 </template>

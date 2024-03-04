@@ -9,8 +9,7 @@ if (!newsSlug || typeof newsSlug !== 'string') throw createError('type of url pa
 // const { data: article } = await findOneBySlug(newsSlug)
 const { data: article } = await useFetch<Article>('/api/article', {
   key: newsSlug,
-  method: 'post',
-  body: { slug: newsSlug },
+  query: { slug: newsSlug },
   getCachedData: key => useNuxtApp().payload.data[key],
 })
 </script>
@@ -24,7 +23,7 @@ const { data: article } = await useFetch<Article>('/api/article', {
       <div>
         <div class="text-lg tracking-normal leading-6 overflow-hidden space-y-4 mb-4" v-html="article.content"></div>
         <div class="flex gap-x-4">
-          <TagList :tags="article.tags" article-tags />
+          <TagList :tags="article.tags" />
         </div>
       </div>
     </div>

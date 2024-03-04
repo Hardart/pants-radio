@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <NuxtLink class="pagination" :class="[isActive && 'active']" :to="{ path: $route.fullPath, query: setQuery($route, pageNumber) }">
+  <NuxtLink class="pagination" :class="[isActive && 'active']" :to="{ path: $route.fullPath, query: setQuery(pageNumber) }">
     <span v-if="pageNumber">{{ pageNumber }}</span>
   </NuxtLink>
 </template>

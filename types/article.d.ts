@@ -10,17 +10,7 @@ export type Article = {
     title: string
     slug: string
   }
-  tags: Tag[]
-}
-
-export type NewsData = {
-  news: ICard[]
-  total: number
+  tags: string[]
 }
 
 export type Category = {}
-
-export type Tag = {
-  id: string
-  title: string
-}

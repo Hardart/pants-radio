@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const date = defineModel('date', { default: new Date() })
+const date = defineModel({ default: new Date() })
+const { custom } = useDates()
 const target = ref()
 const [isOpen, toggle] = useToggle()
 onClickOutside(target, () => (isOpen.value = false))
@@ -9,7 +10,7 @@ onClickOutside(target, () => (isOpen.value = false))
   <div class="relative z-10" ref="target">
     <div class="flex items-center justify-center px-3 gap-x-2 h-10 btn-primary rounded-lg z-20" @click="toggle()">
       <Icon name="material-symbols:calendar-today-outline-rounded" size="25" class="mb-0.5" />
-      <div class="text-lg">{{ new Date(date).toLocaleDateString('ru', { day: '2-digit', month: '2-digit', year: '2-digit' }) }}</div>
+      <div class="text-lg">{{ custom(date).date }}</div>
     </div>
     <div>
       <TransitionFade>

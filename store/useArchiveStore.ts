@@ -1,12 +1,13 @@
 import type { TrackHistory } from '~/types/track'
 
 export const useArchiveStore = defineStore('archive', () => {
-  const history = ref<TrackHistory[]>([])
-  const tracks = computed(() => history.value)
-  const storeRefs = () => ({ history })
-  const fetchTracks = async (date: MaybeRef<Date>) => {
-    const data = await $fetch<TrackHistory[]>('/api/history', { method: 'post', body: { date: toValue(date) } })
-    history.value = data
+  const { custom } = useDates()
+  const tracks = ref<TrackHistory[]>([])
+  const storeRefs = () => ({ tracks })
+  const fetchTracks = async (date: Date, hour: string) => {
+    const selectedDate = custom(date).setHour(hour)
+    const data = await $fetch<TrackHistory[]>('/api/history', { method: 'post', body: { date: selectedDate } })
+    tracks.value = data
   }
-  return { storeRefs, fetchTracks, history, tracks }
+  return { storeRefs, fetchTracks, tracks }
 })

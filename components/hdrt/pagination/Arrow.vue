@@ -11,7 +11,7 @@ defineProps<{
   <NuxtLink
     class="pagination"
     :class="isDisableLink && 'disable'"
-    :to="!isDisableLink ? { path: $route.fullPath, query: setQuery($route, pageNumber) } : undefined"
+    :to="!isDisableLink ? { path: $route.fullPath, query: setQuery(pageNumber) } : undefined"
   >
     <Icon :class="type === 'next' && 'rotate-180'" name="material-symbols:arrow-left-alt-rounded" />
   </NuxtLink>

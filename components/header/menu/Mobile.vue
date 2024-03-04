@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const { menuList } = defineProps<{
-  menuList: IMenuItem[]
-}>()
+defineProps<{ menuList: IMenuItem[] }>()
 const { toggleMenuState } = useMenu()
 </script>
 

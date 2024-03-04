@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import { STATE } from '@/types/state-enum'
 const focused = useWindowFocus()
 const icon = useFavicon()
 watch(focused, () => {
   if (focused.value) icon.value = '/favicon_out.svg'
   else icon.value = '/favicon.svg'
 })
-const { data } = useAsyncData('meta', () => $fetch('/api/menu'))
-if (data) useState('menu-list', () => data)
+const { data: metaData } = useAsyncData('meta', () => $fetch('/api/meta'))
+if (metaData) useState(STATE.META, () => metaData)
 </script>
 <template>
   <div>

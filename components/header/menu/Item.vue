@@ -17,7 +17,7 @@ const { toggleMenuState } = useMenu()
       {{ menuItem.label }}</NuxtLink
     >
     <ul v-if="menuItem.childrens" class="w-full text-neutral-100 mt-4 space-y-2">
-      <MenuItem v-for="child in menuItem.childrens" :menu-item="child" is-child />
+      <HeaderMenuItem v-for="child in menuItem.childrens" :menu-item="child" is-child />
     </ul>
   </li>
 </template>

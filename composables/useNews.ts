@@ -4,7 +4,7 @@ export const useNews = () => {
   const { page, tags, route } = useQueryParams()
   const limit = 4
   const total = useState('x-total', () => 0)
-  const newsData = useState<ICard[]>('news', () => [])
+  const newsData = ref<ICard[]>()
 
   async function findOneBySlug(slug: string) {
     const nuxt = useNuxtApp()
@@ -32,7 +32,7 @@ export const useNews = () => {
   }
 
   async function initNews() {
-    const { data, pending } = useAsyncData(fetchNews)
+    const { data, pending } = await useAsyncData(fetchNews)
     newsData.value = data.value || []
     return { pending }
   }

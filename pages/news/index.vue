@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const { tags } = useMeta()
 const { newsData, page, limit, total, initNews } = useNews()
-const { pending } = initNews()
+const { pending } = await initNews()
 </script>
 
 <template>

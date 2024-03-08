@@ -23,16 +23,26 @@ export const useNews = () => {
   })
 
   async function fetchNews() {
-    const data = await $fetch<ICard[]>('/api/news', fetchParams())
-    newsData.value = data
+    try {
+      return await $fetch<ICard[]>('/api/news', fetchParams())
+    } catch (error) {
+      console.warn(error)
+      return []
+    }
   }
 
-  function initNews() {
+  async function initNews() {
     const { data, pending } = useAsyncData(fetchNews)
     newsData.value = data.value || []
     return { pending }
   }
-  watch(() => route.query, fetchNews)
+
+  watch(
+    () => route.query,
+    async () => {
+      newsData.value = await fetchNews()
+    }
+  )
 
   return { findOneBySlug, newsData, total, page, tags, limit, fetchNews, initNews }
 }

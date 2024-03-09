@@ -6,7 +6,8 @@ watch(focused, () => {
   if (focused.value) icon.value = '/favicon_out.svg'
   else icon.value = '/favicon.svg'
 })
-const { data: metaData } = useAsyncData('meta', () => $fetch('/api/meta'))
+const { data: metaData } = await useAsyncData('meta', () => $fetch('/api/meta'))
+
 if (metaData) useState(STATE.META, () => metaData)
 </script>
 <template>

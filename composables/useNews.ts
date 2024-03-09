@@ -1,10 +1,10 @@
 import type { Article } from '@/types/article'
-
+import { STATE } from '@/types/state-enum'
 export const useNews = () => {
   const { page, tags, route } = useQueryParams()
-  const limit = 4
-  const total = useState('x-total', () => 0)
-  const newsData = ref<ICard[]>()
+  const total = useState(STATE.TOTAL_NEWS, () => 0)
+  const newsList = useState<ICard[]>(STATE.NEWS_LIST, () => [])
+  const limit = 10
 
   async function findOneBySlug(slug: string) {
     const nuxt = useNuxtApp()
@@ -18,7 +18,8 @@ export const useNews = () => {
   const fetchParams = () => ({
     query: { page: page.value, limit, tags: tags.value },
     onResponse({ response }: any) {
-      total.value = Number(response.headers.get('x-total'))
+      total.value = Number(response.headers.get(STATE.TOTAL_NEWS))
+      newsList.value = response._data
     },
   })
 
@@ -32,17 +33,11 @@ export const useNews = () => {
   }
 
   async function initNews() {
-    const { data, pending } = await useAsyncData(fetchNews)
-    newsData.value = data.value || []
+    const { pending } = await useAsyncData(fetchNews)
     return { pending }
   }
 
-  watch(
-    () => route.query,
-    async () => {
-      newsData.value = await fetchNews()
-    }
-  )
+  watch(() => route.query, fetchNews)
 
-  return { findOneBySlug, newsData, total, page, tags, limit, fetchNews, initNews }
+  return { newsList, total, page, tags, limit, fetchNews, findOneBySlug, initNews }
 }

@@ -3,7 +3,7 @@ export type Article = {
   slug: string
   url: string
   content: string
-  preview: string
+  image: string
   createdAt: string
   isPublished: boolean
   category: {

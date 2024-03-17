@@ -11,8 +11,8 @@ const parseDate = (date: string) => Intl.DateTimeFormat('ru', { day: 'numeric', 
     <!-- CARD HEADER -->
     <div class="relative overflow-hidden rounded-lg">
       <img
-        v-if="item.preview"
-        :src="item.preview"
+        v-if="item.image"
+        :src="item.image"
         width="610"
         height="357"
         class="aspect-video object-top object-cover"

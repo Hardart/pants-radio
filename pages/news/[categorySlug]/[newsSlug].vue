@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Article } from '~/types/article'
+import { parseHtml } from '~/utils/parseArticle'
 
 const route = useRoute()
 const { newsSlug } = route.params
@@ -21,7 +22,7 @@ const { data: article } = await useFetch<Article>('/api/article', {
     <div class="lg:w-3/4">
       <UiPageTitle class="tracking-tight" :title="article.title" />
       <div>
-        <div class="text-lg tracking-normal leading-6 overflow-hidden space-y-4 mb-4" v-html="article.content"></div>
+        <div class="text-lg tracking-normal leading-6 overflow-hidden space-y-4 mb-4" v-html="parseHtml(article.content)"></div>
         <div class="flex gap-x-4">
           <TagList :tags="article.tags" />
         </div>

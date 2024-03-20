@@ -4,7 +4,7 @@ export const useNews = () => {
   const { page, tags, route } = useQueryParams()
   const total = useState(STATE.TOTAL_NEWS, () => 0)
   const newsList = useState<ICard[]>(STATE.NEWS_LIST, () => [])
-  const limit = 10
+  const limit = 12
 
   async function findOneBySlug(slug: string) {
     const nuxt = useNuxtApp()

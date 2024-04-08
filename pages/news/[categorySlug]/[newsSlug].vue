@@ -5,18 +5,16 @@ import { parseHtml } from '~/utils/parseArticle'
 const route = useRoute()
 const { newsSlug } = route.params
 if (!newsSlug || typeof newsSlug !== 'string') throw createError('type of url parameter is not a STRING')
-// const { findOneBySlug } = useFetchProducts()
 
-// const { data: article } = await findOneBySlug(newsSlug)
-const { data: article } = await useFetch<Article>('/api/article', {
+const { data: article } = await useFetch<Article>(`/api/v1/articles/${newsSlug}`, {
   key: newsSlug,
-  query: { slug: newsSlug },
   getCachedData: key => useNuxtApp().payload.data[key],
 })
+
 </script>
 
 <template>
-  <NewsBreadcrumbs v-if="article" type="новость" :article="article" show-home-path />
+  <ArticleBreadcrumbs v-if="article" type="новость" :article="article" show-home-path />
 
   <Section padding="small" v-if="article">
     <div class="lg:w-3/4">

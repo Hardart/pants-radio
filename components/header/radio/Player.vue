@@ -15,7 +15,7 @@ const { fetching, volume } = storeRefs()
 
 const { onSocketConnect } = useSocket(trackData)
 onMounted(() => {
-  onSocketConnect()
+  // onSocketConnect()
   initMediaElement(radioElement)
 })
 </script>
@@ -23,11 +23,10 @@ onMounted(() => {
 <template>
   <div class="flex items-center flex-grow gap-x-4 mx-4">
     <audio class="sr-only" ref="radioElement" preload="none" />
-    <RadioPlayButton :is-fetching="fetching" :playing-radio="isTrackPlaying(radioURL)" @click="onPlayPreview(radioURL, 'radio')" />
-    <RadioArt :src="trackData?.cover" />
-    <RadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
+    <HeaderRadioPlayButton :is-fetching="fetching" :playing-radio="isTrackPlaying(radioURL)" @click="onPlayPreview(radioURL, 'radio')" />
+    <HeaderRadioArt :src="trackData?.cover" />
+    <HeaderRadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
     <HeaderPlayerVolume v-model:volume.number="volume" />
   </div>
 </template>
 
-<style scoped></style>

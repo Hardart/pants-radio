@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 const { isOpen, toggleMenuState } = useMenu()
-const { navList } = useMeta()
+defineProps<{
+  mainMenu: IMenuItem[]
+}>()
 const menu = ref()
 
 onClickOutside(menu, event => {
@@ -22,8 +24,8 @@ watch(isOpen, () => {
     tabindex="0"
   >
     <HeaderMenuTop />
-    <HeaderMenuList v-if="navList" class="my-10" :menu-items="navList" />
-    <HeaderMenuMobile :menu-list="navList" />
+    <HeaderMenuList class="my-10" :menu-items="mainMenu" />
+    <HeaderMenuMobile :menu-list="mainMenu" />
     <HeaderMenuBottom />
   </nav>
 </template>

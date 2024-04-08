@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import type { IRadioData, TrackHistory } from '~/types/track'
-defineProps<{ tracks?: IRadioData[]; history?: TrackHistory[] }>()
+defineProps<{ 
+  tracks?: IRadioData[]
+  history?: TrackHistory[] 
+}>()
 const { isTrackPlaying, onPlayPreview } = useMediaStore()
 </script>
 

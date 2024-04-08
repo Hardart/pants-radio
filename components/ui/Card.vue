@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { changePort } from '~/utils/parseArticle';
 defineProps<{
   item: ICard
   itemType: 'news' | 'promo'
@@ -12,7 +13,7 @@ const parseDate = (date: string) => Intl.DateTimeFormat('ru', { day: 'numeric', 
     <div class="relative overflow-hidden rounded-lg">
       <img
         v-if="item.image"
-        :src="item.image"
+        :src="changePort(item.image, '3070')"
         width="610"
         height="357"
         class="aspect-video object-top object-cover"

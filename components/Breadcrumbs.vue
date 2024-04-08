@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 const isShowHomePath = true
 const route = useRoute()
-const menuList = useState<IMenuItem[]>('menu-list')
+const {mainMenu} = useMeta()
+if (!mainMenu) throw createError('Error in breadcrumbs')
 const params = route.path.substring(1).split('/')
 
 let link = ``
@@ -18,7 +19,7 @@ function reduceBreadcrumbs(acc: IBreadcrumbsItem[], curr: string) {
     if (item.childrens) item.childrens.forEach(menuMap)
     if (item.link === curr) return acc.push({ label: item.label, link: item.link })
   }
-  menuList.value?.forEach(menuMap)
+  mainMenu.forEach(menuMap)
   return acc
 }
 </script>

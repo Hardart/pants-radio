@@ -7,7 +7,6 @@ export interface IScheduleProgram {
 }
 
 export interface IScheduleItem {
-  weekdayTitle: string
-  weekdayId: number
+  _id: number
   programs: IScheduleProgram[]
 }

@@ -8,15 +8,15 @@ export const useNews = () => {
 
   async function findOneBySlug(slug: string) {
     const nuxt = useNuxtApp()
-    return await useFetch<Article>('/api/article', {
-      query: { slug },
+    return await useFetch<Article>('/api/v1/articles', {
+      params: { slug },
       key: slug,
       getCachedData: key => nuxt.payload.data[key],
     })
   }
 
   const fetchParams = () => ({
-    query: { page: page.value, limit, tags: tags.value },
+    query: { page: page.value, limit },
     onResponse({ response }: any) {
       total.value = Number(response.headers.get(STATE.TOTAL_NEWS))
       newsList.value = response._data
@@ -25,7 +25,7 @@ export const useNews = () => {
 
   async function fetchNews() {
     try {
-      return await $fetch<ICard[]>('/api/news', fetchParams())
+      return await $fetch<ICard[]>('/api/v1/articles', fetchParams())
     } catch (error) {
       console.warn(error)
       return []

@@ -23,10 +23,10 @@ onMounted(() => {
 <template>
   <div class="flex items-center flex-grow gap-x-4 mx-4">
     <audio class="sr-only" ref="radioElement" preload="none" />
-    <HeaderRadioPlayButton :is-fetching="fetching" :playing-radio="isTrackPlaying(radioURL)" @click="onPlayPreview(radioURL, 'radio')" />
+    <HeaderRadioPlayBtn :is-fetching="fetching" :playing-radio="isTrackPlaying(radioURL)" @click="onPlayPreview(radioURL, 'radio')" />
     <HeaderRadioArt :src="trackData?.cover" />
-    <HeaderRadioTrackInfo :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
-    <HeaderPlayerVolume v-model:volume.number="volume" />
+    <HeaderRadioTrackMeta :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
+    <HeaderRadioVolume v-model:volume.number="volume" />
   </div>
 </template>
 

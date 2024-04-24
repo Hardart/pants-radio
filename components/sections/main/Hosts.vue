@@ -1,13 +1,12 @@
 <script setup lang='ts'>
-import type { Host } from '~/types/hosts';
-
-const hosts = inject<Host[]>('hosts')
+import type { User } from '~/types/user'
+const hosts = inject<User[]>('hosts')
 </script>
  
 <template>
   <Section>
     <SectionTitle title="Лица Радиостанции" />
-    <HostList v-if="hosts" :hosts/>
+    <HostCardList v-if="hosts" :hosts/>
   </Section>
 </template>
  

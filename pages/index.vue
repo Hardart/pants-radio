@@ -14,7 +14,7 @@ provide('hosts', data.value.hosts)
 <template>
   <SectionsMainSlideshow />
   <SectionsMainLastNews/>
-  <SectionsMainHosts/>
+  <LazySectionsMainHosts/>
   <!-- NEED PROVIDE TRACKS -->
   <!-- <SectionsMainLastTracks/>  -->  
   <!-- <Section>

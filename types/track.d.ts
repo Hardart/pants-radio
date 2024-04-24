@@ -23,7 +23,13 @@ export interface IRadioData {
   updatedAt?: string
 }
 
-type TrackHistory = {
+
+
+export type Track = {
+  id: string
+  artistName: string
+  trackTitle: string
+  cover: string
+  preview: string
   createdAt: string
-  track: IRadioData
 }

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-defineProps<{ menuItems: IMenuItem[] }>()
+import type { MenuItem } from '~/types/menu'
+
+defineProps<{ menuItems: MenuItem[] }>()
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const isShowHomePath = true
 const route = useRoute()
-const {mainMenu} = useMeta()
+const { mainMenu } = useMeta()
 if (!mainMenu) throw createError('Error in breadcrumbs')
 const params = route.path.substring(1).split('/')
 
@@ -14,6 +14,7 @@ function reduceLinks(acc: string[], curr: string) {
   acc.push(link)
   return acc
 }
+
 function reduceBreadcrumbs(acc: IBreadcrumbsItem[], curr: string) {
   function menuMap(item: IMenuItem) {
     if (item.childrens) item.childrens.forEach(menuMap)
@@ -26,6 +27,7 @@ function reduceBreadcrumbs(acc: IBreadcrumbsItem[], curr: string) {
 
 <template>
   <Section padding="small">
+    <pre>{{ mainMenu }}</pre>
     <ul class="flex items-center">
       <li v-if="isShowHomePath" class="text-primary hover:text-primary/80">
         <NuxtLink to="/"><Icon name="mdi:home" size="24" /></NuxtLink>

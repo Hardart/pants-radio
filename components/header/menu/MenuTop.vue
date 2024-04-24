@@ -10,5 +10,3 @@ const { toggleMenuState } = useMenu()
     </div>
   </div>
 </template>
-
-<style></style>

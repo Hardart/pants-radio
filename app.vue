@@ -17,7 +17,7 @@ if (metaData) useState(STATE.META, () => metaData)
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <FooterMain />
+    <LazyFooterMain />
   </div>
 </template>
 

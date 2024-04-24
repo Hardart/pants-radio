@@ -1,7 +1,7 @@
 export type Article = {
   title: string
   slug: string
-  url: string
+  to: string
   content: string
   image: string
   createdAt: string
@@ -13,4 +13,9 @@ export type Article = {
   tags: string[]
 }
 
-export type Category = {}
+export type Category = {
+  title: string
+  slug: string
+  image: string
+  articles: Article[]
+}

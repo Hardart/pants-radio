@@ -1,12 +1,14 @@
 <script setup lang="ts">
-defineProps<{ menuList: IMenuItem[] }>()
+import type { MenuItem } from '~/types/menu'
+
+defineProps<{ menuList: MenuItem[] }>()
 const { toggleMenuState } = useMenu()
 </script>
 
 <template>
   <div class="relative flex-grow block lg:hidden">
     <div class="absolute inset-0 overflow-auto">
-      <HdrtAccordion :items="menuList" title-key="label" body-key="childrens" :handler="toggleMenuState" />
+      <HdrtAccordion :items="menuList" title-key="label" body-key="childrens" @on-click="toggleMenuState" />
     </div>
   </div>
 </template>

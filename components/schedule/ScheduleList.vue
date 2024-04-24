@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import type { IScheduleItem } from '~/types/schedule';
-
+import type { API } from '~/types/api'
 const props = defineProps<{
-  scheduleData: IScheduleItem[]
+  scheduleData: API.Schedule[]
 }>()
 
 const accordionState = ref<{ [key: number]: boolean }>({})
@@ -27,12 +26,10 @@ const correctDayId = (id: number) => id == 7 ? 0 : id
       </div>
       <ul class="mb-4 mt-2 space-y-3" v-if="accordionState[index]">
         <li v-for="program in day.programs">
-          <ScheduleCardV :card-data="program" />
-          <ScheduleCardH :card-data="program" :is-today="weekdayNumber.getDay() === correctDayId(day._id)" />
+          <ScheduleCardV :program />
+          <ScheduleCardH :program :is-today="weekdayNumber.getDay() === correctDayId(day._id)" />
         </li>
       </ul>
     </li>
   </ul>
 </template>
-
-<style></style>

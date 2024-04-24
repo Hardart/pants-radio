@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Host } from '~/types/hosts'
-defineProps<{ hosts: Host[] }>()
+import type { User } from '~/types/user'
+defineProps<{ hosts: User[] }>()
 </script>
 
 <template>

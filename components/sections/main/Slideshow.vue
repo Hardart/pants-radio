@@ -5,5 +5,3 @@
     <UkSlideshow />
   </Section>
 </template>
-
-<style></style>

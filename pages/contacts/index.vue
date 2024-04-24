@@ -1,53 +1,57 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import type { Contacts } from '~/types/contacts';
+import { splitTextByComma } from '@/utils/splitTextByComma'
+import { onlyNumbers } from '@/utils/parsePhone'
+
+const {data} = useFetch<Contacts>('/api/v1/contacts')
+</script>
 
 <template>
   <Section padding="topSmall">
     <div class="flex">
-      <div class="xl:w-3/5">
+      <div class="xl:w-3/5" v-if="data">
         <SectionTitle title="Контакты" />
-        <h3 class="text-4xl text-neutral-400/80 font-bold mb-8">Федеральная редакция</h3>
+        <h3 class="text-4xl text-neutral-400/80 font-bold mb-8">{{ data.contacts.title }}</h3>
         <div class="grid md:grid-cols-2 gap-y-10">
           <div>
             <h4 class="flex items-center text-2xl mb-4 font-bold gap-x-4"><Icon name="ph:phone-call-light" size="30" />Телефоны</h4>
             <div class="flex flex-col text-secondary">
-              <a class="hover:text-primary" href="tel:+74951284394">+7 (495) 128-43-94 (Офис/Реклама)</a>
-              <a class="hover:text-primary" href="tel:+74951284325">+7 (495) 128-43-25 (Эфир)</a>
-              <a class="hover:text-primary" href="tel:+79374343373">+7 (937) 434-33-73 (WhatsApp и SMS)</a>
+              <template v-for="item in data.contacts.phones">
+                <a class="hover:text-primary" :href="`tel:${onlyNumbers(item.phone)}`" v-if="item.type === 'phone'"  >{{ item.phone }} ({{ item.label }})</a>
+              </template>
             </div>
           </div>
           <div>
             <h4 class="flex items-center text-2xl mb-4 font-bold gap-x-4"><Icon name="ph:map-pin-light" size="30" />Адрес</h4>
-            <p>
-              <span class="whitespace-nowrap">442761, Пензенская обл.</span>, <span class="whitespace-nowrap">Бессоновский район</span>,
-              <span class="whitespace-nowrap">село Чемодановка</span>, <span class="whitespace-nowrap">ул. Средняя, д. 12</span>
-            </p>
+            <p v-html="splitTextByComma(data.contacts.address)"></p>
           </div>
           <div>
             <h4 class="flex items-center text-2xl mb-4 font-bold gap-x-4">
               <Icon name="ph:envelope-simple-light" size="30" />Электронная почта
             </h4>
             <div class="flex flex-col text-secondary">
-              <a class="hover:text-primary" href="mailto:info@radioshtani.ru">info@radioshtani.ru (Служба информации)</a>
-              <a class="hover:text-primary" href="mailto:press-rel@radioshtani.ru">press-rel@radioshtani.ru (Пресс-релизы)</a>
-              <a class="hover:text-primary" href="mailto:edition@radioshtani.ru">edition@radioshtani.ru (Редакция радиоканала)</a>
-              <a class="hover:text-primary" href="mailto:songs@radioshtani.ru">songs@radioshtani.ru (Музыкальная редакция)</a>
-              <a class="hover:text-primary" href="mailto:onair@radioshtani.ru">onair@radioshtani.ru (Прямой эфир)</a>
+              <template v-for="item in data.contacts.emails">
+                <a class="hover:text-primary" :href="`mailto:${item.mail}`" v-if="item.type === 'mail'">{{ item.mail }} ({{ item.label }})</a>
+              </template>
             </div>
           </div>
         </div>
         <h3 class="text-4xl text-neutral-400/80 font-bold mb-6 mt-8 pt-6 border-t-2">
-          Рекламная служба <span class="whitespace-nowrap">«Радио ШТАНЫ»</span>
+         {{ data.commercial.title }}
         </h3>
-        <p class="text-sm mb-6">По всем вопросам размещения рекламы на «Радио ШТАНЫ» в регионах сейлз-хаус медиахолдинга «LOLAMEDIA»:</p>
+        <p class="text-sm mb-6" v-if="data.commercial.description">{{ data.commercial.description }}:</p>
         <div class="grid grid-cols-2 gap-y-10">
           <div>
             <h4 class="flex items-center text-2xl mb-4 font-bold gap-x-4"><Icon name="ph:phone-call-light" size="30" />Телефоны</h4>
-            <a class="text-secondary hover:text-primary" href="tel:+74951284394">+7 (495) 128-43-94 (Офис/Реклама)</a>
+            <template v-for="item in data.commercial.phones">
+              <a class="hover:text-primary" :href="`tel:${onlyNumbers(item.phone)}`" v-if="item.type === 'phone'"  >{{ item.phone }} ({{ item.label }})</a>
+            </template>
           </div>
-
           <div>
-            <h4 class="flex items-center text-2xl mb-4 font-bold gap-x-4"><Icon name="ph:envelope-simple-light" size="30" />E-mail</h4>
-            <a class="text-secondary hover:text-primary" href="mailto:adv@elarin.ru">adv@elarin.ru</a>
+            <h4 class="flex items-center text-2xl mb-4 font-bold gap-x-4"><Icon name="ph:envelope-simple-light" size="30" />Электронная почта</h4>
+            <template v-for="item in data.commercial.emails">
+              <a class="hover:text-primary" :href="`mailto:${item.mail}`" v-if="item.type === 'mail'">{{ item.mail }}</a>
+            </template>
           </div>
         </div>
       </div>

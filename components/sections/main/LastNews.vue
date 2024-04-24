@@ -1,12 +1,11 @@
 <script setup lang='ts'>
-
-const articles = inject<ICard[]>('articles')
-if (!articles) throw createError('No articles')
+import type { Article } from '~/types/article';
+const articles = inject<Article[]>('articles')
 </script>
  
 <template>
   <Section>
     <SectionTitle title="Новости" />
-    <ArticleList :articles/>
+    <ArticleCardList v-if="articles" :articles/>
   </Section>
 </template>

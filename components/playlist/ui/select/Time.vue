@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { hoursForSelect, filteredHours } from '@/utils/setHour'
 const props = defineProps<{ date: Date }>()
-const hour = defineModel({ required: true, type: String })
+const hour = defineModel<string>({ required: true })
 const { current } = useDates()
 const [isOpen, toggle] = useToggle()
 const timeElement = ref()

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const { items, handler } = defineProps<{
+const { items } = defineProps<{
   items: any[]
   titleKey: string
   bodyKey: string
-  handler: () => void
 }>()
+const emit = defineEmits(['on-click'])
 const accordionState = ref<{ [key: number]: boolean }>({})
 const initAccordionState = () => {
   for (let i = 0; i < items.length; i++) {
@@ -13,7 +13,7 @@ const initAccordionState = () => {
 }
 const toggleItemState = (index: number) => (accordionState.value[index] = !accordionState.value[index])
 const onLink = () => {
-  handler()
+  emit('on-click')
   initAccordionState()
 }
 </script>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { MenuItem } from '~/types/menu'
+
 defineProps<{
-  menuItem: IMenuItem
+  menuItem: MenuItem
   isChild?: boolean
 }>()
 const { toggleMenuState } = useMenu()
@@ -9,9 +11,9 @@ const { toggleMenuState } = useMenu()
 <template>
   <li class="relative py-1">
     <NuxtLink
-      :to="menuItem.link"
+      :to="menuItem.to"
       @click="toggleMenuState"
-      :class="[isChild ? 'menu-item__child' : 'menu-item', $route.path.includes(menuItem.link + '/') && 'text-primary']"
+      :class="[isChild ? 'menu-item__child' : 'menu-item', $route.path.includes(menuItem.to + '/') && 'text-primary']"
       active-class="text-primary"
     >
       {{ menuItem.label }}</NuxtLink

@@ -12,7 +12,7 @@ useHead({
   <header class="fixed w-full h-20 bg-secondary z-50">
     <div class="flex items-center container mx-auto w-full h-full">
       <Logo is-main />
-      <HeaderRadioPlayer />
+      <HeaderRadio />
 
       <UiMenuButton @click="toggleMenuState" />
       <TransitionFade :duration="400">

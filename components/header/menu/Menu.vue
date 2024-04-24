@@ -1,13 +1,16 @@
 <script lang="ts" setup>
-const { isOpen, toggleMenuState } = useMenu()
+import type { MenuItem } from '~/types/menu';
+
 defineProps<{
-  mainMenu: IMenuItem[]
+  mainMenu: MenuItem[]
 }>()
 const menu = ref()
+const { isOpen, toggleMenuState } = useMenu()
 
 onClickOutside(menu, event => {
   if (isOpen.value) toggleMenuState()
 })
+
 watch(isOpen, () => {
   if (isOpen.value) {
     menu.value.focus()
@@ -24,7 +27,7 @@ watch(isOpen, () => {
     tabindex="0"
   >
     <HeaderMenuTop />
-    <HeaderMenuList class="my-10" :menu-items="mainMenu" />
+    <HeaderMenuItemList class="my-10" :menu-items="mainMenu" />
     <HeaderMenuMobile :menu-list="mainMenu" />
     <HeaderMenuBottom />
   </nav>

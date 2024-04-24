@@ -9,5 +9,3 @@ defineProps<{
     <img :src="src" alt="" width="60" height="60" />
   </div>
 </template>
-
-<style></style>

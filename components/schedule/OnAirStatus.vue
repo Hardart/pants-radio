@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { IScheduleProgram } from '~/types/schedule'
+import type { ProgramResponse } from '~/types/program';
 
 defineProps<{
-  cardData: IScheduleProgram
+  program: ProgramResponse
   side?: 'left'
   isToday?: boolean
 }>()
@@ -19,7 +19,7 @@ const isInRange = (time: Date, start: string, end: string) => {
 
 <template>
   <div
-    v-if="isInRange(new Date(), cardData.start, cardData.end) && isToday"
+    v-if="isInRange(new Date(), program.start, program.end) && isToday"
     class="absolute tracking-wide px-2 text-xs uppercase text-neutral-50  origin-center rounded bg-primary animate-pulse"
     :class="side == 'left' ?  '-left-11 -rotate-90' : '-right-11 rotate-90'"
   >
@@ -27,5 +27,3 @@ const isInRange = (time: Date, start: string, end: string) => {
   </div>
   
 </template>
-
-<style></style>

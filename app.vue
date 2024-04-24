@@ -6,10 +6,15 @@ watch(focused, () => {
   if (focused.value) icon.value = '/favicon_out.svg'
   else icon.value = '/favicon.svg'
 })
-const { data: metaData } = await useAsyncData('meta', () => $fetch('/api/meta'))
-
+const { data: metaData } = await useAsyncData(STATE.META, () => $fetch('/api/v1/meta'))
 if (metaData) useState(STATE.META, () => metaData)
+
+const { $ws } = useNuxtApp()
+onBeforeMount(() => {
+  provide('socket', $ws(3071, ''))
+})
 </script>
+
 <template>
   <div>
     <NuxtLoadingIndicator />
@@ -17,7 +22,7 @@ if (metaData) useState(STATE.META, () => metaData)
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <FooterMain />
+    <LazyFooterMain />
   </div>
 </template>
 

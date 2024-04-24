@@ -1,0 +1,3 @@
+MONGO_DB="mongodb+srv://<<USERNAME>>:hvQ3F6YFnJUEfNxI@cluster0.6wswz.mongodb.net/<<DATABASE>>"
+ACCESS_TOKEN=43j5n35n64j6y34ntkt34tn4bthb45hjtvfv9v8ph3jb2hrbfdpvcbehdfnvjknhbf3u
+REFRESH_TOKEN=43j5n35n64j6y34ntkt34tn4bthb45hjtu8vu98u8dfvyuhb3hbfyvg823hnjfb3v78e

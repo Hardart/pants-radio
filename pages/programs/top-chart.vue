@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Host, IAirtimeItem, ProgramData } from '~/types/hosts'
+import type { Host, IAirtimeItem, ProgramData } from '~/types/user'
 
 const airtimeData: IAirtimeItem[] = [
   { start: '18:00', end: '19:00', weekday: 'Воскресенье' },
@@ -39,7 +39,7 @@ const programData: ProgramData = {
           </div>
         </div>
         <div class="flex max-lg:flex-col flex-nowrap lg:space-x-4 max-lg:space-y-2">
-          <ProgramCard v-for="card in programData.airtimeData" :card-data="card" />
+          <!-- <ProgramCard v-for="card in programData.airtimeData" :card-data="card" /> -->
         </div>
       </div>
     </div>
@@ -50,9 +50,7 @@ const programData: ProgramData = {
         Каждое воскресенье на «Радио ШТАНЫ», подводим музыкальные итоги недели. И только от твоего голоса зависит, какая новинка станет
         лучшей на этой неделе.
       </p>
-
       <p>В воскресенье с 18 до 19. Лучшие 20 песен звучат для Вас!</p>
-
       <p>Пропустил в эфире? Слушай ПОДКАСТ!</p>
     </div>
   </Section>

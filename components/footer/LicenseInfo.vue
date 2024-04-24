@@ -1,20 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { IFooterInfoItem } from '~/types/footer';
+
+defineProps<{
+  info: IFooterInfoItem
+}>()
+</script>
 
 <template>
   <div class="flex max-sm:flex-col items-center px-2 pb-8 sm:space-x-8">
-    <UiRateIcon class="max-sm:hidden" value="12+" />
-    <div class="space-y-4 leading-4 text-sm md:text-base max-sm:text-center">
-      <p>
-        Средство массовой информации «RADIOSHTANI.RU» зарегистрировано 29 марта 2021 г. в форме распространения «Сетевое издание».
-        Свидетельство Эл № ФС77-80691 от 29.03.2021 выдано Федеральной службой по надзору в сфере связи, информационных технологий и
-        массовых коммуникаций (Роскомнадзор). Для детей старше 12 лет.
-      </p>
-      <p>
-        Средство массовой информации «Радио ШТАНЫ» зарегистрировано 12 октября 2021 г. в форме распространения «Радиоканал». Свидетельство
-        Эл № ФС77-82055 от 12.10.2021 выдано Федеральной службой по надзору в сфере связи, информационных технологий и массовых коммуникаций
-        (Роскомнадзор). Для детей старше 12 лет.
-      </p>
-    </div>
+    <UiRateIcon class="max-sm:hidden" :value="info.iconValue" />
+    <div class="space-y-4 leading-4 text-sm md:text-base max-sm:text-center" v-html="info.text"/>
   </div>
 </template>
 

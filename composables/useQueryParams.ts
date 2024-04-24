@@ -1,7 +1,7 @@
 export const useQueryParams = () => {
   const route = useRoute()
   const page = computed(() => Number(route.query.page || 1))
-  const tags = computed(() => route.query.tags || '')
+  const tags = computed(() => route.query.tags || undefined)
 
   const isExactTag = (tag: string) => tags.value === tag
 

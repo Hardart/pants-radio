@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { DatePicker as VCalendarDatePicker } from 'v-calendar'
 import 'v-calendar/style.css'
-const { tracks } = useMeta()
-const { start, end } = tracks.archive.calendar
+// const { tracks } = useMeta()
+
 
 const props = defineProps({
   modelValue: {
@@ -24,13 +24,12 @@ const attrs = {
   transparent: true,
   borderless: true,
   color: 'primary',
-  'is-dark': { selector: 'html', darkClass: 'dark' },
   'first-day-of-week': 2,
 }
 </script>
 
 <template>
-  <VCalendarDatePicker v-model="date" v-bind="{ ...attrs }" :max-date="end" :min-date="start" />
+  <VCalendarDatePicker v-model="date" v-bind="{ ...attrs }" :max-date="new Date()"  />
 </template>
 
 <style>

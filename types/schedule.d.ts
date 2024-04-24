@@ -1,13 +1,12 @@
-export interface IScheduleProgram {
+export type ScheduleProperty =  {
   start: string
   end: string
-  title: string
-  image?: string
-  replay?: boolean
+  isReplay: boolean
 }
 
-export interface IScheduleItem {
-  weekdayTitle: string
-  weekdayId: number
-  programs: IScheduleProgram[]
+type WeekdayIds =  number[]
+
+export type ProgramSchedule = {
+  weekdayIds: WeekdayIds
+  properties: ScheduleProperty[]
 }

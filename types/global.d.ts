@@ -17,20 +17,13 @@ type Entries<T> = {
 }[keyof T][]
 
 declare global {
+  
   interface ICard extends BaseItem {
     preview: string
     category: {
       slug: string
       title: string
     }
-  }
-
-  interface IMenuItem {
-    label: string
-    link: string
-    slug: string
-    icon?: string
-    childrens?: IMenuItem[]
   }
 
   interface ObjectConstructor {

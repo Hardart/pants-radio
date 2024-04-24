@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     storesDirs: ['./store/**'],
   },
   routeRules: {
-    '/api/**': {
+    '/api/v1/**': {
       proxy: process.env.BASE_URL,
     },
   },

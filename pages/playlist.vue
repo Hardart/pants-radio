@@ -1,23 +1,19 @@
 <script setup lang="ts">
-import TrackList from '@/pages/_sections/playlist/TrackList.vue'
-import TrackDatePicker from '@/pages/_sections/playlist/TrackDatePicker.vue'
+import type { API } from '~/types/api';
+const {custom} = useDates()
+const date = useState<Date>('archive-date', () => new Date())
+const hour = useState('archive-hour', () => setHour())
+const dateFilter = computed(() => custom(date.value).setHour(hour.value)
+)
+const { data } = await useFetch<API.ArchivePage>('/api/v1/track-archive', { query: { dateFilter} })
+const response = toValue(data)
+if (!response) throw createError('eerrrrr')
+provide('archive', response.archive)
 </script>
 
 <template>
-  <Section padding="topSmall">
-    <SectionTitle title="Ранее в эфире">
-      <template #desc>
-        <div class="px-2 mt-2 mb-5 leading-4 text-secondary/45 text-xs -space-y-0.5">
-          <p>Пока доступен только список треков, которые прозвучали в московском (федеральном) эфире.</p>
-          <p>
-            Плейлист в других городах обычно ничем не отличается, а лишь смещается относительно разницы во времени между вашим городом и
-            Москвой.
-          </p>
-        </div>
-      </template>
-    </SectionTitle>
-  </Section>
-  <TrackDatePicker />
-
-  <TrackList />
+  {{ dateFilter }}
+  <SectionsPlaylistMainInfo />
+  <SectionsPlaylistDateSelect/>
+  <SectionsPlaylistTrackList />
 </template>

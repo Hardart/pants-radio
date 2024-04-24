@@ -1,7 +1,9 @@
 <script setup lang='ts'>
 import type { Track } from '~/types/track';
 
-const tracks = inject<Track[]>('archive')
+defineProps<{
+  tracks: Track[]
+}>()
 </script>
  
 <template>

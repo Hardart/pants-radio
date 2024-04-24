@@ -3,7 +3,5 @@ defineProps(['title'])
 </script>
 
 <template>
-  <div class="text-sm">{{ title }}</div>
+  <p class="text-sm">{{ title }}</p>
 </template>
-
-<style scoped></style>

@@ -1,9 +1,8 @@
 <script setup lang="ts">
-const { onHostOnAir } = useSocket()
+const { initSocket, onHostOnAir } = useSocket()
 const host = ref('')
-onMounted(() => {
-  onHostOnAir(host)
-})
+initSocket()
+onHostOnAir(host)
 </script>
 
 <template>

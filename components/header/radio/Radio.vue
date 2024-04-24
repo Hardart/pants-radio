@@ -1,21 +1,21 @@
 <script lang="ts" setup>
-import type { IRadioData } from '~/types/track'
+import type { Track } from '~/types/track'
 
-const jingleData: IRadioData = {
+const jingleData: Track = {
   artistName: 'Радио Штаны',
   trackTitle: 'Прямой эфир',
   cover: '/images/simple_logo.svg',
   preview: '',
 }
-const trackData = ref<IRadioData>(jingleData)
+const trackData = ref<Track>(jingleData)
 const radioURL = 'https://stream.lolamedia.ru/rsh_federal'
 const radioElement = ref()
 const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs } = useMediaStore()
 const { fetching, volume } = storeRefs()
 
-const { onSocketConnect } = useSocket(trackData)
+const { onSocketConnect } = useSocket()
 onMounted(() => {
-  // onSocketConnect()
+  // onSocketConnect(trackData)
   initMediaElement(radioElement)
 })
 </script>
@@ -27,6 +27,7 @@ onMounted(() => {
     <HeaderRadioArt :src="trackData?.cover" />
     <HeaderRadioTrackMeta :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
     <HeaderRadioVolume v-model:volume.number="volume" />
+    <HeaderRadioHost/>
   </div>
 </template>
 

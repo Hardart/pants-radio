@@ -2,18 +2,19 @@
 import type { Track } from '~/types/track'
 defineProps<{ 
   tracks: Track[]
+  showDate?: boolean
 }>()
 const { isTrackPlaying, onPlayPreview } = useMediaStore()
 </script>
 
 <template>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5" >
     <Track
-      v-if="tracks"
       v-for="track in tracks"
       :track
-      @on-toggle="onPlayPreview(track.preview, 'track')"
+      :show-date
       :is-playing="isTrackPlaying(track.preview)"
+      @on-toggle="onPlayPreview(track.preview, 'track')"
     />
 
   </div>

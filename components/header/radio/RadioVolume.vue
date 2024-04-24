@@ -4,7 +4,7 @@ const { isDesktop } = useDevice()
 </script>
 
 <template>
-  <div v-if="isDesktop" class="flex items-center flex-shrink ml-auto min-w-32">
+  <div class="flex items-center flex-shrink ml-auto min-w-32" v-if="isDesktop">
     <URange
       :min="0"
       :max="100"

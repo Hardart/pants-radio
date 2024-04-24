@@ -1,9 +1,12 @@
 <script setup lang="ts">
-const date = defineModel({ default: new Date() })
 const { custom } = useDates()
-const target = ref()
 const [isOpen, toggle] = useToggle()
+const date = useState<Date>('archive-date')
+const target = ref()
 onClickOutside(target, () => (isOpen.value = false))
+watch(date, (curr, prev) => {
+  if (!curr) date.value = prev
+})
 </script>
 
 <template>

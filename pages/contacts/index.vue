@@ -3,7 +3,7 @@ import type { Contacts } from '~/types/contacts';
 import { splitTextByComma } from '@/utils/splitTextByComma'
 import { onlyNumbers } from '@/utils/parsePhone'
 
-const {data} = useFetch<Contacts>('/api/v1/contacts')
+const {data} = await useFetch<Contacts>('/api/v1/contacts')
 </script>
 
 <template>

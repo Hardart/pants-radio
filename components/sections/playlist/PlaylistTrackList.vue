@@ -6,7 +6,7 @@ const tracks = inject<Track[]>('archive')
  
 <template>
   <Section v-if="tracks" padding="small">
-    <TrackList :tracks />
+    <TrackList :tracks :show-date="true" />
   </Section>
 </template>
  

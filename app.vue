@@ -8,6 +8,11 @@ watch(focused, () => {
 })
 const { data: metaData } = await useAsyncData(STATE.META, () => $fetch('/api/v1/meta'))
 if (metaData) useState(STATE.META, () => metaData)
+
+const { $ws } = useNuxtApp()
+onBeforeMount(() => {
+  provide('socket', $ws(3071, ''))
+})
 </script>
 
 <template>

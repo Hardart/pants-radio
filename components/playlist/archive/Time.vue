@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { hoursForSelect, filteredHours } from '@/utils/setHour'
-const props = defineProps<{ date: Date }>()
-const hour = defineModel<string>({ required: true })
 const { current } = useDates()
+const date = useState<Date>('archive-date')
+const hour = useState<string>('archive-hour')
 const [isOpen, toggle] = useToggle()
 const timeElement = ref()
 onClickOutside(timeElement, () => (isOpen.value = false))
 
-const hours = computed(() => (current().isToday(props.date) ? filteredHours(current().hour) : hoursForSelect))
+const hours = computed(() => (current().isToday(date.value) ? filteredHours(current().hour) : hoursForSelect))
 watch(
-  () => current().isToday(props.date),
+  () => current().isToday(date.value),
   () => {
-    if (current().isToday(props.date)) hour.value = hours.value.slice(-1)[0]
+    if (current().isToday(date.value)) hour.value = hours.value.slice(-1)[0]
   }
 )
 

@@ -6,10 +6,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="mx-2">
-    <TrackArtistName :artist="artist" />
-    <TrackTitle :title="title" />
+  <div class="flex-grow mx-2">
+    <TrackArtist :artist />
+    <TrackTitle :title />
   </div>
 </template>
 
-<style scoped></style>
+

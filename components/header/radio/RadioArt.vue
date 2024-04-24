@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineProps<{
-  src?: string
+  src: string
 }>()
 </script>
 
 <template>
-  <div class="rounded-md overflow-clip">
-    <img :src="src" alt="" width="60" height="60" />
+  <div class="size-[60px]">
+    <img :src class="rounded-md size-full" alt="" width="60" height="60" />
   </div>
 </template>

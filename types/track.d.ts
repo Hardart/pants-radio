@@ -14,22 +14,10 @@ export interface IItunesData {
   art600?: string
 }
 
-export interface IRadioData {
+export type Track = {
   artistName: string
   trackTitle: string
   cover: string
   preview: string
   createdAt?: string
-  updatedAt?: string
-}
-
-
-
-export type Track = {
-  id: string
-  artistName: string
-  trackTitle: string
-  cover: string
-  preview: string
-  createdAt: string
 }

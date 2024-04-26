@@ -7,6 +7,7 @@ export type Program = {
   image: string
   schedule: ProgramSchedule[]
   hosts: User[]
+  description: string
 }
 
 export type ProgramResponse = Omit<Program, 'schedule' | 'slug' | 'id'> & ScheduleProperty

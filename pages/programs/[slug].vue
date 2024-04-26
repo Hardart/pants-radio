@@ -1,11 +1,10 @@
 <script setup lang='ts'>
-import type { IProgram } from '~/types/schedule';
-
+import type { Program } from '~/types/program';
 
 const { slug } = useRoute().params
 if (!slug || typeof slug !== 'string') throw createError('there are no SLUG in route or type of SLUG parameter is not a STRING')
 
-const { data } = await useFetch<IProgram>(`/api/v1/programs/${slug}`, {
+const { data } = await useFetch<Program>(`/api/v1/programs/${slug}`, {
   key: slug,
   getCachedData: key => useNuxtApp().payload.data[key],
 })
@@ -38,16 +37,8 @@ if (!program) throw createError('Program is not define')
       </div>
     </div>
   </Section>
- <Section>
-  <!-- PROGRAM DESRIPTION -->
-    <div class="xl:w-1/2 p-6 text-neutral-700 space-y-2 rounded-md shadow-md">
-      <p>
-        Каждое воскресенье на «Радио ШТАНЫ», подводим музыкальные итоги недели. И только от твоего голоса зависит, какая новинка станет
-        лучшей на этой неделе.
-      </p>
-      <p>В воскресенье с 18 до 19. Лучшие 20 песен звучат для Вас!</p>
-      <p>Пропустил в эфире? Слушай ПОДКАСТ!</p>
-    </div>
+  <Section>
+    <ProgramsDescription :description="program.description" />
   </Section>
 </template>
  

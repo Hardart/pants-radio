@@ -17,7 +17,6 @@ type Entries<T> = {
 }[keyof T][]
 
 declare global {
-  
   interface ICard extends BaseItem {
     preview: string
     category: {

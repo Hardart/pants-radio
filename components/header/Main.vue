@@ -4,20 +4,20 @@ const { mainMenu } = useMeta()
 
 useHead({
   htmlAttrs: {
-    class: computed(() => (isOpen.value ? 'overflow-clip' : '')),
-  },
+    class: computed(() => (isOpen.value ? 'overflow-clip' : ''))
+  }
 })
 </script>
 
 <template>
-  <header class="fixed w-full h-20 bg-secondary z-50">
-    <div class="flex items-center container mx-auto w-full h-full">
+  <header class="fixed z-50 h-20 w-full bg-secondary">
+    <div class="container mx-auto flex h-full w-full items-center">
       <Logo is-main />
       <HeaderRadio />
 
       <UiMenuButton @click="toggleMenuState" />
       <TransitionFade :duration="400">
-        <div v-if="isOpen" class="fixed inset-0 bg-stone-500/60 backdrop-blur-sm z-10 max-lg:hidden"></div>
+        <div v-if="isOpen" class="fixed inset-0 z-10 bg-stone-500/60 backdrop-blur-sm max-lg:hidden"></div>
       </TransitionFade>
       <HeaderMenu :main-menu />
     </div>

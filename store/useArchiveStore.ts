@@ -1,4 +1,1 @@
-
-export const useArchiveStore = defineStore('archive', () => {
-
-})
+export const useArchiveStore = defineStore('archive', () => {})

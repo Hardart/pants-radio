@@ -6,7 +6,8 @@ type DateProps = {
 }
 const emit = defineEmits(['set-day'])
 const props = defineProps<DateProps>()
-const isToday = (index: number) => new Date(props.year, props.month, index).toLocaleDateString() == new Date().toLocaleDateString()
+const isToday = (index: number) =>
+  new Date(props.year, props.month, index).toLocaleDateString() == new Date().toLocaleDateString()
 const monthLength = computed(() => new Date(props.year, props.month + 1, 0).getDate())
 const startWeekday = computed(() => {
   const n = new Date(props.year, props.month, 1).getDay()
@@ -15,12 +16,12 @@ const startWeekday = computed(() => {
 </script>
 
 <template>
-  <div class="grid grid-cols-7 grid-rows-6 gap-1 select-none">
+  <div class="grid select-none grid-cols-7 grid-rows-6 gap-1">
     <div v-for="index in 42">
-      <div class="flex justify-center items-center w-9 h-9" v-if="index < monthLength + startWeekday && index >= startWeekday">
+      <div class="flex h-9 w-9 items-center justify-center" v-if="index < monthLength + startWeekday && index >= startWeekday">
         <span
           @click="$emit('set-day', index + 1 - startWeekday)"
-          class="select-none w-8 h-8 rounded-full flex justify-center items-center hover:bg-primary/75 hover:cursor-pointer"
+          class="flex h-8 w-8 select-none items-center justify-center rounded-full hover:cursor-pointer hover:bg-primary/75"
           :class="isToday(index + 1 - startWeekday) && 'bg-primary text-neutral-50'"
         >
           {{ index + 1 - startWeekday }}

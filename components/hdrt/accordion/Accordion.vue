@@ -19,10 +19,10 @@ const onLink = () => {
 </script>
 
 <template>
-  <ul class="divide-y-2 px-4 divide-neutral-100/20">
-    <li class="py-4 cursor-pointer" v-for="(item, index) in items">
-      <div class="flex justify-between items-center px-4" @click.self.prevent="toggleItemState(index)">
-        <NuxtLink :to="item.link" class="text-neutral-50 text-2xl font-semibold first-letter:uppercase" @click.capture="onLink">{{
+  <ul class="divide-y-2 divide-neutral-100/20 px-4">
+    <li class="cursor-pointer py-4" v-for="(item, index) in items">
+      <div class="flex items-center justify-between px-4" @click.self.prevent="toggleItemState(index)">
+        <NuxtLink :to="item.link" class="text-2xl font-semibold text-neutral-50 first-letter:uppercase" @click.capture="onLink">{{
           item[titleKey]
         }}</NuxtLink>
         <Icon
@@ -35,7 +35,7 @@ const onLink = () => {
       </div>
       <TransitionExpand>
         <ul class="mb-4 mt-4 space-y-4 text-neutral-50/40" v-if="accordionState[index] && item[bodyKey]">
-          <li class="px-4 relative" v-for="child in item[bodyKey]">
+          <li class="relative px-4" v-for="child in item[bodyKey]">
             <NuxtLink class="flex" :to="child.link" @click="onLink">{{ child[titleKey] }}</NuxtLink>
           </li>
         </ul>

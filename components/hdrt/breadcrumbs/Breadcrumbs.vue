@@ -1,22 +1,27 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 const route = useRoute()
-const {labelList} = defineProps<{
+const { labelList } = defineProps<{
   showHome?: boolean
   labelList: string[]
 }>()
 let to = ''
-const crumbs = route.fullPath.substring(1).split('/').reduce((acc, curr, index) => {
-  to += `/${curr}`
-  const label = labelList[index].toLowerCase()
-  if (index === labelList.length - 1) acc.push({label })
-  else acc.push({label, to})
-  return acc
-}, [] as {label: string, to?: string}[])
+const crumbs = route.fullPath
+  .substring(1)
+  .split('/')
+  .reduce(
+    (acc, curr, index) => {
+      to += `/${curr}`
+      const label = labelList[index].toLowerCase()
+      if (index === labelList.length - 1) acc.push({ label })
+      else acc.push({ label, to })
+      return acc
+    },
+    [] as { label: string; to?: string }[]
+  )
 </script>
- 
+
 <template>
   <Section padding="small">
-    
     <ul class="flex items-center">
       <li v-if="showHome" class="text-primary hover:text-primary/80">
         <NuxtLink to="/"><Icon name="mdi:home" size="24" /></NuxtLink>
@@ -29,5 +34,5 @@ const crumbs = route.fullPath.substring(1).split('/').reduce((acc, curr, index) 
     </ul>
   </Section>
 </template>
- 
+
 <style></style>

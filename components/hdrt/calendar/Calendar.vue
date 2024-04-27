@@ -10,10 +10,10 @@ const onDay = (d: number) => (date.value = new Date(year.value, month.value, d))
 
 <template>
   <div>Выбранная дата - {{ Intl.DateTimeFormat('ru').format(date) }}</div>
-  <div class="inline-block p-2 bg-white drop-shadow-xl">
-    <div class="flex items-center justify-between mb-4">
+  <div class="inline-block bg-white p-2 drop-shadow-xl">
+    <div class="mb-4 flex items-center justify-between">
       <HdrtCalendarArrow @click="setMonth(-1)" />
-      <p class="uppercase font-medium">
+      <p class="font-medium uppercase">
         {{ Intl.DateTimeFormat('ru', { month: 'long', year: 'numeric' }).format(updatedDate).slice(0, -3) }}
       </p>
       <HdrtCalendarArrow @click="setMonth(1)" right />

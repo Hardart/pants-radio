@@ -3,10 +3,10 @@ const { footer } = useMeta()
 </script>
 
 <template>
-  <footer class="relative top-20 text-neutral-50 bg-secondary overflow-hidden">
+  <footer class="relative top-20 overflow-hidden bg-secondary text-neutral-50">
     <Section padding="small">
       <FooterSocialContacts />
-      <div class="flex max-sm:flex-col items-center max-sm:space-y-8">
+      <div class="flex items-center max-sm:flex-col max-sm:space-y-8">
         <FooterLogo />
         <FooterContacts :contacts="footer.contacts" />
       </div>

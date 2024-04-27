@@ -3,7 +3,7 @@ export function actionAfterDelay() {
   return function (fn: () => void, ms: number = 0, getTimerId?: NodeJS.Timeout | null) {
     if (getTimerId) timer = getTimerId
     if (timer) clearTimeout(timer)
-    timer = setTimeout(() => fn(), ms)
+    timer = setTimeout(fn, ms)
     if (getTimerId) getTimerId = timer // NOT WORK!!
   }
 }

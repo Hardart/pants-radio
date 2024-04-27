@@ -7,7 +7,7 @@ const props = withDefaults(
     showPages?: number
   }>(),
   {
-    showPages: 5,
+    showPages: 5
   }
 )
 
@@ -59,7 +59,7 @@ const onPrev = (page: number) => {
       <HdrtPaginationButton @click="onNext(page)" :is-disabled="page == totalPages" text="next" />
     </nav>
 
-    <nav class="flex justify-center items-center space-x-3" v-else>
+    <nav class="flex items-center justify-center space-x-3" v-else>
       <HdrtPaginationButton @click="onPrev(page)" :is-disabled="page == 1" type="prev" />
       <HdrtPaginationButton v-for="i in totalPages" @click="onClick" :is-active="page == i" :text="i" />
       <HdrtPaginationButton @click="onNext(page)" :is-disabled="page == totalPages" type="next" />

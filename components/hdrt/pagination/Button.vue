@@ -21,10 +21,10 @@ defineProps<{
 
 <style>
 .pagination {
-  @apply flex items-center justify-center w-12 h-12 rounded border hover:bg-primary hover:text-white disabled:hover:bg-transparent disabled:hover:text-neutral-500 disabled:text-neutral-500;
+  @apply flex h-12 w-12 items-center justify-center rounded border hover:bg-primary hover:text-white disabled:text-neutral-500 disabled:hover:bg-transparent disabled:hover:text-neutral-500;
 }
 
 .pagination.active {
-  @apply bg-primary/75 text-white cursor-default;
+  @apply cursor-default bg-primary/75 text-white;
 }
 </style>

@@ -7,7 +7,7 @@ const props = withDefaults(
     showPages?: number
   }>(),
   {
-    showPages: 5,
+    showPages: 5
   }
 )
 
@@ -16,7 +16,7 @@ const totalPages = computed(() => Math.ceil(props.total / props.perPage))
 
 <template>
   <div class="container mx-auto mt-10" v-if="totalPages > 1">
-    <nav class="flex justify-center items-center space-x-3" v-if="totalPages > showPages + 2">
+    <nav class="flex items-center justify-center space-x-3" v-if="totalPages > showPages + 2">
       <template v-if="page >= showPages">
         <HdrtPaginationLink :is-active="page === 1" :page-number="1" />
         <HdrtPaginationEmpty />
@@ -41,7 +41,7 @@ const totalPages = computed(() => Math.ceil(props.total / props.perPage))
         <HdrtPaginationLink :page-number="totalPages" />
       </template>
     </nav>
-    <nav class="flex justify-center items-center space-x-3" v-else>
+    <nav class="flex items-center justify-center space-x-3" v-else>
       <HdrtPaginationArrow :page-number="page - 1" type="prev" :is-disable-link="page == 1" />
       <HdrtPaginationLink v-for="i in totalPages" :is-active="page == i" :page-number="i" />
       <HdrtPaginationArrow :page-number="page + 1" type="next" :is-disable-link="page == totalPages" />

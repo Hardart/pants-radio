@@ -1,7 +1,7 @@
 export type Phone = {
   type: 'phone'
   phone: string
-} 
+}
 
 export type Email = {
   type: 'mail'
@@ -14,14 +14,14 @@ export type Link = {
   text: string
 }
 
-export type Contact = { label: string } & ( Phone | Email | Link )
+export type Contact = { label: string } & (Phone | Email | Link)
 
 interface IFooterInfoItem {
   iconValue: string | number
   text: string
 }
 
-export type FooterMeta =  {
+export type FooterMeta = {
   smsInfo: IFooterInfoItem
   licenseInfo: IFooterInfoItem
   contacts: Contact[]

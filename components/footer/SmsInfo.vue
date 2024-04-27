@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IFooterInfoItem } from '~/types/footer';
+import type { IFooterInfoItem } from '~/types/footer'
 
 defineProps<{
   info: IFooterInfoItem
@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex items-center px-2 pt-8 space-x-8">
+  <div class="flex items-center space-x-8 px-2 pt-8">
     <UiRateIcon :value="info.iconValue" />
     <div class="space-y-4 leading-5 sm:leading-4" v-html="info.text" />
   </div>

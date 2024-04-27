@@ -5,7 +5,7 @@ const jingleData: Track = {
   artistName: 'Радио Штаны',
   trackTitle: 'Прямой эфир',
   cover: '/images/simple_logo.svg',
-  preview: '',
+  preview: ''
 }
 const trackData = ref<Track>(jingleData)
 const radioURL = 'https://stream.lolamedia.ru/rsh_federal'
@@ -13,7 +13,6 @@ const radioElement = ref()
 const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs } = useMediaStore()
 const { fetching, volume } = storeRefs()
 
-const { onSocketConnect } = useSocket()
 onMounted(() => {
   // onSocketConnect(trackData)
   initMediaElement(radioElement)
@@ -21,13 +20,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex items-center flex-grow gap-x-4 mx-4">
+  <div class="mx-4 flex flex-grow items-center gap-x-4">
     <audio class="sr-only" ref="radioElement" preload="none" />
-    <HeaderRadioPlayBtn :is-fetching="fetching" :playing-radio="isTrackPlaying(radioURL)" @click="onPlayPreview(radioURL, 'radio')" />
+    <HeaderRadioPlayBtn
+      :is-fetching="fetching"
+      :playing-radio="isTrackPlaying(radioURL)"
+      @click="onPlayPreview(radioURL, 'radio')"
+    />
     <HeaderRadioArt :src="trackData?.cover" />
     <HeaderRadioTrackMeta :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
     <HeaderRadioVolume v-model:volume.number="volume" />
-    <HeaderRadioHost/>
+    <HeaderRadioHost />
   </div>
 </template>
-

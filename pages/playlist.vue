@@ -8,7 +8,6 @@ const { data } = await useFetch<API.ArchivePage>('/api/v1/track-archive', { quer
 </script>
 
 <template>
-  {{ dateFilter }}
   <SectionsPlaylistMainInfo />
   <SectionsPlaylistDateSelect/>
   <SectionsPlaylistTrackList v-if="data" :tracks="data.archive" />

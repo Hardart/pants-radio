@@ -1,16 +1,18 @@
 <script lang="ts" setup>
-import type { Article } from '~/types/article';
-import { STATE } from '@/types/state-enum'
 import type { API } from '~/types/api';
+import { STATE } from '@/types/state-enum'
 const { page, tags } = useQueryParams()
 const { tagList } = useMeta()
 const total = useState(STATE.TOTAL_NEWS, () => 0)
 
 const limit = ref(4)
-const {data} = await useFetch<API.NewsPage>('/api/v1/articles', { query: { page, limit, tags }, onResponse({response}){
-  const articlesCount = response.headers.get('X-Total')
-  total.value = articlesCount ? parseInt(articlesCount) : 0
-}})
+const { data } = await useFetch<API.NewsPage>('/api/v1/articles', 
+  { query: { page, limit, tags },
+  onResponse({response}){
+    const articlesCount = response.headers.get('X-Total')
+    total.value = articlesCount ? parseInt(articlesCount) : 0
+  }}
+)
 
 
 </script>

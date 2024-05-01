@@ -1,5 +1,6 @@
 <script setup lang="ts">
 type Padding = 'none' | 'small' | 'large' | 'topSmall' | 'bottomSmall' | 'topLarge' | 'bottomLarge' | 'top' | 'bottom' | 'default'
+
 enum Color {
   default = 'section-default',
   primary = 'section-primary',

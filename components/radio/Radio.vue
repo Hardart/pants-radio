@@ -12,9 +12,11 @@ const radioURL = 'https://stream.lolamedia.ru/rsh_federal'
 const radioElement = ref()
 const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs } = useMediaStore()
 const { fetching, volume } = storeRefs()
-
+const { $io } = useNuxtApp();
 onMounted(() => {
-  // onSocketConnect(trackData)
+  
+  const socket = $io()
+  socket.on('meta', (track: Track) => trackData.value = track)
   initMediaElement(radioElement)
 })
 </script>
@@ -22,14 +24,14 @@ onMounted(() => {
 <template>
   <div class="mx-4 flex flex-grow items-center gap-x-4">
     <audio class="sr-only" ref="radioElement" preload="none" />
-    <HeaderRadioPlayBtn
+    <RadioPlayBtn
       :is-fetching="fetching"
       :playing-radio="isTrackPlaying(radioURL)"
       @click="onPlayPreview(radioURL, 'radio')"
     />
-    <HeaderRadioArt :src="trackData?.cover" />
-    <HeaderRadioTrackMeta :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
-    <HeaderRadioVolume v-model:volume.number="volume" />
-    <HeaderRadioHost />
+    <RadioArt :src="trackData?.cover" />
+    <RadioTrackMeta :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
+    <RadioVolume v-model:volume.number="volume" />
+    <RadioHost />
   </div>
 </template>

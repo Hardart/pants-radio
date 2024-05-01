@@ -1,7 +1,8 @@
 import type { FooterMeta } from './footer'
+import type { MenuItem } from './menu'
 
 export type MetaData = {
   tagList: string[]
-  mainMenu: IMenuItem[]
+  mainMenu: MenuItem[]
   footer: FooterMeta
 }

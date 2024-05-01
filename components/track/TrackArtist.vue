@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-defineProps(['artist'])
+defineProps<{
+  artist: string
+}>()
 </script>
 
 <template>

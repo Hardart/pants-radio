@@ -1,31 +1,33 @@
 <script setup lang="ts">
-const show = ref(false)
-const showToggle = () => (show.value = !show.value)
-onMounted(showToggle)
+import type { Slide } from '~/types/slide'
+
+defineProps<{ slides: Slide[] }>()
+const [isShow, toggleShowState] = useToggle()
+onMounted(toggleShowState)
 </script>
 
 <template>
-  <div class="h-96 relative">
+  <div class="relative h-96">
     <TransitionFade>
-      <div uk-slideshow="autoplay:true" v-if="show">
-        <div class="relative rounded-lg overflow-hidden shadow-lg" tabindex="-1">
-          <ul class="uk-slideshow-items relative m-0 p-0 overflow-hidden touch-pan-y max-h-96">
-            <li v-for="i in 2" class="absolute inset-0 overflow-hidden will-change-transform [&:not(.uk-active)]:hidden">
-              <img :src="`/images/gallery/${i}.webp`" class="object-cover object-center h-full w-full" alt="" uk-cover />
+      <div uk-slideshow="autoplay:true" v-if="isShow">
+        <div class="relative overflow-hidden rounded-lg shadow-lg" tabindex="-1">
+          <ul class="uk-slideshow-items relative m-0 max-h-96 touch-pan-y overflow-hidden p-0">
+            <li v-for="slide in slides" class="absolute inset-0 overflow-hidden will-change-transform [&:not(.uk-active)]:hidden">
+              <img :src="correctImageSrc(slide.src)" class="h-full w-full object-cover object-center" alt="" uk-cover />
             </li>
           </ul>
 
-          <a class="absolute top-1/2 -translate-y-1/2 left-0 p-4 text-white" uk-slideshow-item="previous">
+          <a class="absolute left-0 top-1/2 -translate-y-1/2 p-4 text-white" uk-slideshow-item="previous">
             <Icon name="material-symbols:arrow-back-ios-rounded" size="25" />
           </a>
-          <a class="absolute top-1/2 -translate-y-1/2 right-0 p-4 text-white" uk-slideshow-item="next">
+          <a class="absolute right-0 top-1/2 -translate-y-1/2 p-4 text-white" uk-slideshow-item="next">
             <Icon name="material-symbols:arrow-back-ios-rounded" size="25" class="rotate-180" />
           </a>
         </div>
 
-        <ul class="my-5 flex uk-dotnav uk-slideshow-nav space-x-3 justify-center"></ul>
+        <ul class="uk-dotnav uk-slideshow-nav my-5 flex justify-center space-x-3"></ul>
       </div>
-      <div v-else class="absolute w-full h-full bg-neutral-200 rounded-lg"></div>
+      <div v-else class="absolute h-full w-full rounded-lg bg-neutral-200"></div>
     </TransitionFade>
   </div>
 </template>

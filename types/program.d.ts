@@ -1,4 +1,4 @@
-import type { ProgramSchedule, ScheduleProperty } from "./schedule"
+import type { ProgramSchedule, ScheduleProperty } from './schedule'
 
 export type Program = {
   id: string
@@ -8,6 +8,7 @@ export type Program = {
   schedule: ProgramSchedule[]
   hosts: User[]
   description: string
+  isPublished: boolean
 }
 
 export type ProgramResponse = Omit<Program, 'schedule' | 'slug' | 'id'> & ScheduleProperty

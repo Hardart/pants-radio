@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProgramResponse } from '~/types/program';
+import type { ProgramResponse } from '~/types/program'
 
 defineProps<{
   program: ProgramResponse
@@ -7,9 +7,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="sm:hidden flex items-center gap-x-5 relative rounded-md px-4 py-3 shadow-md bg-white">
+  <div class="relative flex items-center gap-x-5 rounded-md bg-white px-4 py-3 shadow-md sm:hidden">
     <div>
-      <img class="rounded-md" :src="program.image ? program.image : '/images/plug280x280.svg'" width="60" height="60" alt="" />
+      <img class="rounded-md" v-if="program.image" :src="correctImageSrc(program.image)" width="60" height="60" alt="" />
+      <img class="rounded-md" v-else src="/images/plug280x280.svg" width="60" height="60" alt="" />
     </div>
     <div>
       <div class="w-32 text-nowrap">

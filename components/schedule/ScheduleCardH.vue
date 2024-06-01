@@ -15,7 +15,7 @@ defineProps<{
     </div>
     <div>
       <img class="rounded-md" v-if="program.image" :src="correctImageSrc(program.image)" width="60" height="60" alt="" />
-      <img class="rounded-md" v-else src="/images/plug280x280.svg" width="60" height="60" alt="" />
+      <img class="rounded-md" v-else src="/assets/plug280x280.svg" width="60" height="60" alt="" />
     </div>
     <div>
       <h4 class="text-lg font-medium">{{ program.title }}</h4>

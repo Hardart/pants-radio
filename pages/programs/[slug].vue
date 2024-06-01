@@ -19,7 +19,7 @@ if (!program.isPublished) await navigateTo('/programs')
     <div class="flex items-center max-sm:flex-col md:space-x-8">
       <div class="min-w-80 overflow-hidden rounded-lg">
         <img v-if="program.image" :src="correctImageSrc(program.image)" class="size-full object-cover" :alt="program.title" />
-        <img v-else src="/images/plug280x280.svg" class="size-full object-cover" :alt="program.title" />
+        <img v-else src="/assets/plug280x280.svg" class="size-full object-cover" :alt="program.title" />
       </div>
       <div class="flex flex-col space-y-4 p-4 max-sm:items-center">
         <h1 class="text-3xl font-bold tracking-wide sm:text-4xl md:text-5xl">{{ program.title }}</h1>

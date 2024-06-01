@@ -5,7 +5,7 @@ enum Color {
   default = 'section-default',
   primary = 'section-primary',
   secondary = 'section-secondary',
-  muted = 'section-muted',
+  muted = 'section-muted'
 }
 
 enum PaddingY {
@@ -18,7 +18,7 @@ enum PaddingY {
   small = 'py-4 md:py-6 lg:py-8',
   topSmall = 'pt-4 md:pt-6 lg:pt-8',
   bottomSmall = 'pb-4 md:pb-6 lg:pb-8',
-  none = '',
+  none = ''
 }
 withDefaults(
   defineProps<{
@@ -33,16 +33,16 @@ withDefaults(
     expand: false,
     paddingTopRemove: false,
     paddingSide: 'both',
-    padding: 'default',
+    padding: 'default'
   }
 )
 </script>
 
 <template>
   <section
-    class="section bg-cover bg-no-repeat relative"
+    class="section relative bg-cover bg-no-repeat"
     :class="[Color[color || 'default'], PaddingY[padding]]"
-    :style="[img ? `background-image: url(/images/sections/${img})` : '']"
+    :style="[img ? `background-image: url(/sections/images/${img})` : '']"
   >
     <slot v-if="noContainer" />
     <div v-else class="container mx-auto px-2">

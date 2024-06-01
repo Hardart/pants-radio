@@ -4,7 +4,7 @@ import type { Track } from '~/types/track'
 const jingleData: Track = {
   artistName: 'Радио Штаны',
   trackTitle: 'Прямой эфир',
-  cover: '/images/simple_logo.svg',
+  cover: '/assets/simple_logo.svg',
   preview: ''
 }
 const trackData = ref<Track>(jingleData)

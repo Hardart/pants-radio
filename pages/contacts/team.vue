@@ -5,5 +5,3 @@
     <div>Page: Team</div>
   </Section>
 </template>
-
-<style scoped></style>

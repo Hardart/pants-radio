@@ -1,11 +1,11 @@
 export type Phone = {
   type: 'phone'
-  phone: string
+  phone: { number: string }
 }
 
 export type Email = {
   type: 'mail'
-  mail: string
+  mail: { title: string }
 }
 
 export type Link = {

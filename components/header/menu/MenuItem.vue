@@ -5,20 +5,19 @@ defineProps<{
   menuItem: MenuItem
   isChild?: boolean
 }>()
-const { toggleMenuState } = useMenu()
+defineEmits(['toggleMenuState'])
 </script>
 
 <template>
-  <li class="relative py-1">
+  <li class="relative py-1" @click="$emit('toggleMenuState')">
     <NuxtLink
       :to="menuItem.to"
-      @click="toggleMenuState"
       :class="[isChild ? 'menu-item__child' : 'menu-item', $route.path.includes(menuItem.to + '/') && 'text-primary']"
       active-class="text-primary"
     >
-      {{ menuItem.label }}</NuxtLink
-    >
-    <ul v-if="menuItem.childrens" class="w-full text-neutral-100 mt-4 space-y-2">
+      {{ menuItem.label }}
+    </NuxtLink>
+    <ul v-if="menuItem.childrens" class="mt-4 w-full space-y-2 text-neutral-100">
       <HeaderMenuItem v-for="child in menuItem.childrens" :menu-item="child" is-child />
     </ul>
   </li>

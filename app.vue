@@ -2,10 +2,12 @@
 import { STATE } from '@/types/state-enum'
 const focused = useWindowFocus()
 const icon = useFavicon()
+
 watch(focused, () => {
   if (focused.value) icon.value = '/favicon_out.svg'
   else icon.value = '/favicon.svg'
 })
+
 const { data: metaData } = await useAsyncData(STATE.META, () => $fetch('/api/v1/meta'))
 if (metaData) useState(STATE.META, () => metaData)
 </script>
@@ -17,7 +19,7 @@ if (metaData) useState(STATE.META, () => metaData)
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <LazyFooterMain />
+    <FooterMain />
   </div>
 </template>
 

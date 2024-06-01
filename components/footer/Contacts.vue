@@ -14,12 +14,12 @@ defineProps<{
       <a
         v-if="contact.type === 'phone'"
         class="text-neutral-400 hover:text-primary"
-        :href="`tel:${contact.phone.replace(/[\(\)\s]/g, '')}`"
+        :href="`tel:${contact.phone.number.replace(/[\(\)\s]/g, '')}`"
       >
-        {{ contact.phone }}
+        {{ contact.phone.number }}
       </a>
-      <a class="text-neutral-400 hover:text-primary" v-else-if="contact.type === 'mail'" :href="`mailto:${contact.mail}`">
-        {{ contact.mail }}
+      <a class="text-neutral-400 hover:text-primary" v-else-if="contact.type === 'mail'" :href="`mailto:${contact.mail.title}`">
+        {{ contact.mail.title }}
       </a>
       <a class="text-neutral-400 hover:text-primary" v-else :href="contact.href" v-html="splitTextByComma(contact.text)" />
     </li>

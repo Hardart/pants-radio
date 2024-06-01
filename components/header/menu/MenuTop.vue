@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const { toggleMenuState } = useMenu()
+defineEmits(['toggleMenuState'])
 </script>
 
 <template>
-  <div class="flex container mx-auto items-center justify-between text-neutral-100 px-3 my-2">
+  <div class="container mx-auto my-2 flex items-center justify-between px-3 text-neutral-100">
     <img src="/images/logo_text.svg" class="h-12" />
-    <div class="p-2 hover:bg-neutral-700/30 cursor-pointer" @click="toggleMenuState">
+    <div class="cursor-pointer p-2 hover:bg-neutral-700/30" @click="$emit('toggleMenuState')">
       <Icon name="material-symbols:close-rounded" size="50" />
     </div>
   </div>

@@ -19,5 +19,3 @@ const { footer } = useMeta()
     </Section>
   </footer>
 </template>
-
-<style scoped></style>

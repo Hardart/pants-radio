@@ -22,7 +22,7 @@ defineProps<{
       class="flex min-h-44 w-full items-center justify-center rounded-xl bg-sky-500 font-bold uppercase tracking-widest text-white"
     >
       <div class="absolute">no image</div>
-      <img src="/images/placeholder.svg" width="610" height="357" class="aspect-video" loading="lazy" :alt />
+      <img src="/assets/placeholder.svg" width="610" height="357" class="aspect-video" loading="lazy" :alt />
     </div>
     <!-- <div class="bg-stone-500/30 group-hover:bg-transparent transition-colors absolute inset-0 rounded-xl"></div> -->
   </div>

@@ -4,6 +4,7 @@ export const addDevPort = (input: string, port: string) => (input.includes('http
 
 export const parseHtml = (input: string) => {
   input.match(/<img[^<]*/g)?.forEach((string) => {
+    string = string.replaceAll('http://localhost:3068', '')
     input = input.replace(string, `<p>${string}</p>`)
   })
   return input

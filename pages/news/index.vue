@@ -6,7 +6,7 @@ const { tagList } = useMeta()
 const total = useState(STATE.TOTAL_NEWS, () => 0)
 
 const limit = ref(4)
-const { data } = useFetch<API.NewsPage>('/api/v1/articles', {
+const { data } = await useFetch<API.NewsPage>('/api/v1/articles', {
   query: { page, limit, tags },
   onResponse({ response }) {
     const articlesCount = response.headers.get('X-Total')

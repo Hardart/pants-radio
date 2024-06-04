@@ -8,7 +8,7 @@ const jingleData: Track = {
   preview: ''
 }
 const trackData = ref<Track>(jingleData)
-const radioURL = 'https://stream.lolamedia.ru/rsh_federal'
+const radioURL = 'https://stream.elarin.ru/rsh_federal'
 const radioElement = ref()
 const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs } = useMediaStore()
 const { fetching, volume } = storeRefs()

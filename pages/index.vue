@@ -6,10 +6,11 @@ const { data } = await useFetch<API.MainPage>('/api/v1/base', {
   key: 'base-data',
   getCachedData: (key) => useNuxtApp().payload.data[key]
 })
-if (!data.value) throw createError("Can't fetch data")
-provide('articles', data.value.articles)
-provide('hosts', data.value.hosts)
-provide('gallery', data.value.slides)
+const res = toValue(data)
+if (!res) throw createError("Can't fetch data")
+provide('articles', res.articles)
+provide('hosts', res.hosts)
+provide('gallery', res.slides)
 // useHead({
 //   script: [{ src: '/js/slideshow.min.js', tagPosition: 'bodyClose', defer: true, processTemplateParams: process.client }],
 // })

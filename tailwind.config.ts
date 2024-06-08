@@ -15,24 +15,24 @@ export default {
           700: '#f15a24',
           800: '#f15a24',
           900: '#f15a24',
-          950: '#f15a24',
+          950: '#f15a24'
         },
         primary: '#f15a24',
         primary_rgb: '241, 90, 36',
         secondary: '#1a1a1a',
         neutral: {
-          simple: '#fafbfc',
-        },
+          simple: '#fafbfc'
+        }
       },
       aspectRatio: {
         auto: 'auto',
         square: '1 / 1',
-        video: '16 / 9',
-      },
-    },
+        video: '16 / 9'
+      }
+    }
   },
   future: {
-    hoverOnlyWhenSupported: true,
+    hoverOnlyWhenSupported: true
   },
-  plugins: [],
+  plugins: []
 } satisfies Config

@@ -25,7 +25,7 @@ const correctDayId = (id: number) => (id == 7 ? 0 : id)
         >
           {{ weekdays[correctDayId(day._id)] }}
         </p>
-        <Icon name="mdi:chevron-up" class="text-stone-600" :class="accordionState[index] && 'rotate-180'" size="30" />
+        <Icon name="mdi:chevron-down" class="text-stone-600" :class="accordionState[index] && 'rotate-180'" size="30" />
       </div>
       <ul class="mb-4 mt-2 space-y-3" v-if="accordionState[index]">
         <li v-for="program in day.programs">

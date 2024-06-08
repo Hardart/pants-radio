@@ -14,12 +14,10 @@ const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs } = useMediaS
 const { fetching, volume } = storeRefs()
 const { $io } = useNuxtApp()
 onMounted(() => {
+  initMediaElement(radioElement)
   const socket = $io()
   socket.on('meta', (track: Track) => (trackData.value = track))
-  socket.on('host:data', () => {
-    useState('host', () => true)
-  })
-  initMediaElement(radioElement)
+  socket.on('host:data', () => useState('host', () => true))
 })
 </script>
 

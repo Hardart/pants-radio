@@ -1,35 +1,29 @@
 <script setup lang="ts">
 import { DatePicker as VCalendarDatePicker } from 'v-calendar'
 import 'v-calendar/style.css'
-// const { tracks } = useMeta()
-
-
-const props = defineProps({
-  modelValue: {
-    type: [Date, Object],
-  },
-})
+defineProps<{ startFrom: string }>()
+const dateModel = defineModel<Date>({ required: true })
 
 const emit = defineEmits(['update:model-value', 'close'])
 
 const date = computed({
-  get: () => props.modelValue,
-  set: value => {
+  get: () => dateModel.value,
+  set: (value) => {
     emit('update:model-value', value)
     emit('close')
-  },
+  }
 })
 
 const attrs = {
   transparent: true,
   borderless: true,
   color: 'primary',
-  'first-day-of-week': 2,
+  'first-day-of-week': 2
 }
 </script>
 
 <template>
-  <VCalendarDatePicker v-model="date" v-bind="{ ...attrs }" :max-date="new Date()"  />
+  <VCalendarDatePicker v-model="date" v-bind="{ ...attrs }" :min-date="startFrom" :max-date="new Date()" />
 </template>
 
 <style>

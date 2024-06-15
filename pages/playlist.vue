@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import type { API } from '~/types/api';
+import type { API } from '~/types/api'
 const { custom } = useDates()
-const date = useState<Date>('archive-date', () => new Date())
-const hour = useState('archive-hour', setHour)
+const date = useState('archive:date', () => new Date())
+const hour = useState('archive:hour', setHour)
+watch(date, (curr, prev) => {
+  if (!curr) date.value = prev
+})
 const dateFilter = computed(() => custom(date.value).setHour(hour.value).toISOString())
 const { data } = await useFetch<API.ArchivePage>('/api/v1/track-archive', { query: { dateFilter } })
+const res = toValue(data)
+if (!res) throw createError('errrorroororororoororo')
+useState('archive:start', () => res.startFrom)
 </script>
 
 <template>
   <SectionsPlaylistMainInfo />
-  <SectionsPlaylistDateSelect/>
+  <SectionsPlaylistDateSelect />
   <SectionsPlaylistTrackList v-if="data" :tracks="data.archive" />
 </template>

@@ -1,7 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <Section>
+  <HdrtBreadcrumbs show-home :label-list="['контакты', 'о радиостанции']" />
+  <Section padding="bottomSmall">
     <UiPageTitle title="О радиостанции" />
     <p>
       <b class="text-xl">«Радио ШТАНЫ»</b> — это современная молодёжная радиостанция, которая предлагает уникальный формат
@@ -26,7 +27,7 @@
   </Section>
 </template>
 
-<style>
+<style scoped>
 p + p {
   margin-top: 1rem;
 }

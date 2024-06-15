@@ -1,9 +1,10 @@
 <script setup lang="ts">
-const { items } = defineProps<{
+const { items, titleKey } = defineProps<{
   items: any[]
   titleKey: string
   bodyKey: string
 }>()
+
 const emit = defineEmits(['on-click'])
 const accordionState = ref<{ [key: number]: boolean }>({})
 const initAccordionState = () => {
@@ -22,9 +23,9 @@ const onLink = () => {
   <ul class="divide-y-2 divide-neutral-100/20 px-4">
     <li class="cursor-pointer py-4" v-for="(item, index) in items">
       <div class="flex items-center justify-between px-4" @click.self.prevent="toggleItemState(index)">
-        <NuxtLink :to="item.link" class="text-2xl font-semibold text-neutral-50 first-letter:uppercase" @click.capture="onLink">{{
-          item[titleKey]
-        }}</NuxtLink>
+        <NuxtLink :to="item.to" class="text-2xl font-semibold text-neutral-50 first-letter:uppercase" @click.capture="onLink">
+          {{ item[titleKey] }}
+        </NuxtLink>
         <Icon
           name="mdi:chevron-up"
           class="text-stone-600"
@@ -36,7 +37,7 @@ const onLink = () => {
       <TransitionExpand>
         <ul class="mb-4 mt-4 space-y-4 text-neutral-50/40" v-if="accordionState[index] && item[bodyKey]">
           <li class="relative px-4" v-for="child in item[bodyKey]">
-            <NuxtLink class="flex" :to="child.link" @click="onLink">{{ child[titleKey] }}</NuxtLink>
+            <NuxtLink class="flex" :to="child.to" @click="onLink">{{ child[titleKey] }} </NuxtLink>
           </li>
         </ul>
       </TransitionExpand>

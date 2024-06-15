@@ -1,13 +1,22 @@
-import { Contact } from './footer'
-
-interface IContactItem {
-  title: string
-  description?: string
-  phones: Contact[]
-  emails: Contact[]
+export type Phone = {
+  phone: string
 }
 
+export type Email = {
+  mail: string
+}
+
+export type Address = {
+  address: {
+    href: string
+    text: string
+  }
+}
+
+export type Contact = { label: string } & (Phone | Email | Address)
+
 export type Contacts = {
-  contacts: IContactItem & { address: string }
-  commercial: IContactItem
+  phones: ({ label: string } & Phone)[]
+  mails: ({ label: string } & Email)[]
+  addresses: ({ label: string } & Address)[]
 }

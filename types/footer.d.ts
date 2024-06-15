@@ -1,20 +1,4 @@
-export type Phone = {
-  type: 'phone'
-  phone: { number: string }
-}
-
-export type Email = {
-  type: 'mail'
-  mail: { title: string }
-}
-
-export type Link = {
-  type: 'link'
-  href: string
-  text: string
-}
-
-export type Contact = { label: string } & (Phone | Email | Link)
+import type { Contact } from './contacts'
 
 interface IFooterInfoItem {
   iconValue: string | number

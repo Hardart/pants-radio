@@ -12,16 +12,20 @@ defineProps<{
     <li v-for="contact in contacts">
       <h5 class="font-medium">{{ contact.label }}:</h5>
       <a
-        v-if="contact.type === 'phone'"
+        v-if="'phone' in contact"
         class="text-neutral-400 hover:text-primary"
-        :href="`tel:${contact.phone.number.replace(/[\(\)\s]/g, '')}`"
+        :href="`tel:${contact.phone.replace(/[\(\)\s]/g, '')}`"
+        >{{ contact.phone }}</a
       >
-        {{ contact.phone.number }}
+      <a class="text-neutral-400 hover:text-primary" v-else-if="'mail' in contact" :href="`mailto:${contact.mail}`">
+        {{ contact.mail }}
       </a>
-      <a class="text-neutral-400 hover:text-primary" v-else-if="contact.type === 'mail'" :href="`mailto:${contact.mail.title}`">
-        {{ contact.mail.title }}
-      </a>
-      <a class="text-neutral-400 hover:text-primary" v-else :href="contact.href" v-html="splitTextByComma(contact.text)" />
+      <a
+        class="text-neutral-400 hover:text-primary"
+        v-else
+        :href="contact.address.href"
+        v-html="splitTextByComma(contact.address.text)"
+      />
     </li>
   </ul>
 </template>

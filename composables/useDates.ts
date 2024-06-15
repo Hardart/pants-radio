@@ -12,7 +12,7 @@ export const useDates = () => {
     },
     isToday(date: Date) {
       return date.toLocaleDateString('ru', dateOptions) === this.day
-    },
+    }
   })
   const custom = (customDate: Date) => ({
     setHour(hh: number | string) {
@@ -20,7 +20,7 @@ export const useDates = () => {
     },
     get date() {
       return new Date(customDate).toLocaleDateString('ru', dateOptions)
-    },
+    }
   })
 
   return { current, custom }

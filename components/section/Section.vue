@@ -44,7 +44,10 @@ withDefaults(
     :class="[Color[color || 'default'], PaddingY[padding]]"
     :style="[img ? `background-image: url(/sections/images/${img})` : '']"
   >
-    <slot v-if="noContainer" />
+    <div v-if="noContainer">
+      <slot />
+    </div>
+
     <div v-else class="container mx-auto px-2">
       <slot />
     </div>

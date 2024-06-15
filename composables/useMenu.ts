@@ -1,8 +1,7 @@
 export const useMenu = () => {
-  const isOpen = useState('menu-state', () => false)
+  const isMenuOpen = useState('menu-state', () => false)
   const toggleMenuState = () => {
-    console.log(isOpen.value)
-    isOpen.value = !isOpen.value
+    isMenuOpen.value = !isMenuOpen.value
   }
-  return { isOpen, toggleMenuState }
+  return { isMenuOpen, toggleMenuState }
 }

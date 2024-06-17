@@ -1,22 +1,25 @@
-export type Phone = {
-  phone: string
+type BaseContactItem = {
+  id: string
+  label: string
+  showIn: ['footer'?, 'contacts'?, 'commersial'?]
+  priority?: number
 }
+export type Phone = BaseContactItem & { number: string }
 
-export type Email = {
-  mail: string
-}
+export type Mail = BaseContactItem & { address: string }
 
-export type Address = {
-  address: {
-    href: string
-    text: string
+export type Address = BaseContactItem & {
+  address: string
+  city: string
+  state: string
+  zip: number
+  mapUrl: {
+    yandex: string
   }
 }
 
-export type Contact = { label: string } & (Phone | Email | Address)
-
 export type Contacts = {
-  phones: ({ label: string } & Phone)[]
-  mails: ({ label: string } & Email)[]
-  addresses: ({ label: string } & Address)[]
+  phones: Phone[]
+  emails: Mail[]
+  addresses: Address[]
 }

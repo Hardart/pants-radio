@@ -1,5 +1,5 @@
 import type { Article, Category } from './article'
-import type { Contacts } from './contacts'
+import type { Contacts, Mail, Phone } from './contacts'
 import type { Program, ProgramResponse } from './program'
 import type { Slide } from './slide'
 import type { Track } from './track'
@@ -12,5 +12,6 @@ export declare module API {
   type ArchivePage = { archive: Track[]; startFrom: string }
   type Programs = { programs: Program[] }
   type ContactsPage = { contacts: Contacts; commersial: Contacts }
+  type ContactsTESTPage = { phones: Phone[]; emails: Mail[]; addresses: Address[] }
   type TeamPage = { team: User[] }
 }

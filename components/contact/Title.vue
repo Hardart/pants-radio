@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { type } = defineProps<{ type: 'phones' | 'mails' | 'addresses' }>()
+const { type } = defineProps<{ type: 'phone' | 'mail' | 'address' }>()
 const props = [
-  { type: 'phones', icon: 'ph:phone-call-light', label: 'Телефоны' },
-  { type: 'mails', icon: 'ph:envelope-simple-light', label: 'Электронная почта' },
-  { type: 'addresses', icon: 'ph:map-pin-light', label: 'Адрес' }
+  { type: 'phone', icon: 'ph:phone-call-light', label: 'Телефоны' },
+  { type: 'mail', icon: 'ph:envelope-simple-light', label: 'Электронная почта' },
+  { type: 'address', icon: 'ph:map-pin-light', label: 'Адрес' }
 ]
 const p = computed(() => props.find((prop) => prop.type == type))
 </script>

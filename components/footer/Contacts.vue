@@ -1,31 +1,27 @@
 <script setup lang="ts">
-import type { Contact } from '~/types/footer'
 import { splitTextByComma } from '@/utils/splitTextByComma'
+import type { Contacts } from '~/types/contacts'
 
 defineProps<{
-  contacts: Contact[]
+  contacts: Contacts
 }>()
 </script>
 
 <template>
   <ul class="space-y-2 px-4 max-md:text-sm max-sm:text-center sm:w-3/5">
-    <li v-for="contact in contacts">
-      <h5 class="font-medium">{{ contact.label }}:</h5>
-      <a
-        v-if="'phone' in contact"
-        class="text-neutral-400 hover:text-primary"
-        :href="`tel:${contact.phone.replace(/[\(\)\s]/g, '')}`"
-        >{{ contact.phone }}</a
-      >
-      <a class="text-neutral-400 hover:text-primary" v-else-if="'mail' in contact" :href="`mailto:${contact.mail}`">
-        {{ contact.mail }}
-      </a>
-      <a
+    <li v-for="phone in contacts.phones">
+      <h5 class="font-medium">{{ phone.label }}:</h5>
+      <a class="text-neutral-400 hover:text-primary" :href="`tel:${phone.number.replace(/[\(\)\s]/g, '')}`">{{ phone.number }}</a>
+    </li>
+    <li v-for="mail in contacts.emails.filter((m) => m.showIn.includes('footer'))">
+      <h5 class="font-medium">{{ mail.label }}:</h5>
+      <a class="text-neutral-400 hover:text-primary" :href="`mailto:${mail.address}`">{{ mail.address }} </a>
+    </li>
+    <!-- <a
         class="text-neutral-400 hover:text-primary"
         v-else
         :href="contact.address.href"
         v-html="splitTextByComma(contact.address.text)"
-      />
-    </li>
+      /> -->
   </ul>
 </template>

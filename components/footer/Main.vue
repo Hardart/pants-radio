@@ -8,6 +8,7 @@ const { footer } = useMeta()
       <FooterSocialContacts />
       <div class="flex items-center max-sm:flex-col max-sm:space-y-8">
         <FooterLogo />
+
         <FooterContacts :contacts="footer.contacts" />
       </div>
     </Section>

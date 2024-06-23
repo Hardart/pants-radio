@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { footer } = useMeta()
+const { footerData } = useMeta()
 </script>
 
 <template>
@@ -8,14 +8,13 @@ const { footer } = useMeta()
       <FooterSocialContacts />
       <div class="flex items-center max-sm:flex-col max-sm:space-y-8">
         <FooterLogo />
-
-        <FooterContacts :contacts="footer.contacts" />
+        <FooterContacts :contact="footerData" />
       </div>
     </Section>
     <Section padding="small" padding-top-remove>
       <div class="divide-y-2 divide-neutral-700/60">
-        <FooterLicenseInfo :info="footer.licenseInfo" />
-        <FooterSmsInfo :info="footer.smsInfo" />
+        <FooterLicenseInfo :info="footerData.licenseInfo" />
+        <FooterSmsInfo :info="footerData.smsInfo" />
       </div>
     </Section>
   </footer>

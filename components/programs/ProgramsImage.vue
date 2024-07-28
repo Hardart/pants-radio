@@ -6,9 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="min-w-80">
+  <div class="size-96">
     <img :src="correctImageSrc(src)" class="size-full rounded-lg object-cover" :alt />
   </div>
 </template>
-
-<style></style>

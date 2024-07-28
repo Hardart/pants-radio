@@ -10,7 +10,7 @@ const jingleData: Track = {
 const trackData = ref<Track>(jingleData)
 const radioURL = 'https://stream.elarin.ru/rsh_federal'
 const radioElement = ref()
-const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs } = useMediaStore()
+const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs, isTrackFetching } = useMediaStore()
 const { fetching, volume } = storeRefs()
 const { $io } = useNuxtApp()
 onMounted(() => {
@@ -24,7 +24,12 @@ onMounted(() => {
 <template>
   <div class="mx-4 flex flex-grow items-center gap-x-4">
     <audio class="sr-only" ref="radioElement" preload="none" />
-    <RadioPlayBtn :is-fetching="fetching" :playing-radio="isTrackPlaying(radioURL)" @click="onPlayPreview(radioURL, 'radio')" />
+    <RadioPlayBtn
+      class="mx-2 border-x border-neutral-500 px-5"
+      :is-fetching="isTrackFetching(radioURL)"
+      :is-playing="isTrackPlaying(radioURL)"
+      @click="onPlayPreview(radioURL, 'radio')"
+    />
     <RadioArt :src="trackData?.cover" />
     <RadioTrackMeta :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
     <RadioVolume v-model:volume.number="volume" />

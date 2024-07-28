@@ -31,7 +31,7 @@ declare global {
 
   interface IBreadcrumbsItem {
     label: string
-    link: string
+    to: string
   }
 
   type WeekDay = 'Понедельник' | 'Вторник' | 'Среда' | 'Четверг' | 'Пятница' | 'Суббота' | 'Воскресенье'

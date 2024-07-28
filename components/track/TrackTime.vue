@@ -7,8 +7,6 @@ defineProps<{
 
 <template>
   <div class="ml-auto">
-    <span>{{ currentTime }} / {{ duration }}</span>
+    <span>00:{{ Math.trunc(currentTime) }} / 00:{{ Math.trunc(duration) }}</span>
   </div>
 </template>
-
-<style></style>

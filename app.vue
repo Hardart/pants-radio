@@ -20,6 +20,7 @@ if (metaData) useState(STATE.META, () => metaData)
       <NuxtPage />
     </NuxtLayout>
     <FooterMain />
+    <UNotifications />
   </div>
 </template>
 

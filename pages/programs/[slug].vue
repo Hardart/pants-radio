@@ -9,15 +9,16 @@ const { data } = await useFetch<Program>(`/api/v1/programs/${slug}`, {
   getCachedData: (key) => useNuxtApp().payload.data[key]
 })
 const program = toValue(data)
-if (!program) throw createError('Program is not define')
+if (!program) throw createError('Program is not defined')
 if (!program.isPublished) await navigateTo('/programs')
+const hosts = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'ие' : 'ий'))
 </script>
 
 <template>
-  <HdrtBreadcrumbs show-home :label-list="['программы', program.title]" />
+  <HdrtBreadcrumbs v-if="program" show-home :label-list="['программы', program.title]" />
   <Section padding="small" v-if="program">
     <div class="flex items-center max-sm:flex-col md:space-x-8">
-      <div class="min-w-80 overflow-hidden rounded-lg">
+      <div class="aspect-square max-w-96 overflow-hidden rounded-lg">
         <img v-if="program.image" :src="correctImageSrc(program.image)" class="size-full object-cover" :alt="program.title" />
         <img v-else src="/assets/plug280x280.svg" class="size-full object-cover" :alt="program.title" />
       </div>
@@ -28,7 +29,7 @@ if (!program.isPublished) await navigateTo('/programs')
             <img :src="host.avatar || '/images/hosts/larin.png'" width="64" height="64" alt="" />
           </div>
           <div>
-            <p class="font-medium leading-6">Ведущ{{ program.hosts.length > 1 ? 'ие' : 'ий' }}</p>
+            <p class="font-medium leading-6">{{ hosts }}</p>
             <p class="text-lg font-bold leading-6">{{ host.fullName }}</p>
           </div>
         </div>
@@ -38,9 +39,7 @@ if (!program.isPublished) await navigateTo('/programs')
       </div>
     </div>
   </Section>
-  <Section v-if="program.description">
+  <Section v-if="program && program.description">
     <ProgramsDescription :description="program.description" />
   </Section>
 </template>
-
-<style></style>

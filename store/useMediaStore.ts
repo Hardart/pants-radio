@@ -1,64 +1,92 @@
 type MediaType = 'track' | 'radio'
 export const useMediaStore = defineStore('media', () => {
   // STATE
+  const ELEMENT_IS_NOT_DEFINED_ERROR = 'Media element is not defined in Media Store'
+  const VOLUME_DIVIDER = 100
   const fetching = ref(false)
   const mediaElement = ref<HTMLAudioElement | null>()
   const mediaSource = ref('')
-  const playing = ref(false)
+  const isMediaPlaying = ref(false)
   const volume = ref(20)
   const mediaType = ref<MediaType>('radio')
+  const { currentTime, duration } = useMediaControls(mediaElement, { src: mediaSource })
 
   // GETTERS
   const isSourceEqual = (source: string) => mediaSource.value === source
-  const isTrackPlaying = (source: string) => isSourceEqual(source) && playing.value
+  const isTrackPlaying = (source: string) => isSourceEqual(source) && isMediaPlaying.value
+  const isTrackFetching = (source: string) => isSourceEqual(source) && fetching.value
 
   // ACTIONS
-  const togglePlaying = () => (playing.value = !playing.value)
-  const playPauseMedia = () => (playing.value ? play() : pause())
-  const play = async () => {
-    if (mediaType.value === 'radio') fetching.value = true
-    await mediaElement.value?.play()
-    fetching.value = false
+  const togglePlaying = () => (isMediaPlaying.value = !isMediaPlaying.value)
+  const togglePlayPause = () => (isMediaPlaying.value ? play() : pause())
+  const toggleMediaState = async () => {
+    togglePlaying()
+    await delay(10)
+    togglePlayPause()
   }
-  const pause = () => mediaElement.value?.pause()
+  const play = async () => {
+    if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
+    fetching.value = true
+    const timerId = setTimeout(() => {
+      resetMediaSource()
+    }, 7000)
+    mediaElement.value
+      .play()
+      .then(() => clearTimeout(timerId))
+      .catch(() => useToast().add({ title: 'Что-то пошло не так, пожалуйста перезагрузите страницу' }))
+      .finally(() => (fetching.value = false))
+  }
+
+  const pause = () => {
+    if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
+    mediaElement.value.pause()
+  }
 
   const resetMediaSource = async () => {
+    if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
     await delay(10)
-    mediaElement.value!.src = ''
+    mediaElement.value.src = ''
     mediaSource.value = ''
   }
 
   const setMediaSource = (source: string) => {
+    if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
     mediaSource.value = source
-    mediaElement.value!.src = source
+    mediaElement.value.src = source
   }
 
   const onPlayPreview = async (source: string, type: MediaType) => {
     if (fetching.value) return
     mediaType.value = type
     if (isSourceEqual(source)) {
-      togglePlaying()
-      await delay(10)
-      playPauseMedia()
+      await toggleMediaState()
       if (type === 'radio') resetMediaSource()
     } else {
-      playing.value = false
+      isMediaPlaying.value = false
       setMediaSource(source)
-
-      togglePlaying()
-      await delay(10)
-      playPauseMedia()
+      await toggleMediaState()
     }
   }
 
   const initMediaElement = (element: Ref<HTMLAudioElement>) => {
     mediaElement.value = element.value
-    mediaElement.value.volume = volume.value / 100
+    mediaElement.value.volume = volume.value / VOLUME_DIVIDER
   }
 
   const storeRefs = () => ({ fetching, volume })
 
-  watch(volume, () => (mediaElement.value!.volume = volume.value / 100))
+  watch(volume, () => {
+    if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
+    mediaElement.value!.volume = volume.value / VOLUME_DIVIDER
+  })
 
-  return { onPlayPreview, isSourceEqual, isTrackPlaying, initMediaElement, storeRefs }
+  watch(currentTime, async () => {
+    if (mediaType.value === 'radio') return
+    if (Math.ceil(currentTime.value) === Math.ceil(duration.value)) {
+      await toggleMediaState()
+      currentTime.value = 0
+    }
+  })
+
+  return { onPlayPreview, isSourceEqual, isTrackPlaying, initMediaElement, storeRefs, isTrackFetching }
 })

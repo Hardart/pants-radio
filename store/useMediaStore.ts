@@ -18,28 +18,33 @@ export const useMediaStore = defineStore('media', () => {
 
   // ACTIONS
   const togglePlaying = () => (isMediaPlaying.value = !isMediaPlaying.value)
-  const togglePlayPause = () => (isMediaPlaying.value ? play() : pause())
-  const toggleMediaState = async () => {
-    togglePlaying()
-    await delay(10)
-    togglePlayPause()
+  const togglePlayPause = async () => {
+    await delay(0)
+    isMediaPlaying.value ? pause() : play()
   }
+
   const play = async () => {
     if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
+    if (!mediaSource.value) return useToast().add({ title: 'Нет возможности прослушать этот трек' })
     fetching.value = true
     const timerId = setTimeout(() => {
       resetMediaSource()
     }, 7000)
-    mediaElement.value
-      .play()
-      .then(() => clearTimeout(timerId))
-      .catch(() => useToast().add({ title: 'Что-то пошло не так, пожалуйста перезагрузите страницу' }))
-      .finally(() => (fetching.value = false))
+    try {
+      await mediaElement.value.play()
+      togglePlaying()
+    } catch (error) {
+      useToast().add({ title: 'Что-то пошло не так, пожалуйста перезагрузите страницу' })
+    } finally {
+      clearTimeout(timerId)
+      fetching.value = false
+    }
   }
 
   const pause = () => {
     if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
     mediaElement.value.pause()
+    togglePlaying()
   }
 
   const resetMediaSource = async () => {
@@ -59,12 +64,12 @@ export const useMediaStore = defineStore('media', () => {
     if (fetching.value) return
     mediaType.value = type
     if (isSourceEqual(source)) {
-      await toggleMediaState()
+      await togglePlayPause()
       if (type === 'radio') resetMediaSource()
     } else {
       isMediaPlaying.value = false
       setMediaSource(source)
-      await toggleMediaState()
+      await togglePlayPause()
     }
   }
 
@@ -83,7 +88,7 @@ export const useMediaStore = defineStore('media', () => {
   watch(currentTime, async () => {
     if (mediaType.value === 'radio') return
     if (Math.ceil(currentTime.value) === Math.ceil(duration.value)) {
-      await toggleMediaState()
+      await togglePlayPause()
       currentTime.value = 0
     }
   })

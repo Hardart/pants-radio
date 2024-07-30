@@ -25,6 +25,8 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['./store/**']
   },
+  extends: ['./layers/main', './layers/audio-player', './layers/archive', './layers/ui'],
+
   routeRules: {
     '/api/v1/**': {
       proxy: process.env.BASE_URL

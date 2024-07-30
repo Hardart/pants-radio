@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { STATE } from '@/types/state-enum'
+import { STATE } from '~/enums/state-enum'
+
+import MainHeader from './layers/main/components/header/Main.vue'
+import MainFooter from './layers/main/components/footer/Main.vue'
+
 const focused = useWindowFocus()
 const icon = useFavicon()
 
@@ -15,11 +19,11 @@ if (metaData) useState(STATE.META, () => metaData)
 <template>
   <div>
     <NuxtLoadingIndicator />
-    <HeaderMain />
+    <MainHeader />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <FooterMain />
+    <!-- <MainFooter /> -->
     <UNotifications />
   </div>
 </template>

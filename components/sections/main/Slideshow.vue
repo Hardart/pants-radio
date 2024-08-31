@@ -4,7 +4,7 @@ const slides = inject<Slide[]>('gallery')
 </script>
 
 <template>
-  <Section>
+  <Section padding="top">
     <UkSlideshow v-if="slides" :slides />
   </Section>
 </template>

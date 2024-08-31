@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="text-neutral-100 whitespace-nowrap overflow-x-auto scrollbar-hide overflow-hidden">
+  <div class="scrollbar-hide flex-grow overflow-hidden overflow-x-auto whitespace-nowrap text-neutral-100">
     <h4 class="text-lg font-semibold">{{ artistName }}</h4>
     <p class="text-sm">{{ trackTitle }}</p>
   </div>

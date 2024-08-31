@@ -7,7 +7,7 @@ onMounted(toggleShowState)
 </script>
 
 <template>
-  <div class="relative h-96">
+  <div class="relative h-64 md:h-96">
     <TransitionFade>
       <div uk-slideshow="autoplay:true" v-if="isShow">
         <div class="relative overflow-hidden rounded-lg shadow-lg" tabindex="-1">
@@ -25,7 +25,7 @@ onMounted(toggleShowState)
           </a>
         </div>
 
-        <ul class="uk-dotnav uk-slideshow-nav my-5 flex justify-center space-x-3"></ul>
+        <ul class="uk-dotnav uk-slideshow-nav mb-2 mt-5 flex justify-center space-x-3"></ul>
       </div>
       <div v-else class="absolute h-full w-full rounded-lg bg-neutral-200"></div>
     </TransitionFade>

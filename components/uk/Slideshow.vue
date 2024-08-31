@@ -7,7 +7,7 @@ onMounted(toggleShowState)
 </script>
 
 <template>
-  <div class="relative h-64 md:h-96">
+  <div class="relative min-h-60 sm:h-96">
     <TransitionFade>
       <div uk-slideshow="autoplay:true" v-if="isShow">
         <div class="relative overflow-hidden rounded-lg shadow-lg" tabindex="-1">

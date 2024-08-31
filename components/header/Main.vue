@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { isMenuOpen, toggleMenuState } = useMenu()
 const { mainMenu } = useMeta()
+const { isDesktopOrTablet } = useDevice()
 
 useHead({
   htmlAttrs: {
@@ -13,7 +14,7 @@ useHead({
   <header class="fixed z-50 h-20 w-full bg-secondary">
     <div class="container mx-auto flex h-full w-full items-center">
       <Logo is-main />
-      <Radio class="hidden md:flex" />
+      <Radio class="hidden md:flex" v-if="isDesktopOrTablet" />
 
       <UiMenuButton @click="toggleMenuState()" />
       <TransitionFade :duration="400">

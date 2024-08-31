@@ -22,16 +22,18 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mx-4 flex flex-grow items-center gap-x-4">
+  <div
+    class="bottom-0 left-0 right-0 flex flex-grow items-center gap-x-4 bg-secondary max-md:fixed max-md:px-4 max-md:py-2 md:mx-4"
+  >
     <audio class="sr-only" ref="radioElement" preload="none" />
     <RadioPlayBtn
-      class="mx-2 border-x border-neutral-500 px-5"
+      class="grid min-w-[60px] place-items-center border-neutral-500 md:mx-2 md:border-x md:px-5"
       :is-fetching="isTrackFetching(radioURL)"
       :is-playing="isTrackPlaying(radioURL)"
       @click="onPlayPreview(radioURL, 'radio')"
     />
     <RadioArt :src="trackData?.cover" />
-    <RadioTrackMeta :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" class="max-sm:hidden" />
+    <RadioTrackMeta :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" />
     <RadioVolume v-model:volume.number="volume" />
     <RadioHost />
   </div>

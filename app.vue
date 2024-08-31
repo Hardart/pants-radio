@@ -20,6 +20,7 @@ if (metaData) useState(STATE.META, () => metaData)
       <NuxtPage />
     </NuxtLayout>
     <FooterMain />
+    <Radio class="fixed bottom-0 left-0 right-0 md:hidden" />
     <UNotifications />
   </div>
 </template>

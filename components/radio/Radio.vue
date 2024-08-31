@@ -11,7 +11,7 @@ const trackData = ref<Track>(jingleData)
 const radioURL = 'https://stream.elarin.ru/rsh_federal'
 const radioElement = ref()
 const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs, isTrackFetching } = useMediaStore()
-const { fetching, volume } = storeRefs()
+const { volume } = storeRefs()
 const { $io } = useNuxtApp()
 onMounted(() => {
   initMediaElement(radioElement)
@@ -22,9 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    class="bottom-0 left-0 right-0 flex flex-grow items-center gap-x-4 bg-secondary max-md:fixed max-md:px-4 max-md:py-2 md:mx-4"
-  >
+  <div class="flex flex-grow items-center gap-x-4 bg-secondary max-md:px-4 max-md:py-2 md:mx-4">
     <audio class="sr-only" ref="radioElement" preload="none" />
     <RadioPlayBtn
       class="grid min-w-[60px] place-items-center border-neutral-500 md:mx-2 md:border-x md:px-5"

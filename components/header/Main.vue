@@ -13,7 +13,7 @@ useHead({
   <header class="fixed z-50 h-20 w-full bg-secondary">
     <div class="container mx-auto flex h-full w-full items-center">
       <Logo is-main />
-      <Radio />
+      <Radio class="hidden md:flex" />
 
       <UiMenuButton @click="toggleMenuState()" />
       <TransitionFade :duration="400">

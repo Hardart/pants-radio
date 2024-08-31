@@ -22,7 +22,7 @@ const crumbs = route.fullPath
 
 <template>
   <Section padding="small">
-    <ul class="flex items-center">
+    <ul class="flex items-center overflow-x-auto whitespace-nowrap">
       <li v-if="showHome" class="text-primary hover:text-primary/80">
         <NuxtLink to="/"><Icon name="mdi:home" size="24" /></NuxtLink>
       </li>

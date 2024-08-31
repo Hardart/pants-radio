@@ -23,8 +23,11 @@ console.log(`${page.value}-${limit.value}-${tags.value}`)
   <Section padding="top">
     <UiPageTitle title="Новости" />
 
-    <ul class="mb-4 flex gap-4" v-if="data?.categories">
-      <li class="rounded-xl border border-primary px-3 pb-1 pt-0.5" v-for="category in data.categories">
+    <ul class="mb-6 flex flex-wrap gap-2" v-if="data?.categories">
+      <li
+        class="whitespace-nowrap rounded-md border border-primary px-3 max-md:text-xs md:rounded-xl md:py-1"
+        v-for="category in data.categories"
+      >
         <NuxtLink :to="`/news/${category.slug}`">{{ category.title }}</NuxtLink>
       </li>
     </ul>

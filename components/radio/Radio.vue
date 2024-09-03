@@ -22,10 +22,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-grow items-center gap-x-4 bg-secondary max-md:px-4 max-md:py-2 md:mx-4">
+  <div class="flex flex-grow items-center gap-x-2 bg-secondary max-md:px-4 max-md:py-3 md:mx-4 md:gap-x-4">
     <audio class="sr-only" ref="radioElement" preload="none" />
     <RadioPlayBtn
-      class="grid min-w-[60px] place-items-center border-neutral-500 md:mx-2 md:border-x md:px-5"
+      class="grid min-w-[40px] place-items-center border-neutral-500 md:mx-2 md:min-w-[60px] md:border-x md:px-5"
       :is-fetching="isTrackFetching(radioURL)"
       :is-playing="isTrackPlaying(radioURL)"
       @click="onPlayPreview(radioURL, 'radio')"

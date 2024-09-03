@@ -4,7 +4,7 @@ const articles = inject<Article[]>('articles')
 </script>
 
 <template>
-  <Section>
+  <Section class="max-sm:!pt-6">
     <SectionTitle title="Новости" />
     <ArticleCardList v-if="articles" :articles />
   </Section>

@@ -11,10 +11,10 @@ useHead({
 </script>
 
 <template>
-  <header class="fixed z-50 h-20 w-full bg-secondary">
+  <header class="fixed z-50 h-14 w-full bg-secondary md:h-20">
     <div class="container mx-auto flex h-full w-full items-center">
       <Logo is-main />
-      <Radio class="hidden md:flex" v-if="isDesktopOrTablet" />
+      <Radio class="hidden md:flex" />
 
       <UiMenuButton @click="toggleMenuState()" />
       <TransitionFade :duration="400">

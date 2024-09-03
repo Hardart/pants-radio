@@ -33,9 +33,10 @@ onMounted(() => {
       <img src="/logo.svg" :width="size" :height="size" alt="logo" />
     </NuxtLink>
   </div>
-  <div v-else class="absolute left-0 right-0 flex items-center justify-center md:relative md:ml-2 md:max-w-[130px]">
-    <NuxtLink to="/" class="block md:hidden">
-      <img src="/logo.svg" width="60" height="60" alt="" />
+  <div v-else class="ml-4 flex items-center justify-center md:relative md:max-w-[130px]">
+    <NuxtLink to="/" class="flex items-center gap-2 md:hidden">
+      <img src="/logo.svg" alt="logo" width="40" />
+      <img src="/assets/logo-text.svg" class="h-6" alt="" />
     </NuxtLink>
     <NuxtLink to="/" :style="{ width: `${scroll}px` }" class="hidden md:block">
       <img src="/logo.svg" class="w-full" :style="{ transform: `translateY(${translateY}px)` }" alt="" />

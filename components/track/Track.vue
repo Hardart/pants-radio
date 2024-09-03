@@ -14,9 +14,10 @@ defineEmits(['on-toggle'])
   <div class="relative flex gap-x-1.5 rounded-lg bg-white px-3 py-2 drop-shadow-md md:gap-x-3 md:px-6 md:py-4 md:drop-shadow-lg">
     <RadioPlayBtn
       class="grid size-[50px] place-items-center md:size-[60px]"
-      @click="$emit('on-toggle', track)"
+      @click="track.preview && $emit('on-toggle', track)"
       :is-playing
       :is-fetching
+      :is-prohibited="!track.preview"
     />
     <RadioArt :src="track.cover" class="size-[50px] md:size-[60px]" />
     <TrackInfo :artist="track.artistName" :title="track.trackTitle" />

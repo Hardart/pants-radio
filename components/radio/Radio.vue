@@ -22,7 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-grow items-center gap-x-2 bg-secondary max-md:px-4 max-md:py-3 md:mx-4 md:gap-x-4">
+  <div class="z-10 flex flex-grow items-center gap-x-2 bg-secondary max-md:px-4 max-md:py-3 md:mx-4 md:gap-x-4">
     <audio class="sr-only" ref="radioElement" preload="none" />
     <RadioPlayBtn
       class="grid min-w-[40px] place-items-center border-neutral-500 md:mx-2 md:min-w-[60px] md:border-x md:px-5"
@@ -30,7 +30,7 @@ onMounted(() => {
       :is-playing="isTrackPlaying(radioURL)"
       @click="onPlayPreview(radioURL, 'radio')"
     />
-    <RadioArt :src="trackData?.cover" />
+    <RadioArt :src="trackData?.cover" class="size-[40px] md:size-[60px]" />
     <RadioTrackMeta :artist-name="trackData?.artistName" :track-title="trackData?.trackTitle" />
     <RadioVolume v-model:volume.number="volume" />
     <RadioHost />

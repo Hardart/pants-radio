@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex-grow max-sm:my-1">
+  <div class="flex-1 max-md:my-1">
     <TrackArtist :artist />
     <TrackTitle :title />
   </div>

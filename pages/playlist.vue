@@ -18,4 +18,5 @@ useState('archive:start', () => res.startFrom)
   <SectionsPlaylistMainInfo />
   <SectionsPlaylistDateSelect />
   <SectionsPlaylistTrackList v-if="data" :tracks="data.archive" />
+  <SectionsPlaylistPlaybackInfo class="md:hidden" />
 </template>

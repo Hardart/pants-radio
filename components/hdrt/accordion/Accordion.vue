@@ -4,7 +4,7 @@ const { items, titleKey } = defineProps<{
   titleKey: string
   bodyKey: string
 }>()
-
+const route = useRoute()
 const emit = defineEmits(['on-click'])
 const accordionState = ref<{ [key: number]: boolean }>({})
 const initAccordionState = () => {
@@ -17,13 +17,20 @@ const onLink = () => {
   emit('on-click')
   initAccordionState()
 }
+const isParent = (item: any) => route.path.includes(item.to + '/')
 </script>
 
 <template>
   <ul class="divide-y-2 divide-neutral-100/20 px-4">
     <li class="cursor-pointer py-4" v-for="(item, index) in items">
       <div class="flex items-center justify-between px-4" @click.self.prevent="toggleItemState(index)">
-        <NuxtLink :to="item.to" class="text-2xl font-semibold text-neutral-50 first-letter:uppercase" @click.capture="onLink">
+        <NuxtLink
+          :to="item.to"
+          :class="isParent(item) && 'text-primary'"
+          active-class="text-primary"
+          class="text-2xl font-semibold text-neutral-50 first-letter:uppercase"
+          @click.capture="onLink"
+        >
           {{ item[titleKey] }}
         </NuxtLink>
         <Icon
@@ -37,12 +44,10 @@ const onLink = () => {
       <TransitionExpand>
         <ul class="mb-4 mt-4 space-y-4 text-neutral-50/40" v-if="accordionState[index] && item[bodyKey]">
           <li class="relative px-4" v-for="child in item[bodyKey]">
-            <NuxtLink class="flex" :to="child.to" @click="onLink">{{ child[titleKey] }} </NuxtLink>
+            <NuxtLink class="flex" active-class="text-primary" :to="child.to" @click="onLink">{{ child[titleKey] }} </NuxtLink>
           </li>
         </ul>
       </TransitionExpand>
     </li>
   </ul>
 </template>
-
-<style></style>

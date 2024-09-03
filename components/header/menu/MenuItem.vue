@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import type { MenuItem } from '~/types/menu'
 
-defineProps<{
+const props = defineProps<{
   menuItem: MenuItem
   isChild?: boolean
 }>()
 defineEmits(['toggleMenuState'])
+const route = useRoute()
+const isParent = computed(() => route.path.includes(props.menuItem.to + '/'))
 </script>
 
 <template>
   <li class="relative py-1" @click="$emit('toggleMenuState')">
     <NuxtLink
       :to="menuItem.to"
-      :class="[isChild ? 'menu-item__child' : 'menu-item', $route.path.includes(menuItem.to + '/') && 'text-primary']"
+      :class="[isChild ? 'menu-item__child' : 'menu-item', isParent && 'text-primary']"
       active-class="text-primary"
     >
       {{ menuItem.label }}
@@ -25,10 +27,10 @@ defineEmits(['toggleMenuState'])
 
 <style>
 .menu-item {
-  @apply text-3xl font-medium hover:text-primary;
+  @apply text-2xl font-medium hover:text-primary xl:text-3xl;
 }
 
-.menu-item__child {
-  @apply text-xl text-neutral-400 hover:text-primary;
+.menu-item__child:not(.text-primary) {
+  @apply hover:text-primary-500 text-neutral-400 xl:text-lg;
 }
 </style>

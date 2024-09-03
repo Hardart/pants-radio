@@ -7,8 +7,8 @@ defineProps<{
 
 <template>
   <div class="scrollbar-hide flex-grow overflow-hidden overflow-x-auto whitespace-nowrap text-neutral-100">
-    <h4 class="text-lg font-semibold">{{ artistName }}</h4>
-    <p class="text-sm">{{ trackTitle }}</p>
+    <h4 class="truncate md:text-lg md:font-semibold">{{ artistName }}</h4>
+    <p class="truncate text-xs font-thin md:text-sm">{{ trackTitle }}</p>
   </div>
 </template>
 

@@ -6,7 +6,7 @@ const { toggleMenuState } = useMenu()
 </script>
 
 <template>
-  <div class="relative block flex-grow lg:hidden">
+  <div class="container relative mx-auto block flex-grow lg:hidden">
     <div class="absolute inset-0 overflow-auto">
       <HdrtAccordion :items="menuList" title-key="label" body-key="childrens" @on-click="toggleMenuState" />
     </div>

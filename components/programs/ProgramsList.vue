@@ -5,13 +5,13 @@ defineProps<{ programs: Program[] }>()
 </script>
 
 <template>
-  <div class="grid max-w-4xl grid-cols-3 gap-4" container>
+  <div class="grid max-w-4xl gap-4 sm:grid-cols-2 md:grid-cols-3" container>
     <div v-for="program in programs" class="relative flex flex-col rounded-3xl border bg-white p-2 shadow-lg" card>
-      <div header class="aspect-square">
+      <div header class="aspect-square overflow-hidden">
         <img v-if="program.image" :src="correctImageSrc(program.image)" class="size-full rounded-2xl object-cover" alt="" />
         <div v-else class="size-full rounded-2xl bg-zinc-300 object-cover"></div>
       </div>
-      <div class="p-2" body>
+      <div class="p-2 max-md:mt-2" body>
         <h3 class="text-2xl font-bold">{{ program.title }}</h3>
       </div>
       <div class="absolute inset-0" footer>

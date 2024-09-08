@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import type { MenuItem } from '~/types/menu'
-
-const props = defineProps<{ mainMenu: MenuItem[]; isMenuOpen: boolean }>()
+const { mainMenu } = useMeta()
+const props = defineProps<{ isMenuOpen: boolean }>()
 const emit = defineEmits(['toggleMenuState'])
 const menu = ref()
 

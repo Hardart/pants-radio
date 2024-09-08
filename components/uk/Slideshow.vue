@@ -7,13 +7,13 @@ onMounted(toggleShowState)
 </script>
 
 <template>
-  <div class="relative min-h-60 sm:h-[26rem]">
+  <div class="relative min-h-[430px]">
     <TransitionFade>
       <div uk-slideshow="autoplay:true" v-if="isShow">
         <div class="relative overflow-hidden rounded-lg shadow-lg" tabindex="-1">
-          <ul class="uk-slideshow-items relative m-0 max-h-96 touch-pan-y overflow-hidden p-0">
+          <ul class="uk-slideshow-items relative m-0 h-[384px] touch-pan-y overflow-hidden p-0">
             <li v-for="slide in slides" class="absolute inset-0 overflow-hidden will-change-transform [&:not(.uk-active)]:hidden">
-              <img :src="correctImageSrc(slide.src)" class="h-full w-full object-cover object-center" alt="" uk-cover />
+              <img :src="correctImageSrc(slide.src)" class="size-full object-cover object-center" alt="" />
             </li>
           </ul>
 
@@ -25,9 +25,9 @@ onMounted(toggleShowState)
           </a>
         </div>
 
-        <ul class="uk-dotnav uk-slideshow-nav mb-2 mt-5 flex justify-center space-x-3"></ul>
+        <ul class="uk-dotnav uk-slideshow-nav mt-5 flex justify-center space-x-3"></ul>
       </div>
-      <div v-else class="absolute h-full w-full rounded-lg bg-neutral-200"></div>
+      <div v-else class="absolute h-[384px] w-full rounded-lg bg-neutral-200 shadow-lg"></div>
     </TransitionFade>
   </div>
 </template>

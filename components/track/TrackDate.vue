@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const { date } = defineProps<{ date: string }>()
-const trackTime = new Date(date).toLocaleTimeString('ru', { minute: '2-digit', hour: '2-digit' })
-const trackDate = new Date(date).toLocaleDateString('ru', { dateStyle: 'short' })
+const props = defineProps<{ date: string }>()
+const trackTime = computed(() => new Date(props.date).toLocaleTimeString('ru', { minute: '2-digit', hour: '2-digit' }))
+const trackDate = computed(() => new Date(props.date).toLocaleDateString('ru', { dateStyle: 'short' }))
 </script>
 
 <template>

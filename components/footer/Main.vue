@@ -3,7 +3,7 @@ const { footerData } = useMeta()
 </script>
 
 <template>
-  <footer class="relative top-20 mb-36 overflow-hidden bg-secondary text-neutral-50 md:mb-0">
+  <footer class="relative top-14 mb-28 overflow-hidden bg-secondary text-neutral-50 md:top-20 md:mb-0">
     <Section padding="small">
       <FooterSocialContacts />
       <div class="flex items-center max-sm:flex-col max-sm:space-y-8">

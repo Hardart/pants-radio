@@ -18,7 +18,7 @@ const hosts = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'ие' :
   <HdrtBreadcrumbs v-if="program" show-home :label-list="['программы', program.title]" />
   <Section padding="small" v-if="program">
     <div class="flex items-center max-sm:flex-col sm:items-start md:space-x-8">
-      <div class="flex gap-x-4">
+      <div class="flex gap-x-4 max-sm:mb-6">
         <div class="aspect-square max-w-80 overflow-hidden rounded-lg xl:max-w-96">
           <img v-if="program.image" :src="correctImageSrc(program.image)" class="size-full object-cover" :alt="program.title" />
           <img v-else src="/assets/plug280x280.svg" class="size-full object-cover" :alt="program.title" />
@@ -36,11 +36,11 @@ const hosts = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'ие' :
             <p class="text-lg font-bold leading-6">{{ host.fullName }}</p>
           </div>
         </div>
-        <div class="flex flex-nowrap max-lg:flex-col max-lg:space-y-2 max-sm:hidden lg:space-x-4">
+        <div class="flex max-lg:flex-col max-lg:space-y-2 max-sm:hidden lg:space-x-4">
           <ProgramsScheduleCard v-for="schedule in program.schedule" :schedule :image-src="program.image" />
         </div>
       </div>
-      <div class="flex flex-nowrap max-lg:flex-col max-lg:space-y-2 lg:space-x-4">
+      <div class="flex max-lg:flex-col max-lg:space-y-2 sm:hidden lg:space-x-4">
         <ProgramsScheduleCard v-for="schedule in program.schedule" :schedule :image-src="program.image" />
       </div>
     </div>

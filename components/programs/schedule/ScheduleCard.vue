@@ -36,18 +36,20 @@ const programDay = computed(() => {
 </script>
 
 <template>
-  <div class="relative min-w-64 rounded-md border-2 border-secondary bg-primary px-4 py-2">
-    <div>
-      <img :src="imageSrc" alt="" />
+  <div class="relative flex h-20 min-w-64 grow overflow-hidden rounded-md border-2 border-secondary bg-primary">
+    <div class="h-full w-20">
+      <img :src="correctImageSrc(imageSrc)" class="size-full object-cover" alt="" />
     </div>
-    <p class="whitespace-nowrap rounded text-center text-lg font-bold text-white drop-shadow-md first-letter:uppercase">
-      {{ programDay }}
-    </p>
-    <div class="mt-2 text-neutral-50">
-      <p class="flex items-center justify-between" v-for="prop in schedule.properties">
-        с {{ prop.start }} до {{ prop.end }}
-        <span v-if="prop.isReplay" class="rounded-lg bg-stone-800 px-1.5 py-0.5 text-xs uppercase text-neutral-50">повтор</span>
+    <div class="grow px-2">
+      <p class="whitespace-nowrap rounded text-lg font-bold text-white drop-shadow-md first-letter:uppercase">
+        {{ programDay }}
       </p>
+      <div class="mt-1 text-neutral-50">
+        <p class="flex items-center justify-between text-sm" v-for="prop in schedule.properties">
+          с {{ prop.start }} до {{ prop.end }}
+          <span v-if="prop.isReplay" class="rounded-lg bg-stone-800 px-1.5 py-0.5 text-xs uppercase text-neutral-50">повтор</span>
+        </p>
+      </div>
     </div>
   </div>
 </template>

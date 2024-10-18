@@ -12,10 +12,6 @@ defineProps<{
   >
     <ArticleCardHeader :image="article.image" />
     <ArticleCardBody :title="article.title" :created-at="article.createdAt" />
-
-    <!-- CARD FOOTER -->
-    <div class="absolute inset-0">
-      <NuxtLink class="absolute inset-0" :to="`/news${article.to}`" />
-    </div>
+    <ArticleCardFooter :link="article.to" />
   </article>
 </template>

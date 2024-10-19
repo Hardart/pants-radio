@@ -2,8 +2,8 @@
 const { custom } = useDates()
 const [isOpen, toggle] = useToggle()
 const date = defineModel<Date>({ required: true })
-defineProps<{ startFrom: string }>()
 const target = ref()
+defineProps<{ startFrom?: string }>()
 onClickOutside(target, () => (isOpen.value = false))
 </script>
 

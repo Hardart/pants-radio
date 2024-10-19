@@ -6,11 +6,8 @@ export const useArchiveStore = defineStore('archive', () => {
   const { custom } = useDates()
 
   const startHour = hoursStartFrom()
-  const tracks = ref<Track[]>([])
   const date = ref<Date>(new Date())
   const hour = ref(startHour)
-  const dateStartFrom = ref('')
-  const isLoadingArchive = ref(false)
 
   watch(date, (curr, prev) => {
     if (!curr) date.value = prev
@@ -18,27 +15,11 @@ export const useArchiveStore = defineStore('archive', () => {
 
   const today = computed(() => custom(date.value).setHourToIso(hour.value))
 
-  const fetchArchive = async () => {
-    try {
-      isLoadingArchive.value = true
-      const { archive, startFrom } = await $fetch<API.ArchivePage>('/api/v1/track-archive', {
-        query: { dateFilter: today.value }
-      })
-      dateStartFrom.value = startFrom
-      tracks.value = archive
-    } catch (error) {
-      if (error instanceof Error) showError(error)
-      else throw error
-    } finally {
-      isLoadingArchive.value = false
-    }
+  const fetchArchiveTracks = async () => {
+    return await $fetch<API.ArchivePage>('/api/v1/track-archive', {
+      query: { dateFilter: today.value }
+    })
   }
 
-  const storeRefs = () => {
-    return { tracks, isLoadingArchive, date, hour, dateStartFrom }
-  }
-
-  watch([date, hour], fetchArchive)
-
-  return { fetchArchive, storeRefs }
+  return { fetchArchiveTracks, date, hour }
 })

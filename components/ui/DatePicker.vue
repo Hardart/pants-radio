@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { DatePicker as VCalendarDatePicker } from 'v-calendar'
 import 'v-calendar/style.css'
-defineProps<{ startFrom: string }>()
+defineProps<{ startFrom?: string }>()
 const dateModel = defineModel<Date>({ required: true })
 
 const emit = defineEmits(['update:model-value', 'close'])

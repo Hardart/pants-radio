@@ -1,22 +1,16 @@
 <script setup lang="ts">
 import type { API } from '~/types/api'
-const { custom } = useDates()
-
-const date = useState('archive:date', () => new Date())
-const hour = useState('archive:hour', setHour)
-watch(date, (curr, prev) => {
-  if (!curr) date.value = prev
+const archiveStore = useArchiveStore()
+const { date, hour } = storeToRefs(archiveStore)
+const { data, pending } = useLazyAsyncData<API.ArchivePage>('/api/v1/track-archive', () => archiveStore.fetchArchiveTracks(), {
+  watch: [date, hour]
 })
-const dateFilter = computed(() => custom(date.value).setHour(hour.value).toISOString())
-const { data } = await useFetch<API.ArchivePage>('/api/v1/track-archive', { query: { dateFilter } })
-const res = toValue(data)
-if (!res) throw createError('fetch errror at playlist page')
-useState('archive:start', () => res.startFrom)
 </script>
 
 <template>
   <SectionsPlaylistMainInfo />
-  <SectionsPlaylistDateSelect />
-  <SectionsPlaylistTrackList v-if="data" :tracks="data.archive" />
+  <SectionsPlaylistDateSelect v-model="date" v-model:hour="hour" :start-from="data?.startFrom" />
+  <SectionsPlaylistSkeletonList v-if="pending" />
+  <SectionsPlaylistTrackList v-else-if="data" :tracks="data.archive" />
   <SectionsPlaylistPlaybackInfo class="md:hidden" />
 </template>

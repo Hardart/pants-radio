@@ -3,7 +3,7 @@ import { type Hour } from '@/utils/setHour'
 const date = defineModel<Date>({ required: true })
 const hour = defineModel<Hour>('hour', { required: true })
 defineProps<{
-  startFrom: string
+  startFrom?: string
 }>()
 </script>
 

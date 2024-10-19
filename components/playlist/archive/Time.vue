@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { hoursForSelect, filteredHours } from '@/utils/setHour'
+import { hoursForSelect, filteredHours, type Hour } from '@/utils/setHour'
 const { current } = useDates()
 const date = defineModel<Date>({ required: true })
-const hour = defineModel<string>('hour', { required: true })
+const hour = defineModel<Hour>('hour', { required: true })
 const [isOpen, toggle] = useToggle()
 const timeElement = ref()
 onClickOutside(timeElement, () => (isOpen.value = false))
@@ -11,11 +11,11 @@ const hours = computed(() => (current().isToday(date.value) ? filteredHours(curr
 watch(
   () => current().isToday(date.value),
   () => {
-    if (current().isToday(date.value)) hour.value = hours.value.slice(-1)[0]
+    if (current().isToday(date.value) && !hours.value.includes(hour.value)) hour.value = hours.value.slice(-1)[0]
   }
 )
 
-const onTime = (item: string) => {
+const onTime = (item: Hour) => {
   hour.value = item
   toggle()
 }

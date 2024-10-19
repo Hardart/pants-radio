@@ -1,7 +1,10 @@
 <script setup lang="ts">
-const startFrom = useState<string>('archive:start')
-const date = useState<Date>('archive:date')
-const hour = useState<string>('archive:hour')
+import { type Hour } from '@/utils/setHour'
+const date = defineModel<Date>({ required: true })
+const hour = defineModel<Hour>('hour', { required: true })
+defineProps<{
+  startFrom: string
+}>()
 </script>
 
 <template>

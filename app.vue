@@ -14,7 +14,7 @@ if (metaData) useState(STATE.META, () => metaData)
 
 <template>
   <div>
-    <NuxtLoadingIndicator />
+    <NuxtLoadingIndicator color="#f15a24" :height="2" />
     <HeaderMain />
     <NuxtLayout>
       <NuxtPage />

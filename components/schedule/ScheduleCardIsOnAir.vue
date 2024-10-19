@@ -20,8 +20,8 @@ const isInRange = (time: Date, start: string, end: string) => {
 <template>
   <div
     v-if="isInRange(new Date(), program.start, program.end) && isToday"
-    class="absolute origin-center animate-pulse rounded bg-primary px-2 text-xs uppercase tracking-wide text-neutral-50 max-lg:hidden"
-    :class="leftSide ? '-left-11 -rotate-90' : '-right-11 rotate-90'"
+    class="absolute origin-center animate-pulse rounded bg-primary px-2 text-xs uppercase tracking-wide text-neutral-50"
+    :class="leftSide ? '-left-11 -rotate-90 max-lg:hidden' : 'right-1 max-lg:top-2 lg:-right-11 lg:rotate-90'"
   >
     onair
   </div>

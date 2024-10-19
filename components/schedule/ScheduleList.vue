@@ -18,8 +18,8 @@ for (let dayIndex in props.scheduleData) {
 
 <template>
   <ul class="divide-y-4 lg:w-2/3 xl:w-1/2">
-    <li class="cursor-pointer py-4" v-for="(day, index) in scheduleData">
-      <div class="flex items-center justify-between px-4" @click="changeState(index)">
+    <li v-for="(day, index) in scheduleData">
+      <div class="flex cursor-pointer items-center justify-between p-4" @click="changeState(index)">
         <p class="text-2xl font-semibold first-letter:uppercase" :class="isToday(day._id) && 'text-primary'">
           {{ getWeekday(day._id) }}
         </p>

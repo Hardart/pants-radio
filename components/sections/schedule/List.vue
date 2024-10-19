@@ -2,9 +2,8 @@
 import type { API } from '~/types/api'
 
 const { data } = await useAsyncData<API.Schedule[]>('schedule', () => $fetch('/api/v1/schedule'), {
-  getCachedData: key => useNuxtApp().payload.data[key],
+  getCachedData: (key) => useNuxtApp().payload.data[key]
 })
-
 </script>
 
 <template>

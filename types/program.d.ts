@@ -11,4 +11,4 @@ export type Program = {
   isPublished: boolean
 }
 
-export type ProgramResponse = Omit<Program, 'schedule' | 'slug' | 'id'> & ScheduleProperty
+export type ProgramResponse = Omit<Program, 'schedule' | 'id'> & ScheduleProperty

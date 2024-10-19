@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="h-14 w-14">
+  <div class="h-14 w-14 shrink-0">
     <img
       v-if="imageSrc"
       class="size-full rounded-md object-cover"

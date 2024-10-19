@@ -1,25 +1,22 @@
 <script lang="ts" setup>
-import type { Category } from '~/types/article';
+import type { Category } from '~/types/article'
 
 const route = useRoute()
 const slug = route.params['category_slug'] as string
 if (!slug || typeof slug !== 'string') throw createError('type of url parameter is not a STRING')
 
-const { data } = await useFetch<Category>(`/api/v1/categories/${slug}`, {
+const { data, pending } = await useFetch<Category>(`/api/v1/categories/${slug}`, {
   key: slug,
-  getCachedData: key => useNuxtApp().payload.data[key],
+  getCachedData: (key) => useNuxtApp().payload.data[key]
 })
-const category = toValue(data)
-if (!category) throw createError('Article is not define')
-
-
 </script>
 
 <template>
-  <HdrtBreadcrumbs :label-list="['новости', category.title]" show-home/>
+  <HdrtBreadcrumbs v-if="data" :label-list="['новости', data.title]" show-home />
   <Section padding="small">
-    <UiPageTitle :title="category.title" />
-    <ArticleCardList :articles="category.articles"/>
+    <UiPageTitle v-if="data" :title="data.title" />
+    <ArticleCardSkeletonCardList v-if="pending" />
+    <ArticleCardList v-else-if="data" :articles="data.articles" />
   </Section>
 </template>
 

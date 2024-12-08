@@ -7,11 +7,11 @@ onMounted(toggleShowState)
 </script>
 
 <template>
-  <div class="relative min-h-[430px]">
+  <div class="uk-slideshow-items relative xl:min-h-[430px]" :class="!isShow && 'max-md:bg-neutral-200'">
     <TransitionFade>
       <div uk-slideshow="autoplay:true" v-if="isShow">
         <div class="relative overflow-hidden rounded-lg shadow-lg" tabindex="-1">
-          <ul class="uk-slideshow-items relative m-0 h-[384px] touch-pan-y overflow-hidden p-0">
+          <ul class="uk-slideshow-items relative m-0 touch-pan-y overflow-hidden p-0 xl:h-[384px]">
             <li v-for="slide in slides" class="absolute inset-0 overflow-hidden will-change-transform [&:not(.uk-active)]:hidden">
               <img :src="correctImageSrc(slide.src)" class="size-full object-cover object-center" alt="" />
             </li>
@@ -27,7 +27,7 @@ onMounted(toggleShowState)
 
         <ul class="uk-dotnav uk-slideshow-nav mt-5 flex justify-center space-x-3"></ul>
       </div>
-      <div v-else class="absolute h-[384px] w-full rounded-lg bg-neutral-200 shadow-lg"></div>
+      <div v-else class="absolute w-full rounded-lg shadow-lg xl:h-[384px]"></div>
     </TransitionFade>
   </div>
 </template>
@@ -50,5 +50,8 @@ onMounted(toggleShowState)
 .uk-dotnav > .uk-active > * {
   background-color: rgba(102, 102, 102, 0.6);
   border-color: transparent;
+}
+.uk-slideshow-items {
+  aspect-ratio: 16 / 5 !important;
 }
 </style>

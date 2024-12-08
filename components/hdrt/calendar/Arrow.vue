@@ -6,7 +6,7 @@ defineProps<{
 
 <template>
   <div
-    class="grid place-items-center w-8 h-8 rounded-lg text-neutral-500 hover:bg-primary/75 hover:text-neutral-100 cursor-pointer select-none"
+    class="grid h-8 w-8 cursor-pointer select-none place-items-center rounded-lg text-neutral-500 hover:bg-primary/75 hover:text-neutral-100"
   >
     <Icon name="material-symbols:arrow-back-rounded" size="24" :class="right && 'rotate-180'" />
   </div>

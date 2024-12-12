@@ -6,8 +6,9 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      script: [{ src: '/js/uikit.min.js', defer: true }],
+      script: [{ src: '/js/uikit.min.js', defer: true, fetchpriority: 'high' }],
       title: '«Радио ШТАНЫ». Все только для тебя',
+      // link: [{ href: 'http://hardart.site/images/gallery/317d6ff8308d78a3_75.webp', rel: 'preload', as: 'image' }],
       meta: [
         {
           name: 'description',
@@ -28,6 +29,9 @@ export default defineNuxtConfig({
   routeRules: {
     '/api/v1/**': {
       proxy: process.env.BASE_URL
-    }
+    },
+    '/privacy': { prerender: true },
+    '/information': { prerender: true },
+    '/news': { isr: 3600 }
   }
 })

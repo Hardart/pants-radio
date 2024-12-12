@@ -4,6 +4,28 @@ import type { Slide } from '~/types/slide'
 defineProps<{ slides: Slide[] }>()
 const [isShow, toggleShowState] = useToggle()
 onMounted(toggleShowState)
+const sizes = [
+  {
+    screen: 500,
+    size: '420x180'
+  },
+  {
+    screen: 767,
+    size: '624x267'
+  },
+  {
+    screen: 1023,
+    size: '752x322'
+  },
+  {
+    screen: 1279,
+    size: '1024x439'
+  },
+  {
+    screen: 1545,
+    size: '1280x549'
+  }
+]
 </script>
 
 <template>
@@ -14,7 +36,11 @@ onMounted(toggleShowState)
           <ul class="uk-slideshow-items relative m-0 touch-pan-y overflow-hidden p-0">
             <li v-for="slide in slides" class="absolute inset-0 overflow-hidden will-change-transform [&:not(.uk-active)]:hidden">
               <picture>
-                <!-- <source srcset="http://hardart.site/images/news/20241202/d7c386899728fa62_orig.webp" media="(min-width: 800px)" /> -->
+                <source
+                  v-for="item in sizes"
+                  :srcset="setSlideshowSrcset(slide.src, item.size)"
+                  :media="`(max-width: ${item.screen}px)`"
+                />
                 <img :src="correctImageSrc(slide.src)" class="size-full object-cover object-center" />
               </picture>
             </li>

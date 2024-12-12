@@ -29,7 +29,7 @@ watch(
     <HeaderMenuTop @toggle-menu-state="$emit('toggleMenuState')" />
     <HeaderMenuItemList class="my-10" :menu-items="mainMenu" @toggle-menu-state="$emit('toggleMenuState')" />
     <HeaderMenuMobile :menu-list="mainMenu" />
-    <HeaderMenuBottom />
+    <HeaderMenuBottom @toggle-menu-state="$emit('toggleMenuState')" />
   </nav>
 </template>
 

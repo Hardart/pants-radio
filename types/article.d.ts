@@ -5,6 +5,7 @@ export type Article = {
   content: string
   image: string
   createdAt: string
+  publishAt: string
   isPublished: boolean
   category: {
     title: string

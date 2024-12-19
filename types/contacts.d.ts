@@ -2,6 +2,7 @@ type BaseContactItem = {
   id: string
   label: string
   priority?: number
+  description?: string
 }
 export type Phone = BaseContactItem & { number: string }
 export type Mail = BaseContactItem & { address: string }

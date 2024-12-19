@@ -10,7 +10,10 @@ defineProps<{
 <template>
   <ul class="space-y-2 px-4 max-md:text-sm max-sm:text-center sm:w-3/5">
     <li v-for="phone in contact.phones">
-      <h5 class="font-medium">{{ phone.label }}:</h5>
+      <h5 class="font-medium">
+        {{ phone.label }}<span class="ml-2 text-xs italic" v-if="phone.description">{{ phone.description }}</span
+        >:
+      </h5>
       <a class="text-neutral-400 hover:text-primary" :href="`tel:${phone.number.replace(/[\(\)\s]/g, '')}`">{{ phone.number }}</a>
     </li>
     <li v-for="mail in contact.emails">

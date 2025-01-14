@@ -28,7 +28,7 @@ const hosts = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'ие' :
         <h1 class="text-2xl font-bold tracking-wide md:text-3xl">{{ program.title }}</h1>
 
         <div class="flex items-center space-x-4" v-for="host in program.hosts">
-          <div class="w-16 overflow-hidden rounded-full border-2 border-primary">
+          <div class="h-16 w-16 overflow-hidden rounded-full border-2 border-primary">
             <img :src="host.avatar || '/images/hosts/larin.png'" width="64" height="64" alt="" />
           </div>
           <div>

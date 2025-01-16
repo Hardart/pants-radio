@@ -27,11 +27,10 @@ export const useMediaStore = defineStore('media', () => {
     if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
     if (!mediaSource.value) return useToast().add({ title: 'Нет возможности прослушать этот трек' })
     fetching.value = true
-    const timerId = setTimeout(() => {
-      resetMediaSource()
-    }, 7000)
+    const timerId = setTimeout(resetMediaSource, 7000)
     try {
       await mediaElement.value.play()
+      initVolume()
       togglePlaying()
     } catch (error) {
       useToast().add({ title: 'Что-то пошло не так, пожалуйста перезагрузите страницу' })
@@ -78,12 +77,14 @@ export const useMediaStore = defineStore('media', () => {
     mediaElement.value.volume = volume.value / VOLUME_DIVIDER
   }
 
+  const initVolume = () => {
+    if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
+    mediaElement.value.volume = volume.value / VOLUME_DIVIDER
+  }
+
   const storeRefs = () => ({ fetching, volume })
 
-  watch(volume, () => {
-    if (!mediaElement.value) throw createError(ELEMENT_IS_NOT_DEFINED_ERROR)
-    mediaElement.value!.volume = volume.value / VOLUME_DIVIDER
-  })
+  watch(volume, initVolume)
 
   watch(currentTime, async () => {
     if (mediaType.value === 'radio') return

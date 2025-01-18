@@ -1,8 +1,5 @@
 <script setup lang="ts">
-const { initSocket, onHostOnAir } = useSocket()
 const host = useState('host')
-// initSocket()
-// onHostOnAir(host)
 </script>
 
 <template>

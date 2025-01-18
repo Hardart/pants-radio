@@ -22,6 +22,11 @@ export default defineNuxtConfig({
       ]
     }
   },
+  runtimeConfig: {
+    public: {
+      radioURL: 'https://stream.elarin.ru/rsh_federal'
+    }
+  },
   modules: ['@pinia/nuxt', '@nuxt/ui', '@vueuse/nuxt', 'nuxt-icon', '@nuxtjs/device', '@morev/vue-transitions/nuxt'],
   pinia: {
     storesDirs: ['./store/**']

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Track } from '~/types/track'
-
+const config = useRuntimeConfig()
 const jingleData: Track = {
   artistName: 'Радио Штаны',
   trackTitle: 'Прямой эфир',
@@ -8,7 +8,9 @@ const jingleData: Track = {
   preview: ''
 }
 const trackData = ref<Track>(jingleData)
-const radioURL = 'https://stream.elarin.ru/rsh_federal'
+
+const radioURL = config.public.radioURL
+if (typeof radioURL !== 'string') throw createError('ENV variable RADIO_URL is undefined')
 const radioElement = ref()
 const { initMediaElement, isTrackPlaying, onPlayPreview, storeRefs, isTrackFetching } = useMediaStore()
 const { volume } = storeRefs()

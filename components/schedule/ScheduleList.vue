@@ -26,9 +26,7 @@ for (let dayIndex in props.scheduleData) {
         <Icon name="mdi:chevron-down" class="text-stone-600" :class="accordionState[index] && 'rotate-180'" size="30" />
       </div>
       <ul class="mb-4 mt-2 space-y-3" v-if="accordionState[index]">
-        <li v-for="program in day.programs">
-          <ScheduleCard :program :is-today="isToday(day._id)" />
-        </li>
+        <ScheduleCard v-for="program in day.programs" :program :is-today="isToday(day._id)" />
       </ul>
     </li>
   </ul>

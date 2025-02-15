@@ -34,22 +34,30 @@ const sizes = [
       <div uk-slideshow="autoplay:true" v-if="isShow">
         <div class="relative overflow-hidden rounded-lg shadow-lg" tabindex="-1">
           <ul class="uk-slideshow-items relative m-0 touch-pan-y overflow-hidden p-0">
-            <li v-for="slide in slides" class="absolute inset-0 overflow-hidden will-change-transform [&:not(.uk-active)]:hidden">
-              <picture>
-                <source
-                  v-for="item in sizes"
-                  :srcset="setSlideshowSrcset(slide.src, item.size)"
-                  :media="`(max-width: ${item.screen}px)`"
-                />
-                <img :src="correctImageSrc(slide.src)" class="size-full object-cover object-center" />
-              </picture>
-            </li>
+            <template v-for="slide in slides">
+              <NuxtLink :to="slide.to" v-slot="{ navigate }" custom>
+                <li
+                  @click="navigate"
+                  class="absolute inset-0 overflow-hidden will-change-transform [&:not(.uk-active)]:hidden"
+                  :class="{ 'cursor-pointer': typeof slide.to !== 'undefined' }"
+                >
+                  <picture>
+                    <source
+                      v-for="item in sizes"
+                      :srcset="setSlideshowSrcset(slide.src, item.size)"
+                      :media="`(max-width: ${item.screen}px)`"
+                    />
+                    <img :src="correctImageSrc(slide.src)" class="size-full object-cover object-center" />
+                  </picture>
+                </li>
+              </NuxtLink>
+            </template>
           </ul>
 
-          <a class="absolute left-0 top-1/2 -translate-y-1/2 p-4 text-white" uk-slideshow-item="previous">
+          <a class="absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer p-4 text-white" uk-slideshow-item="previous">
             <Icon name="material-symbols:arrow-back-ios-rounded" size="25" />
           </a>
-          <a class="absolute right-0 top-1/2 -translate-y-1/2 p-4 text-white" uk-slideshow-item="next">
+          <a class="absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer p-4 text-white" uk-slideshow-item="next">
             <Icon name="material-symbols:arrow-back-ios-rounded" size="25" class="rotate-180" />
           </a>
         </div>

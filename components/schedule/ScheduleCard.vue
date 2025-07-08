@@ -1,32 +1,24 @@
 <script setup lang="ts">
-import type { ProgramResponse } from '~/types/program'
+import type { ProgramSchedule } from '~/types/program'
 
 defineProps<{
-  program: ProgramResponse
+  program: ProgramSchedule
   isToday?: boolean
 }>()
 </script>
 
 <template>
-  <li v-if="program.isPublished">
+  <li>
     <NuxtLink
       :to="`/programs/${program.slug}`"
       class="relative flex items-center gap-x-2 rounded-md bg-white p-3 shadow-md max-sm:pr-14 sm:px-8 md:gap-x-5"
     >
-      <ScheduleCardIsOnAir :program :isToday left-side />
-      <ScheduleCardTime :start="program.start" :end="program.end" />
+      <ScheduleCardIsOnAir :program left-side />
+      <ScheduleCardTime :start="program.startTime" :duration="program.duration" :is-program="program.type === 'программа'" />
       <ScheduleCardImage class="max-sm:order-first" :imageSrc="program.image" />
       <ScheduleCardTitle :title="program.title" />
       <ScheduleReplay v-if="program.isReplay" />
-      <ScheduleCardIsOnAir :program :isToday />
+      <ScheduleCardIsOnAir :program />
     </NuxtLink>
-  </li>
-  <li v-else class="relative flex items-center gap-x-2 rounded-md bg-white p-3 shadow-md max-sm:pr-14 sm:px-8 md:gap-x-5">
-    <ScheduleCardIsOnAir :program :isToday left-side />
-    <ScheduleCardTime :start="program.start" :end="program.end" />
-    <ScheduleCardImage class="max-sm:order-first" :imageSrc="program.image" />
-    <ScheduleCardTitle :title="program.title" />
-    <ScheduleReplay v-if="program.isReplay" />
-    <ScheduleCardIsOnAir :program :isToday />
   </li>
 </template>

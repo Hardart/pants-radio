@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import type { Program } from '~/types/program'
+import type { ProgramV2 } from '~/types/program'
 
 const { slug } = useRoute().params
 if (!slug || typeof slug !== 'string') throw createError('there are no SLUG in route or type of SLUG parameter is not a STRING')
 
-const { data } = await useFetch<Program>(`/api/v1/programs/${slug}`, {
+const { data } = await useFetch<ProgramV2>(`/api/v2/programs/${slug}`, {
   key: slug,
   getCachedData: (key) => useNuxtApp().payload.data[key]
 })
 const program = toValue(data)
 if (!program) throw createError('Program is not defined')
 if (!program.isPublished) await navigateTo('/programs')
-const hosts = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'ие' : 'ий'))
+const hostsTitle = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'ие' : 'ий'))
 </script>
 
 <template>
@@ -30,7 +30,7 @@ const hosts = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'ие' :
         <div class="flex items-center space-x-4" v-for="host in program.hosts">
           <div class="h-16 w-16 overflow-hidden rounded-full border-2 border-primary">
             <img
-              :src="host.avatar || '/images/hosts/larin.png'"
+              :src="host.avatar ?? '/images/hosts/larin.png'"
               class="aspect-square object-cover"
               width="64"
               height="64"
@@ -38,7 +38,7 @@ const hosts = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'ие' :
             />
           </div>
           <div>
-            <p class="font-medium leading-6">{{ hosts }}</p>
+            <p class="font-medium leading-6">{{ hostsTitle }}</p>
             <p class="text-lg font-bold leading-6">{{ host.fullName }}</p>
           </div>
         </div>
@@ -47,7 +47,7 @@ const hosts = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'ие' :
         </div>
       </div>
       <div class="flex max-lg:flex-col max-lg:space-y-2 sm:hidden lg:space-x-4">
-        <ProgramsScheduleCard v-for="schedule in program.schedule" :schedule :image-src="program.image" />
+        <!-- <ProgramsScheduleCard v-for="schedule in program.schedule" :schedule :image-src="program.image" /> -->
       </div>
     </div>
   </Section>

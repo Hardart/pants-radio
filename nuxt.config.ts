@@ -35,6 +35,9 @@ export default defineNuxtConfig({
     '/api/v1/**': {
       proxy: process.env.BASE_URL
     },
+    '/api/v2/**': {
+      proxy: process.env.ROUTER_V2_URL
+    },
     '/privacy': { prerender: true },
     '/information': { prerender: true },
     '/news': { isr: 3600 }

@@ -3,7 +3,7 @@ import type { ScheduleWithManyStartTime } from '~/types/program'
 
 const { schedule } = defineProps<{
   schedule: ScheduleWithManyStartTime
-  imageSrc: string
+  imageSrc?: string
 }>()
 
 const weeekdays = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
@@ -35,9 +35,9 @@ const programDay = computed(() => {
 </script>
 
 <template>
-  <div class="relative flex h-20 min-w-64 grow overflow-hidden rounded-md border-2 border-secondary bg-primary">
-    <div class="h-full w-20">
-      <img :src="correctImageSrc(imageSrc)" class="size-full object-cover" alt="" />
+  <div class="shedule-shadow relative flex h-20 min-w-64 max-w-96 grow rounded-md bg-primary">
+    <div class="h-full w-20 flex-shrink-0">
+      <img v-if="imageSrc" :src="correctImageSrc(imageSrc)" class="size-full object-cover" alt="" />
     </div>
     <div class="grow px-2">
       <p class="whitespace-nowrap rounded text-lg font-bold text-white drop-shadow-md first-letter:uppercase">
@@ -54,5 +54,3 @@ const programDay = computed(() => {
     </div>
   </div>
 </template>
-
-<style></style>

@@ -50,4 +50,10 @@
   .btn-primary {
     @apply cursor-pointer bg-primary text-neutral-50 hover:bg-primary/75 active:bg-primary/90;
   }
+
+  .shedule-shadow {
+    --tw-shadow: 0 25px 15px -8px rgb(0 0 0 / 0.2), 0 7px 6px -4px rgb(0 0 0 / 0.3);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
 }

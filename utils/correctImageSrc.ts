@@ -1,5 +1,5 @@
 export function correctImageSrc(src: string | undefined) {
-  return process.dev ? 'http://hardart.site' + src : src
+  return process.dev ? 'https://radioshtani.ru' + src : src
 }
 
 export function setSlideshowSrcset(src: string | undefined, size: string) {

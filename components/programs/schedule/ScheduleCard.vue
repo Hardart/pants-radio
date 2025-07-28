@@ -37,7 +37,7 @@ const programDay = computed(() => {
 <template>
   <div class="shedule-shadow relative flex h-20 min-w-64 max-w-96 grow rounded-md bg-primary">
     <div class="h-full w-20 flex-shrink-0">
-      <img v-if="imageSrc" :src="correctImageSrc(imageSrc)" class="size-full object-cover" alt="" />
+      <img v-if="imageSrc" :src="correctImageSrc(imageSrc)" class="size-full rounded-md object-cover" />
     </div>
     <div class="grow px-2">
       <p class="whitespace-nowrap rounded text-lg font-bold text-white drop-shadow-md first-letter:uppercase">

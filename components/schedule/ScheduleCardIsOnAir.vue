@@ -33,7 +33,7 @@ const isBroadcastLive = computed(() => {
 
 <template>
   <div
-    v-if="isBroadcastLive"
+    v-if="isBroadcastLive && isToday"
     class="absolute origin-center animate-pulse rounded bg-primary px-2 text-xs uppercase tracking-wide text-neutral-50"
     :class="leftSide ? '-left-11 -rotate-90 max-lg:hidden' : 'right-1 max-lg:top-2 lg:-right-11 lg:rotate-90'"
   >

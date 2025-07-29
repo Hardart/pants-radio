@@ -11,6 +11,8 @@ export type ScheduleWithManyStartTime = Omit<Schedule, 'startTime'> & {
   startTime: string[]
 }
 
+export type ProgramType = 'программа' | 'дайджест'
+
 export type Program = {
   id: string
   title: string
@@ -20,6 +22,7 @@ export type Program = {
   schedule: Schedule[]
   description: string
   isPublished: boolean
+  type: ProgramType
 }
 
 export type ProgramV2 = {
@@ -31,6 +34,7 @@ export type ProgramV2 = {
   schedule: ScheduleWithManyStartTime[]
   description: string
   isPublished: boolean
+  type: ProgramType
 }
 
 export type ProgramSchedule = {
@@ -46,5 +50,5 @@ export type ProgramSchedule = {
   description: string
   isPublished: boolean
   isReplay: boolean
-  type: string
+  type: ProgramType
 }

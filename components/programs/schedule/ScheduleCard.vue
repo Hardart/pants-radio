@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { ScheduleWithManyStartTime } from '~/types/program'
+import type { ProgramType, ScheduleWithManyStartTime } from '~/types/program'
 
-const { schedule } = defineProps<{
+const { schedule, programType } = defineProps<{
+  programType: ProgramType
   schedule: ScheduleWithManyStartTime
   imageSrc?: string
 }>()
@@ -32,6 +33,21 @@ const programDay = computed(() => {
       return findProgramsDays(schedule.dayRange, schedule.dayIndex)
   }
 })
+
+const isTypeProgram = computed(() => programType === 'программа')
+
+const scheduleTime = computed(() => {
+  if (isTypeProgram.value) {
+    return schedule.startTime
+      .map((timeItem) => {
+        const { start, end } = getProgramStartAndEnd(timeItem, schedule.duration)
+        return `с ${start} до ${end}`
+      })
+      .join(', ')
+  } else {
+    return schedule.startTime.join(', ')
+  }
+})
 </script>
 
 <template>
@@ -45,7 +61,7 @@ const programDay = computed(() => {
       </p>
       <div class="mt-1 text-neutral-50">
         <p class="flex items-center justify-between text-sm">
-          {{ schedule.startTime.join(', ') }}
+          <span>{{ scheduleTime }}</span>
           <span v-if="schedule.isReplay" class="rounded-lg bg-stone-800 px-1.5 py-0.5 text-xs uppercase text-neutral-50">
             повтор
           </span>

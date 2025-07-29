@@ -16,12 +16,19 @@ const hostsTitle = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'и
 
 <template>
   <HdrtBreadcrumbs v-if="program" show-home :label-list="['программы', program.title]" />
-  <Section padding="small" v-if="program">
+
+  <Section padding="topSmall" v-if="program">
     <div class="flex items-center max-sm:flex-col sm:items-start md:space-x-8">
       <div class="flex gap-x-4 max-sm:mb-6">
-        <div class="aspect-square max-w-80 overflow-hidden rounded-lg xl:max-w-96">
-          <img v-if="program.image" :src="correctImageSrc(program.image)" class="size-full object-cover" :alt="program.title" />
-          <img v-else src="/assets/plug280x280.svg" class="size-full object-cover" :alt="program.title" />
+        <div class="aspect-square w-80 xl:w-96">
+          <img
+            v-if="program.image"
+            :src="getMediumImage(program.image)"
+            class="size-full rounded-lg object-cover"
+            width="384"
+            height="384"
+          />
+          <img v-else src="/assets/plug280x280.svg" class="size-full object-cover" width="384" height="384" />
         </div>
       </div>
       <div class="flex flex-col space-y-4 p-4 max-sm:order-first max-sm:items-center">
@@ -29,13 +36,7 @@ const hostsTitle = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'и
 
         <div class="flex items-center space-x-4" v-for="host in program.hosts">
           <div class="h-16 w-16 overflow-hidden rounded-full border-2 border-primary">
-            <img
-              :src="host.avatar ?? '/images/hosts/larin.png'"
-              class="aspect-square object-cover"
-              width="64"
-              height="64"
-              alt=""
-            />
+            <img :src="host.avatar ?? '/images/hosts/larin.png'" class="aspect-square object-cover" width="64" height="64" />
           </div>
           <div>
             <p class="font-medium leading-6">{{ hostsTitle }}</p>
@@ -43,15 +44,17 @@ const hostsTitle = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'и
           </div>
         </div>
         <div class="flex max-lg:flex-col max-lg:space-y-2 max-sm:hidden lg:space-x-4">
-          <ProgramsScheduleCard v-for="schedule in program.schedule" :schedule :image-src="program.image" />
+          <ProgramsScheduleCard
+            v-for="schedule in program.schedule"
+            :schedule
+            :image-src="program.image"
+            :program-type="program.type"
+          />
         </div>
-      </div>
-      <div class="flex max-lg:flex-col max-lg:space-y-2 sm:hidden lg:space-x-4">
-        <!-- <ProgramsScheduleCard v-for="schedule in program.schedule" :schedule :image-src="program.image" /> -->
       </div>
     </div>
   </Section>
-  <Section v-if="program && program.description">
+  <Section v-if="program && program.description" padding="small">
     <ProgramsDescription :description="program.description" />
   </Section>
 </template>

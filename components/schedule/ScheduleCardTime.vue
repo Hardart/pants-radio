@@ -5,10 +5,7 @@ const { start, duration } = defineProps<{
   isProgram: boolean
 }>()
 
-const end = computed(() => {
-  const fullDration = timeToMinutes(start) + duration
-  return minutesToTime(fullDration)
-})
+const { end } = getProgramStartAndEnd(start, duration)
 </script>
 
 <template>

@@ -11,3 +11,12 @@ export function timeToMinutes(time: string): number {
   const [h, m] = time.split(':').map(Number)
   return h * 60 + m
 }
+
+export function getProgramStartAndEnd(startTime: string, duration: number) {
+  const start = timeToMinutes(startTime)
+  console.log(duration)
+
+  const end = minutesToTime(start + duration)
+
+  return { start: startTime, end }
+}

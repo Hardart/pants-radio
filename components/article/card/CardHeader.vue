@@ -9,7 +9,7 @@ defineProps<{
   <div class="relative overflow-hidden rounded-lg">
     <img
       v-if="image"
-      :src="getMediumImage(image)"
+      :src="getImage600(image)"
       width="610"
       height="357"
       class="aspect-video w-full object-cover object-top"

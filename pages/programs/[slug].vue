@@ -23,7 +23,7 @@ const hostsTitle = computed(() => 'Ведущ' + (program.hosts.length > 1 ? 'и
         <div class="aspect-square w-80 xl:w-96">
           <img
             v-if="program.image"
-            :src="getMediumImage(program.image)"
+            :src="getImage600(program.image)"
             class="size-full rounded-lg object-cover"
             width="384"
             height="384"

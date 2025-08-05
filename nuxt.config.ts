@@ -1,14 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  colorMode: {
-    preference: 'light'
-  },
+  colorMode: { preference: 'light' },
   app: {
     head: {
       script: [{ src: '/js/uikit.min.js', defer: true, fetchpriority: 'high' }],
       title: '«Радио ШТАНЫ». Все только для тебя',
-      // link: [{ href: 'http://hardart.site/images/gallery/317d6ff8308d78a3_75.webp', rel: 'preload', as: 'image' }],
       meta: [
         {
           name: 'description',
@@ -28,9 +25,7 @@ export default defineNuxtConfig({
     }
   },
   modules: ['@pinia/nuxt', '@nuxt/ui', '@vueuse/nuxt', 'nuxt-icon', '@nuxtjs/device', '@morev/vue-transitions/nuxt'],
-  pinia: {
-    storesDirs: ['./store/**']
-  },
+  pinia: { storesDirs: ['./store/**'] },
   routeRules: {
     '/api/v1/**': {
       proxy: process.env.BASE_URL

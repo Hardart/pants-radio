@@ -13,7 +13,7 @@ defineEmits(['on-toggle'])
 <template>
   <div class="relative flex gap-x-1.5 rounded-lg bg-white px-3 py-2 drop-shadow-md md:gap-x-3 md:px-6 md:py-4 md:drop-shadow-lg">
     <RadioPlayBtn
-      class="grid size-[50px] place-items-center md:size-[60px]"
+      class="size-[50px] md:size-[60px]"
       @click="track.preview && $emit('on-toggle', track)"
       :is-playing
       :is-fetching

@@ -8,7 +8,7 @@ defineEmits(['on-play'])
 </script>
 
 <template>
-  <div class="max-md:absolute">
+  <div class="place-item-center grid max-md:absolute">
     <button
       class="grid size-10 place-items-center rounded-full text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.4)] md:size-14"
       :class="isProhibited ? 'md:bg-neutral-400/40' : 'md:bg-primary'"

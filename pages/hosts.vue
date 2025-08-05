@@ -1,18 +1,10 @@
 <script lang="ts" setup>
-import type { API } from '~/types/api'
+import type { User } from '~/types/user'
 
-const { data } = await useFetch<API.MainPage>('/api/v1/base', {
-  query: { limit: 4 },
-  key: 'base-data',
-  getCachedData: (key) => useNuxtApp().payload.data[key]
-})
-const response = toValue(data)
-if (response === null) throw createError("Can't fetch data")
+const hosts = inject<User[]>('hosts')
+if (hosts === undefined) throw createError("Can't inject hosts")
+
 const filter = [
-  {
-    option: 'all',
-    label: 'Все'
-  },
   {
     option: 'dj',
     label: 'Диджеи'
@@ -26,22 +18,39 @@ const filter = [
     label: 'Пресс-служба'
   }
 ]
+
 const selectedPosition = ref<string>(filter[0].option)
 
 const filteredHosts = computed(() => {
-  if (selectedPosition.value === filter[0].option) return response.hosts
-  else return response.hosts.filter((host) => host.position.includes(selectedPosition.value))
+  if (selectedPosition.value === filter[0].option) return hosts
+  else return hosts.filter((host) => host.position.includes(selectedPosition.value))
+})
+
+const options = computed(() => {
+  const existOptions = hosts.flatMap((host) => host.position)
+  const setOfOptions = new Set(existOptions)
+  const res = [...setOfOptions].flatMap((option) => filter.filter((filterItem) => filterItem.option === option))
+  if (res.length <= 1) return null
+  return [
+    {
+      option: 'all',
+      label: 'Все'
+    },
+    ...res
+  ]
 })
 </script>
 
 <template>
   <Section>
     <UiPageTitle title="Ведущие" />
+
     <div class="flex gap-6">
       <USelectMenu
+        v-if="options"
         class="mb-6 w-44 max-w-44"
         v-model="selectedPosition"
-        :options="filter"
+        :options
         option-attribute="label"
         value-attribute="option"
       />

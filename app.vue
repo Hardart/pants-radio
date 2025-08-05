@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { STATE } from '@/types/state-enum'
+import type { API } from './types/api'
 const focused = useWindowFocus()
 const icon = useFavicon()
 
@@ -10,6 +11,17 @@ watch(focused, () => {
 
 const { data: metaData } = await useAsyncData(STATE.META, () => $fetch('/api/v1/meta'))
 if (metaData) useState(STATE.META, () => metaData)
+
+const { data } = await useFetch<API.MainPage>('/api/v1/base', {
+  query: { limit: 4 },
+  key: 'base-data',
+  getCachedData: (key) => useNuxtApp().payload.data[key]
+})
+const res = toValue(data)
+if (!res) throw createError("Can't fetch data")
+provide('articles', res.articles)
+provide('hosts', res.hosts)
+provide('gallery', res.slides)
 </script>
 
 <template>

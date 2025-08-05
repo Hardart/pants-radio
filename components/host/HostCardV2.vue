@@ -5,16 +5,10 @@ defineProps<{ host: User; showPosition?: boolean }>()
 </script>
 
 <template>
-  <!-- <div class="grid overflow-clip rounded-md shadow-lg">
-    <img v-if="host.avatar" :src="correctImageSrc(host.avatar)" class="h-60 w-full object-cover" loading="lazy" />
-    <div class="p-4">
-      <h5 class="text-xl font-semibold">{{ host.fullName }}</h5>
-    </div>
-  </div> -->
   <li class="flex flex-col overflow-clip rounded-md shadow-lg">
     <img
       v-if="host.avatar"
-      :src="correctImageSrc(host.avatar)"
+      :src="getImage600(host.avatar)"
       class="h-60 w-full object-cover"
       width="450"
       height="590"

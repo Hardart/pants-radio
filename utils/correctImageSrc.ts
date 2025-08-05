@@ -12,6 +12,11 @@ export function getImage300(src?: string) {
   return correctImageSrc(mediumUrl)
 }
 
+export function getImage100(src?: string) {
+  const mediumUrl = changeImageQuality(src, '100')
+  return correctImageSrc(mediumUrl)
+}
+
 export function getImage50(src?: string) {
   const mediumUrl = changeImageQuality(src, '50')
   return correctImageSrc(mediumUrl)

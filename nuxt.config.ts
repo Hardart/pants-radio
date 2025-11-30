@@ -17,16 +17,12 @@ export default defineNuxtConfig({
             'радио, онлайн-радио, интернет-радио, бесплатное радио, радиостанция, музыка, новости, слушать радио, слушать радио онлайн, слушать online радио, Радио, слушать онлайн'
         },
         {
-          property: 'og:image:width',
-          content: '300'
-        },
-        {
-          property: 'og:image:height',
-          content: '300'
+          property: 'og:image:type',
+          content: 'website'
         },
         {
           property: 'og:image',
-          content: 'https://radioshtani.ru/logo.svg'
+          content: 'https://radioshtani.ru/logo.png'
         }
       ]
     }

@@ -15,6 +15,18 @@ export default defineNuxtConfig({
           name: 'keywords',
           content:
             'радио, онлайн-радио, интернет-радио, бесплатное радио, радиостанция, музыка, новости, слушать радио, слушать радио онлайн, слушать online радио, Радио, слушать онлайн'
+        },
+        {
+          property: 'og:image:width',
+          content: '300'
+        },
+        {
+          property: 'og:image:height',
+          content: '300'
+        },
+        {
+          property: 'og:image',
+          content: 'https://radioshtani.ru/logo.svg'
         }
       ]
     }

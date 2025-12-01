@@ -8,6 +8,26 @@ export default defineNuxtConfig({
       title: '«Радио ШТАНЫ». Все только для тебя',
       meta: [
         {
+          'http-equiv': 'content-type',
+          content: 'text/html; charset=utf-8'
+        },
+        {
+          property: 'og:description',
+          content: 'Слушай Радио ШТАНЫ в прямом эфире онлайн на официальном сайте бесплатно и без регистрации'
+        },
+        {
+          property: 'og:image:width',
+          content: '800'
+        },
+        {
+          property: 'og:image:height',
+          content: '800'
+        },
+        {
+          property: 'og:image',
+          content: 'https://radioshtani.ru/logo.png'
+        },
+        {
           name: 'description',
           content: 'Слушай Радио ШТАНЫ в прямом эфире онлайн на официальном сайте бесплатно и без регистрации'
         },
@@ -15,22 +35,6 @@ export default defineNuxtConfig({
           name: 'keywords',
           content:
             'радио, онлайн-радио, интернет-радио, бесплатное радио, радиостанция, музыка, новости, слушать радио, слушать радио онлайн, слушать online радио, Радио, слушать онлайн'
-        },
-        {
-          property: 'og:image:type',
-          content: 'website'
-        },
-        {
-          property: 'og:image',
-          content: 'https://radioshtani.ru/logo.png'
-        },
-        {
-          name: 'twitter:card',
-          content: 'summary_large_image'
-        },
-        {
-          name: 'twitter:image',
-          content: 'https://radioshtani.ru/logo.png'
         }
       ]
     }

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Article } from '~/types/article'
+import { absoluteUrl } from '~/utils/correctImageSrc'
 import { parseHtml } from '~/utils/parseArticle'
 const route = useRoute()
 const { slug } = route.params
@@ -13,7 +14,9 @@ const article = toValue(data)
 if (!article) throw createError('Article is not define')
 useSeoMeta({
   title: article.title,
-  ogImage: article.image
+  ogImage: absoluteUrl(article.image),
+  ogImageWidth: 1200,
+  ogImageHeight: 630
 })
 </script>
 

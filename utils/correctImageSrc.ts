@@ -1,5 +1,9 @@
+export function absoluteUrl(src: string | undefined) {
+  return 'https://radioshtani.ru' + src
+}
+
 export function correctImageSrc(src: string | undefined) {
-  return process.dev ? 'https://radioshtani.ru' + src : src
+  return process.dev ? absoluteUrl(src) : src
 }
 
 export function getImage600(src?: string) {

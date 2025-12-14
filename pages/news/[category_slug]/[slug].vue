@@ -11,6 +11,10 @@ const { data } = await useFetch<Article>(`/api/v1/articles/${slug}`, {
 })
 const article = toValue(data)
 if (!article) throw createError('Article is not define')
+useSeoMeta({
+  title: article.title,
+  ogImage: article.image
+})
 </script>
 
 <template>

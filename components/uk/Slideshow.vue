@@ -26,6 +26,12 @@ const sizes = [
     size: '1280x549'
   }
 ]
+
+function navigateTo(slide: Slide, navigate: any) {
+  return slide.to ? navigate() : undefined
+}
+
+const isExternal = (slide: Slide) => slide.to?.startsWith('http')
 </script>
 
 <template>
@@ -37,7 +43,7 @@ const sizes = [
             <template v-for="slide in slides">
               <NuxtLink :to="slide.to" v-slot="{ navigate }" custom>
                 <li
-                  @click="navigate"
+                  @click="navigateTo(slide, navigate)"
                   class="absolute inset-0 overflow-hidden will-change-transform [&:not(.uk-active)]:hidden"
                   :class="{ 'cursor-pointer': typeof slide.to !== 'undefined' }"
                 >
@@ -49,6 +55,7 @@ const sizes = [
                     />
                     <img :src="correctImageSrc(slide.src)" class="size-full object-cover object-center" />
                   </picture>
+                  <a v-if="isExternal(slide)" class="z-3 absolute inset-0 overflow-hidden" :href="slide.to" target="_blank"> </a>
                 </li>
               </NuxtLink>
             </template>

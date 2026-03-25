@@ -41,7 +41,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      radioURL: 'http://23.105.253.236:8000/rsh_federal'
+      radioURL: 'https://stream.elarin.ru/rsh_federal'
     }
   },
   modules: ['@pinia/nuxt', '@nuxt/ui', '@vueuse/nuxt', 'nuxt-icon', '@nuxtjs/device', '@morev/vue-transitions/nuxt'],

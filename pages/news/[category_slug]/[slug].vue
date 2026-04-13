@@ -23,10 +23,13 @@ useSeoMeta({
 <template>
   <HdrtBreadcrumbs :label-list="['новости', article.category.title, article.title]" show-home />
   <Section padding="small">
-    <div class="lg:w-3/4">
+    <div class="article lg:w-3/4">
       <UiPageTitle class="tracking-tight" :title="article.title" />
-      <div>
-        <div class="mb-4 space-y-4 overflow-hidden text-lg leading-6 tracking-normal" v-html="parseHtml(article.content)"></div>
+      <div class="">
+        <div
+          class="article__text mb-4 space-y-4 overflow-hidden text-lg leading-6 tracking-normal"
+          v-html="parseHtml(article.content)"
+        ></div>
         <div class="flex gap-x-4">
           <TagItemList :tags="article.tags" />
         </div>
@@ -35,8 +38,16 @@ useSeoMeta({
   </Section>
 </template>
 
-<style scoped>
-.content p > img {
+<style>
+.article__text img {
   margin: 0 auto;
+}
+.article__text a {
+  color: #f15a24 !important;
+  text-decoration: underline;
+}
+
+.article__text a:hover {
+  text-decoration: none;
 }
 </style>

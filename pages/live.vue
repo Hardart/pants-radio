@@ -7,12 +7,12 @@
     <p class="mb-2 text-xl">По выходным, с 18 до 20 часов (МСК) - смотри вечернее «Шоу Без Названия» с Евгением Богомоловым</p>
     <div class="mb-2 grid aspect-video">
       <iframe
-        src="https://vk.com/video_ext.php?oid=-183424859&id=456239140&hd=3&autoplay=1"
+        src="https://rtmp.elarin.ru/9a24ac22-44d2-4847-a795-5459531ec880.html"
         width="1920"
         height="1080"
-        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-        frameborder="0"
-        allowfullscreen
+        frameborder="no"
+        scrolling="no"
+        allowfullscreen="true"
         class="rounded-xl md:rounded-2xl"
         style="width: 100%; height: auto; aspect-ratio: 16 / 9"
       ></iframe>
